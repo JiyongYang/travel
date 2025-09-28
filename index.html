@@ -12,10 +12,14 @@
         body {
             font-family: 'Noto Sans KR', sans-serif;
         }
+        .tab-button {
+            transition: all 0.3s ease-in-out;
+        }
         .tab-active {
-            border-color: #3b82f6;
-            color: #3b82f6;
+            background-color: white;
+            color: #2563eb;
             font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .plan-content {
             display: none;
@@ -45,7 +49,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
         <!-- Header -->
@@ -55,12 +59,12 @@
         </header>
 
         <!-- Tabs -->
-        <div class="mb-6">
-            <div class="flex border-b border-gray-200">
-                <button id="tab-a" class="tab-button flex-1 py-3 px-4 text-center text-gray-500 border-b-2 border-transparent transition-colors duration-300 tab-active" onclick="switchPlan('a')">
+        <div class="mb-8 p-1 bg-gray-200 rounded-xl">
+            <div class="flex space-x-1">
+                <button id="tab-a" class="tab-button flex-1 py-3 px-4 text-center text-gray-600 rounded-lg tab-active" onclick="switchPlan('a')">
                     Plan A: 2박 3일 (기본)
                 </button>
-                <button id="tab-b" class="tab-button flex-1 py-3 px-4 text-center text-gray-500 border-b-2 border-transparent transition-colors duration-300" onclick="switchPlan('b')">
+                <button id="tab-b" class="tab-button flex-1 py-3 px-4 text-center text-gray-600 rounded-lg" onclick="switchPlan('b')">
                     Plan B: 1박 2일 (대안)
                 </button>
             </div>
@@ -70,12 +74,15 @@
         <div id="plan-a" class="plan-content active space-y-8">
             <!-- 1일차 -->
             <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-2xl font-bold text-blue-600 mb-4">✈️ 1일차: 홍도 도착 & 첫 만남</h3>
-                <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">✈️ 1일차: 홍도 도착 & 첫 만남</h3>
+                <div class="space-y-8">
                     <!-- 오전 -->
-                    <div class="grid md:grid-cols-3 gap-4 items-start">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오전]</div>
-                        <div class="md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-yellow-100 text-yellow-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.464A1 1 0 106.465 13.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm-1.414-2.12a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>
+                            <span>오전</span>
+                        </div>
+                        <div class="flex-1">
                             <p class="text-sm text-gray-500 mb-2 font-semibold">(목포항 07:50 출발 → 홍도항 10:30 도착)</p>
                             <p><strong>추천:</strong> 숙소 체크인 및 점심</p>
                             <p class="text-sm text-gray-600 mb-2">홍도항 도착 후 <a href="https://xn--q20b04o67ag9of7szed41f.xn--3e0b707e/" target="_blank" rel="noopener noreferrer">남도팰리스</a> 체크인, 항구 근처 식당에서 점심 식사</p>
@@ -84,9 +91,12 @@
                         </div>
                     </div>
                     <!-- 오후 -->
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오후]</div>
-                        <div class="md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-orange-100 text-orange-800 font-bold py-2 px-4 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>오후</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> <a href="https://map.naver.com/p/entry/place/13322191" target="_blank" rel="noopener noreferrer">깃대봉</a> 맛보기 트레킹 (왕복 1.5시간)</p>
                             <p class="text-sm text-gray-600 mb-2">깃대봉 전망대에서 탁 트인 남해 풍경 감상</p>
                             <p><strong>대안:</strong> 홍도 1구 마을 탐방</p>
@@ -94,9 +104,12 @@
                         </div>
                     </div>
                     <!-- 저녁 -->
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[저녁]</div>
-                        <div class="md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-indigo-100 text-indigo-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>저녁</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> <a href="https://map.naver.com/p/search/홍도%20해녀촌" target="_blank" rel="noopener noreferrer">해녀포차</a>에서 즐기는 저녁</p>
                             <p class="text-sm text-gray-600 mb-2">갓 잡은 신선한 해산물을 즉석에서 맛보는 특별한 경험</p>
                             <p><strong>대안:</strong> 홍도 일몰 감상 후 횟집</p>
@@ -107,29 +120,38 @@
             </div>
             <!-- 2일차 -->
             <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-2xl font-bold text-green-600 mb-4">⛵ 2일차: 홍도의 정수 맛보기</h3>
-                 <div class="space-y-6">
-                    <div class="grid md:grid-cols-3 gap-4 items-start">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오전]</div>
-                        <div class="md:col-span-2">
+                <h3 class="text-2xl font-bold text-green-600 mb-6">⛵ 2일차: 홍도의 정수 맛보기</h3>
+                 <div class="space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                         <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-yellow-100 text-yellow-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.464A1 1 0 106.465 13.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm-1.414-2.12a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>
+                            <span>오전</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> 홍도 유람선 투어 (약 2.5시간)</p>
                             <p class="text-sm text-gray-600 mb-2">홍도의 하이라이트! 유람선으로 홍도 33경 감상</p>
                             <p><strong>대안:</strong> <a href="https://map.naver.com/p/entry/place/13322191" target="_blank" rel="noopener noreferrer">깃대봉</a> 완주 트레킹 (편도 1.5시간)</p>
                             <p class="text-sm text-gray-600">홍도 1구-2구를 잇는 등산로 완주하며 절경 감상</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오후]</div>
-                        <div class="md:col-span-2">
+                     <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-orange-100 text-orange-800 font-bold py-2 px-4 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>오후</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> <a href="https://map.naver.com/p/entry/place/31206118" target="_blank" rel="noopener noreferrer">몽돌해변</a> 스노클링</p>
                             <p class="text-sm text-gray-600 mb-2">홍도 2구 몽돌해변에서 맑은 물과 함께 휴식 또는 스노클링</p>
                             <p><strong>대안:</strong> <a href="https://map.naver.com/p/entry/place/13491417" target="_blank" rel="noopener noreferrer">홍도 등대</a> 및 해안길 산책</p>
                             <p class="text-sm text-gray-600">한적한 2구 마을의 해안길을 따라 여유로운 산책</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[저녁]</div>
-                        <div class="md:col-span-2">
+                     <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-indigo-100 text-indigo-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>저녁</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> 현지 맛집에서 만찬</p>
                             <p class="text-sm text-gray-600 mb-2">푸짐한 해물찜 또는 얼큰한 매운탕으로 마지막 밤 즐기기</p>
                             <p><strong>대안:</strong> 가족만의 조용한 저녁</p>
@@ -140,20 +162,26 @@
             </div>
             <!-- 3일차 -->
             <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-2xl font-bold text-purple-600 mb-4">👋 3일차: 아쉬운 작별</h3>
-                <div class="space-y-6">
-                    <div class="grid md:grid-cols-3 gap-4 items-start">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오전]</div>
-                        <div class="md:col-span-2">
+                <h3 class="text-2xl font-bold text-purple-600 mb-6">👋 3일차: 아쉬운 작별</h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-yellow-100 text-yellow-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.464A1 1 0 106.465 13.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm-1.414-2.12a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>
+                            <span>오전</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> 여유로운 아침 식사 및 산책</p>
                             <p class="text-sm text-gray-600 mb-2">숙소 주변 산책, 든든한 아침 식사 후 출발 준비</p>
                             <p><strong>대안:</strong> 홍도 특산품 쇼핑</p>
                             <p class="text-sm text-gray-600">출항 전 항구 근처에서 자연산 돌미역, 톳 등 기념품 구매</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[출항]</div>
-                        <div class="md:col-span-2">
+                     <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-gray-100 text-gray-700 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg>
+                            <span>출항</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>10:30</strong> 홍도항 출발 (→ 목포항 13:10 도착)</p>
                         </div>
                     </div>
@@ -165,11 +193,14 @@
         <div id="plan-b" class="plan-content space-y-8">
             <!-- 1일차 -->
             <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-2xl font-bold text-blue-600 mb-4">✈️ 1일차: 핵심 집중!</h3>
-                 <div class="space-y-6">
-                    <div class="grid md:grid-cols-3 gap-4 items-start">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오전/점심]</div>
-                        <div class="md:col-span-2">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6">✈️ 1일차: 핵심 집중!</h3>
+                 <div class="space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-yellow-100 text-yellow-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.464A1 1 0 106.465 13.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm-1.414-2.12a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>
+                            <span>오전/점심</span>
+                        </div>
+                        <div class="flex-1">
                             <p class="text-sm text-gray-500 mb-2 font-semibold">(목포항 07:50 출발 → 홍도항 10:30 도착)</p>
                             <p><strong>추천:</strong> 숙소 체크인 및 점심</p>
                             <p class="text-sm text-gray-600 mb-2">10:30 도착 후 빠르게 <a href="https://xn--q20b04o67ag9of7szed41f.xn--3e0b707e/" target="_blank" rel="noopener noreferrer">남도팰리스</a> 체크인 및 점심 식사</p>
@@ -177,18 +208,24 @@
                             <p class="text-sm text-gray-600">체크인 전 짐만 맡기고 바로 점심 식사로 오후 시간 확보</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오후]</div>
-                        <div class="md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-orange-100 text-orange-800 font-bold py-2 px-4 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>오후</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> 홍도 유람선 투어</p>
                             <p class="text-sm text-gray-600 mb-2">도착 당일 오후 유람선(12:30)으로 홍도 33경 먼저 보기</p>
                             <p><strong>대안:</strong> <a href="https://map.naver.com/p/entry/place/13322191" target="_blank" rel="noopener noreferrer">깃대봉</a> 핵심 코스 트레킹</p>
                             <p class="text-sm text-gray-600">유람선 시간이 안 맞을 경우, 깃대봉 전망대까지 빠르게 다녀오기</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[저녁]</div>
-                        <div class="md:col-span-2">
+                     <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-indigo-100 text-indigo-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                            <span>저녁</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> <a href="https://map.naver.com/p/search/홍도%20해녀촌" target="_blank" rel="noopener noreferrer">해녀포차</a> 또는 일몰 감상 후 저녁</p>
                             <p class="text-sm text-gray-600 mb-2">해녀포차에서 저녁 또는 일몰 감상 후 1구 마을 맛집에서 식사</p>
                             <p><strong>대안:</strong> 1구 마을 맛집 집중 공략</p>
@@ -199,20 +236,26 @@
             </div>
              <!-- 2일차 -->
              <div class="bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-2xl font-bold text-purple-600 mb-4">👋 2일차: 짧고 굵은 마무리</h3>
-                <div class="space-y-6">
-                    <div class="grid md:grid-cols-3 gap-4 items-start">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[오전]</div>
-                        <div class="md:col-span-2">
+                <h3 class="text-2xl font-bold text-purple-600 mb-6">👋 2일차: 짧고 굵은 마무리</h3>
+                <div class="space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                        <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-yellow-100 text-yellow-800 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.464A1 1 0 106.465 13.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm-1.414-2.12a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>
+                            <span>오전</span>
+                        </div>
+                        <div class="flex-1">
                             <p><strong>추천:</strong> 이른 아침 식사 및 항구 산책</p>
                             <p class="text-sm text-gray-600 mb-2">아침 일찍 식사 후, 출항 전까지 항구 주변 둘러보기</p>
                             <p><strong>대안:</strong> 기념품 쇼핑</p>
                             <p class="text-sm text-gray-600">항구 근처 상점에서 기념품 구매</p>
                         </div>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 items-start border-t pt-6">
-                        <div class="font-semibold text-lg text-gray-700 md:col-span-1">[출항]</div>
-                        <div class="md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start sm:space-x-6">
+                         <div class="flex-shrink-0 w-full sm:w-32 mb-3 sm:mb-0 flex items-center justify-center bg-gray-100 text-gray-700 font-bold py-2 px-4 rounded-full">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg>
+                            <span>출항</span>
+                        </div>
+                        <div class="flex-1">
                              <p><strong>10:30</strong> 홍도항 출발 (→ 목포항 13:10 도착)</p>
                         </div>
                     </div>
@@ -321,5 +364,4 @@
 
 </body>
 </html>
-
 
