@@ -1,1835 +1,850 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>중앙아시아 8박 9일 여행 계획서</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    :root {
-      --sand: #D4B896;
-      --sand-light: #F5EBD9;
-      --sand-dark: #8B6A42;
-      --ink: #1A1208;
-      --ink-mid: #3D2B0E;
-      --sky: #4A7FA5;
-      --sky-light: #E8F3FA;
-      --sky-dark: #1E4A6E;
-      --sage: #6B8F71;
-      --sage-light: #E8F0E9;
-      --rust: #B05B2C;
-      --rust-light: #FAEDE3;
-      --cream: #FAF6F0;
-      --border: rgba(139, 106, 66, 0.18);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.75;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      background: var(--ink);
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 72px 40px 56px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(212,184,150,0.06) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(212,184,150,0.06) 40px);
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--sand);
-      margin-bottom: 18px;
-      font-weight: 500;
-    }
-
-    .hero h1 {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 800;
-      color: #FFF8EF;
-      line-height: 1.2;
-      position: relative;
-    }
-
-    .hero-sub {
-      margin-top: 16px;
-      font-size: 14px;
-      color: rgba(255,248,239,0.65);
-      letter-spacing: 0.05em;
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 28px;
-    }
-
-    .hero-pill {
-      border: 1px solid rgba(212,184,150,0.35);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 12px;
-      color: var(--sand);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── OVERVIEW STRIP ── */
-    .overview-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .ov-cell {
-      padding: 28px 24px;
-      border-right: 1px solid var(--border);
-      background: white;
-    }
-    .ov-cell:last-child { border-right: none; }
-
-    .ov-label {
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sand-dark);
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .ov-value {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    .ov-note {
-      font-size: 12px;
-      color: #888;
-      margin-top: 4px;
-    }
-
-    /* ── LAYOUT ── */
-    .wrapper {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-
-    /* ── MAP SECTION ── */
-    .map-section {
-      margin: 40px 0;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .map-header {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .map-header-icon {
-      width: 24px;
-      height: 24px;
-      background: var(--ink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--sand);
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-
-    .map-header-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      letter-spacing: 0.04em;
-    }
-
-    #mainMap { width: 100%; height: 400px; }
-
-    /* ── DAY CARDS ── */
-    .days-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-top: 40px;
-    }
-
-    .day-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-top: none;
-      overflow: hidden;
-    }
-
-    .day-card:first-child { border-top: 1px solid var(--border); border-radius: 4px 4px 0 0; }
-    .day-card:last-child { border-radius: 0 0 4px 4px; }
-
-    .day-header {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      min-height: 72px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .day-num {
-      background: var(--ink);
-      color: var(--sand);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      padding: 16px;
-    }
-
-    .day-num-label {
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(212,184,150,0.6);
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 400;
-      margin-top: 2px;
-    }
-
-    .day-title-block {
-      padding: 16px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-left: 1px solid var(--border);
-    }
-
-    .day-date {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--sand-dark);
-      font-weight: 500;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .day-title {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    .day-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 2px 10px;
-      border-radius: 100px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
-
-    .tag-transport { background: var(--sky-light); color: var(--sky-dark); }
-    .tag-nature { background: var(--sage-light); color: #2E5C33; }
-    .tag-city { background: var(--sand-light); color: var(--sand-dark); }
-    .tag-trek { background: var(--rust-light); color: var(--rust); }
-    .tag-border { background: #F0E8F5; color: #5A2D80; }
-    .tag-rest { background: #E8F8F5; color: #1A6B55; }
-
-    .day-body {
-      border-top: 1px solid var(--border);
-      display: none;
-    }
-
-    .day-body.open { display: block; }
-
-    .day-inner {
-      padding: 28px 32px;
-    }
-
-    /* ── TIMELINE ── */
-    .tl {
-      position: relative;
-      margin: 24px 0;
-    }
-
-    .tl::before {
-      content: '';
-      position: absolute;
-      left: 58px;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: var(--border);
-    }
-
-    .tl-item {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 0 16px;
-      margin-bottom: 18px;
-      position: relative;
-    }
-
-    .tl-item:last-child { margin-bottom: 0; }
-
-    .tl-time {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--sand-dark);
-      text-align: right;
-      padding-top: 2px;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
-    .tl-dot {
-      position: absolute;
-      left: 54px;
-      top: 5px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--ink);
-      border: 2px solid var(--cream);
-      box-shadow: 0 0 0 1px var(--ink);
-    }
-
-    .tl-content {
-      padding-left: 24px;
-    }
-
-    .tl-main {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.5;
-    }
-
-    .tl-sub {
-      font-size: 12.5px;
-      color: #666;
-      margin-top: 2px;
-      line-height: 1.5;
-    }
-
-    .tl-tip {
-      display: inline-block;
-      background: var(--sand-light);
-      color: var(--sand-dark);
-      font-size: 11px;
-      padding: 1px 8px;
-      border-radius: 3px;
-      margin-top: 5px;
-      font-weight: 500;
-    }
-
-    /* ── INFO BLOCKS ── */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin: 20px 0;
-    }
-
-    .info-block {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .info-block-head {
-      padding: 9px 14px;
-      background: var(--sand-light);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--sand-dark);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .info-block-body {
-      padding: 14px;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(139,106,66,0.08);
-      gap: 12px;
-    }
-
-    .info-row:last-child { border-bottom: none; }
-
-    .info-row-label { color: #666; flex-shrink: 0; }
-    .info-row-value { font-weight: 500; color: var(--ink); text-align: right; }
-    .info-row-value.highlight { color: var(--rust); }
-
-    /* ── NOTICE BOX ── */
-    .notice {
-      border-left: 3px solid var(--sand-dark);
-      background: var(--sand-light);
-      padding: 12px 16px;
-      border-radius: 0 4px 4px 0;
-      margin: 16px 0;
-      font-size: 13px;
-      color: var(--ink-mid);
-      line-height: 1.65;
-    }
-
-    .notice strong { color: var(--rust); font-weight: 600; }
-
-    .notice-sky {
-      border-left-color: var(--sky);
-      background: var(--sky-light);
-      color: var(--sky-dark);
-    }
-
-    .notice-sage {
-      border-left-color: var(--sage);
-      background: var(--sage-light);
-      color: #2E5C33;
-    }
-
-    /* ── OPTION COMPARE ── */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 20px 0;
-    }
-
-    .compare-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .compare-card.recommended { border-color: var(--sky); }
-
-    .compare-head {
-      padding: 10px 16px;
-      background: var(--ink);
-      color: var(--sand);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .compare-head.sky { background: var(--sky-dark); }
-    .compare-badge {
-      background: var(--sand);
-      color: var(--ink);
-      font-size: 9px;
-      padding: 2px 7px;
-      border-radius: 100px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    .compare-body {
-      padding: 14px 16px;
-    }
-
-    .compare-item {
-      font-size: 13px;
-      padding: 5px 0;
-      color: var(--ink-mid);
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px dashed rgba(139,106,66,0.12);
-    }
-    .compare-item:last-child { border-bottom: none; }
-    .compare-item::before { content: '▸'; color: var(--sand-dark); flex-shrink: 0; }
-
-    /* ── SECTION HEADING ── */
-    .sec-head {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--sand-dark);
-      font-weight: 600;
-      margin: 24px 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .sec-head::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── CHECKLIST ── */
-    .checklist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .checklist-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .checklist-head {
-      padding: 10px 16px;
-      background: var(--ink);
-      color: var(--sand);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-    }
-
-    .checklist-body {
-      padding: 12px 16px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--ink-mid);
-      padding: 5px 0;
-      border-bottom: 1px dashed rgba(139,106,66,0.1);
-      cursor: pointer;
-    }
-
-    .check-item:last-child { border-bottom: none; }
-
-    .check-item input[type="checkbox"] {
-      width: 15px;
-      height: 15px;
-      accent-color: var(--ink);
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-
-    .check-item.done { text-decoration: line-through; color: #aaa; }
-
-    /* ── BUDGET SUMMARY ── */
-    .budget-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .budget-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 18px;
-      text-align: center;
-      background: white;
-    }
-
-    .budget-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--sand-dark);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .budget-amount {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .budget-range {
-      font-size: 11px;
-      color: #888;
-      margin-top: 4px;
-    }
-
-    /* ── FOOD CARD ── */
-    .food-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin: 16px 0;
-    }
-
-    .food-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 14px;
-    }
-
-    .food-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .food-desc {
-      font-size: 12px;
-      color: #777;
-      line-height: 1.5;
-    }
-
-    .food-price {
-      font-size: 12px;
-      color: var(--rust);
-      font-weight: 500;
-      margin-top: 6px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 0.08em;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
-      .overview-strip { grid-template-columns: 1fr 1fr; }
-      .ov-cell:nth-child(2) { border-right: none; }
-      .compare-grid { grid-template-columns: 1fr; }
-      .budget-grid { grid-template-columns: 1fr 1fr; }
-      .day-header { grid-template-columns: 100px 1fr; }
-      .day-num { font-size: 22px; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>중앙아시아 여행 계획서 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{
+  --sand:#D4B896;--sand-l:#F5EBD9;--sand-d:#8B6A42;
+  --ink:#1A1208;--ink-m:#3D2B0E;
+  --sky:#4A7FA5;--sky-l:#E8F3FA;--sky-d:#1E4A6E;
+  --sage:#6B8F71;--sage-l:#E8F0E9;
+  --rust:#B05B2C;--rust-l:#FAEDE3;
+  --cream:#FAF6F0;--bdr:rgba(139,106,66,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.75}
+
+.hero{position:relative;background:var(--ink);min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px 50px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(212,184,150,.05) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(212,184,150,.05) 40px)}
+.h-ey{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:14px;font-weight:500}
+.hero h1{font-family:"Nanum Myeongjo",serif;font-size:clamp(24px,4vw,42px);font-weight:800;color:#FFF8EF;line-height:1.2;position:relative}
+.h-sub{margin-top:12px;font-size:13px;color:rgba(255,248,239,.6)}
+.h-pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:22px}
+.h-pill{border:1px solid rgba(212,184,150,.35);border-radius:100px;padding:4px 13px;font-size:11px;color:var(--sand)}
+
+.ov{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bdr)}
+.ov-c{padding:22px 18px;border-right:1px solid var(--bdr);background:#fff}
+.ov-c:last-child{border-right:none}
+.ov-l{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--sand-d);font-weight:500;margin-bottom:4px}
+.ov-v{font-family:"Nanum Myeongjo",serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.3}
+.ov-n{font-size:11px;color:#888;margin-top:2px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+.map-sec{margin:34px 0;background:#fff;border:1px solid var(--bdr);border-radius:4px;overflow:hidden}
+.map-hd{padding:13px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--ink)}
+.map-dot{width:18px;height:18px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--sand);font-size:8px;flex-shrink:0}
+#mainMap{width:100%;height:360px}
+
+.days{display:flex;flex-direction:column;margin-top:34px}
+.dc{background:#fff;border:1px solid var(--bdr);border-top:none;overflow:hidden}
+.dc:first-child{border-top:1px solid var(--bdr);border-radius:4px 4px 0 0}
+.dc:last-child{border-radius:0 0 4px 4px}
+.dh{display:grid;grid-template-columns:120px 1fr;min-height:66px;cursor:pointer;user-select:none}
+.dn{background:var(--ink);color:var(--sand);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Nanum Myeongjo",serif;font-size:24px;font-weight:800;padding:12px}
+.dn-l{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(212,184,150,.55);font-family:"Noto Sans KR",sans-serif;font-weight:400;margin-top:2px}
+.dt{padding:11px 18px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--bdr)}
+.dd{font-size:10px;letter-spacing:.12em;color:var(--sand-d);font-weight:500;text-transform:uppercase;margin-bottom:3px}
+.dtt{font-family:"Nanum Myeongjo",serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.dtg{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:500}
+.t-tr{background:var(--sky-l);color:var(--sky-d)}
+.t-na{background:var(--sage-l);color:#2E5C33}
+.t-ci{background:var(--sand-l);color:var(--sand-d)}
+.t-tk{background:var(--rust-l);color:var(--rust)}
+.t-rs{background:#E8F8F5;color:#1A6B55}
+.t-fl{background:#EEF2FF;color:#3730A3}
+
+.db{border-top:1px solid var(--bdr);display:none}
+.db.open{display:block}
+.di{padding:22px 26px}
+
+/* TIMELINE — time badge completely separate from dot */
+.tl{margin:18px 0}
+.tl-row{display:flex;align-items:flex-start;gap:0;margin-bottom:14px}
+.tl-row:last-child{margin-bottom:0}
+.tl-badge{
+  min-width:52px;max-width:52px;
+  background:var(--ink);color:var(--sand);
+  border-radius:4px;font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  padding:5px 3px;flex-shrink:0;
+  margin-top:0;line-height:1.3;text-align:center;
+}
+.tl-spine{
+  display:flex;flex-direction:column;align-items:center;
+  width:20px;flex-shrink:0;
+  align-self:stretch;
+  padding-top:4px;
+  margin:0 6px;
+}
+.tl-top{width:1px;height:6px;background:var(--bdr)}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--sand-d);flex-shrink:0}
+.tl-bot{width:1px;flex:1;background:var(--bdr);min-height:8px}
+.tl-row:last-child .tl-bot{display:none}
+.tl-body{flex:1;padding-bottom:14px}
+.tl-main{font-size:13px;font-weight:500;color:var(--ink);line-height:1.5}
+.tl-sub{font-size:11.5px;color:#666;margin-top:2px;line-height:1.55}
+.tl-tip{display:inline-block;background:var(--sand-l);color:var(--sand-d);font-size:10px;padding:1px 7px;border-radius:3px;margin-top:4px;font-weight:500}
+.sp-btn{display:inline-flex;align-items:center;gap:4px;background:var(--ink);color:var(--sand);font-size:10px;padding:3px 9px;border-radius:3px;margin-top:4px;cursor:pointer;border:none;font-family:inherit;font-weight:500;letter-spacing:.03em}
+.sp-btn:hover{background:var(--sand-d)}
+
+.sh{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-d);font-weight:600;margin:20px 0 9px;display:flex;align-items:center;gap:7px}
+.sh::after{content:"";flex:1;height:1px;background:var(--bdr)}
+
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0}
+.ib{border:1px solid var(--bdr);border-radius:4px;overflow:hidden}
+.ibh{padding:7px 12px;background:var(--sand-l);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--sand-d);border-bottom:1px solid var(--bdr)}
+.ibb{padding:10px 12px}
+.ir{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(139,106,66,.07);gap:8px}
+.ir:last-child{border-bottom:none}
+.irl{color:#666;flex-shrink:0}
+.irv{font-weight:500;color:var(--ink);text-align:right}
+.irv.hl{color:var(--rust)}
+.irv.ok{color:var(--sage)}
+
+.note{border-left:3px solid var(--sand-d);background:var(--sand-l);padding:9px 13px;border-radius:0 4px 4px 0;margin:12px 0;font-size:12px;color:var(--ink-m);line-height:1.6}
+.note strong{color:var(--rust);font-weight:600}
+.note-sky{border-left-color:var(--sky);background:var(--sky-l);color:var(--sky-d)}
+.note-sage{border-left-color:var(--sage);background:var(--sage-l);color:#2E5C33}
+
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cc{border:1px solid var(--bdr);border-radius:4px;overflow:hidden}
+.cc.rec{border-color:var(--sky)}
+.ch{padding:8px 13px;background:var(--ink);color:var(--sand);font-size:11px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.ch.sky{background:var(--sky-d)}
+.cbadge{background:var(--sand);color:var(--ink);font-size:9px;padding:2px 6px;border-radius:100px;font-weight:700}
+.cbody{padding:10px 13px}
+.ci{font-size:11.5px;padding:4px 0;color:var(--ink-m);display:flex;gap:6px;border-bottom:1px dashed rgba(139,106,66,.1)}
+.ci:last-child{border-bottom:none}
+.ci::before{content:"▸";color:var(--sand-d);flex-shrink:0}
+
+/* SEAT MAP */
+.sm{margin:14px 0;background:var(--cream);border:1px solid var(--bdr);border-radius:4px;padding:14px}
+.sm-row{display:flex;justify-content:center;gap:5px;margin:8px 0}
+.seat{width:32px;height:32px;border-radius:5px 5px 3px 3px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;border:1px solid}
+.s-e{background:#f0ede8;border-color:#ccc;color:#aaa}
+.s-o{background:var(--ink);border-color:var(--ink);color:var(--sand)}
+.s-t{background:#e5e5e5;border-color:#bbb;color:#999}
+.s-ai{width:18px}
+.sm-lbl{text-align:center;font-size:10px;color:#888;margin-top:3px}
+.sm-leg{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.sm-li{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--ink-m)}
+.sm-dot{width:11px;height:11px;border-radius:3px}
+
+/* PHOTO */
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:7px;margin:14px 0}
+.pc{border-radius:6px;overflow:hidden;cursor:pointer;position:relative;aspect-ratio:4/3;background:var(--sand-l)}
+.pc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s}
+.pc:hover img{transform:scale(1.04)}
+.pc-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,18,8,.65));color:#fff;font-size:10px;padding:14px 7px 5px;font-weight:500}
+.pc-map{position:absolute;top:5px;right:5px;background:rgba(26,18,8,.7);color:var(--sand);border:none;border-radius:3px;font-size:9px;padding:2px 6px;cursor:pointer;font-family:inherit;font-weight:600}
+.pc-map:hover{background:var(--ink)}
+
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(26,18,8,.75);z-index:9000;display:none;align-items:center;justify-content:center;padding:18px}
+.mo.active{display:flex}
+.mo-card{background:#fff;border-radius:8px;overflow:hidden;max-width:660px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
+.mo-img{width:100%;height:240px;object-fit:cover;display:block}
+.mo-body{padding:18px 22px}
+.mo-ttl{font-family:"Nanum Myeongjo",serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.mo-meta{font-size:11px;color:#888;margin-bottom:10px;display:flex;gap:12px;flex-wrap:wrap}
+.mo-desc{font-size:12.5px;color:var(--ink-m);line-height:1.7;margin-bottom:12px}
+.mo-links{display:flex;gap:8px;flex-wrap:wrap}
+.mo-link{display:inline-flex;align-items:center;background:var(--ink);color:var(--sand);font-size:11px;padding:5px 13px;border-radius:4px;text-decoration:none;font-weight:500}
+.mo-link:hover{background:var(--sand-d)}
+.mo-x{position:absolute;top:10px;right:12px;background:rgba(26,18,8,.6);color:#fff;border:none;border-radius:50%;width:28px;height:28px;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+
+.bg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.bc{border:1px solid var(--bdr);border-radius:4px;padding:15px;text-align:center;background:#fff}
+.bl{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--sand-d);font-weight:600;margin-bottom:5px}
+.ba{font-family:"Nanum Myeongjo",serif;font-size:20px;font-weight:700;color:var(--ink)}
+.br{font-size:11px;color:#888;margin-top:3px}
+
+.clg{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:12px;margin:18px 0}
+.clc{border:1px solid var(--bdr);border-radius:4px;overflow:hidden}
+.clh{padding:8px 13px;background:var(--ink);color:var(--sand);font-size:11px;font-weight:600;letter-spacing:.1em}
+.clb{padding:9px 13px}
+.cl-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-m);padding:4px 0;border-bottom:1px dashed rgba(139,106,66,.09);cursor:pointer}
+.cl-i:last-child{border-bottom:none}
+.cl-i input{width:13px;height:13px;accent-color:var(--ink);flex-shrink:0;cursor:pointer}
+.cl-i.done{text-decoration:line-through;color:#bbb}
+
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:9px;margin:12px 0}
+.fc{border:1px solid var(--bdr);border-radius:4px;padding:11px}
+.fn{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.fd{font-size:11px;color:#777;line-height:1.5}
+.fp{font-size:11px;color:var(--rust);font-weight:500;margin-top:4px}
+
+footer{text-align:center;padding:34px 20px;font-size:11px;color:#aaa;letter-spacing:.08em;border-top:1px solid var(--bdr)}
+@media(max-width:680px){
+  .ov{grid-template-columns:1fr 1fr}
+  .ov-c:nth-child(2){border-right:none}
+  .cg{grid-template-columns:1fr}
+  .bg{grid-template-columns:1fr 1fr}
+  .dh{grid-template-columns:90px 1fr}
+  .dn{font-size:20px}
+}
+</style>
 </head>
 <body>
 
-<!-- ═══ HERO ═══ -->
-<header class="hero">
-  <div class="hero-eyebrow">Central Asia Expedition · 2025</div>
-  <h1>중앙아시아 8박 9일<br>여행 계획서</h1>
-  <p class="hero-sub">카자흐스탄 알마티 &amp; 키르기스스탄 카라콜 · 알틴아라샨 · 아라콜 패스</p>
-  <div class="hero-pills">
-    <span class="hero-pill">6월 18일 – 6월 27일</span>
-    <span class="hero-pill">로드트립 + 고산 트레킹</span>
-    <span class="hero-pill">카자흐스탄 · 키르기스스탄</span>
-    <span class="hero-pill">총예산 $1,250 – $2,050</span>
-  </div>
-</header>
-
-<!-- ═══ OVERVIEW ═══ -->
-<div class="overview-strip">
-  <div class="ov-cell">
-    <div class="ov-label">여행 기간</div>
-    <div class="ov-value">8박 9일</div>
-    <div class="ov-note">6월 18일 ~ 6월 27일</div>
-  </div>
-  <div class="ov-cell">
-    <div class="ov-label">핵심 루트</div>
-    <div class="ov-value">알마티 → 카라콜</div>
-    <div class="ov-note">샤린·콜사이·알틴아라샨 경유</div>
-  </div>
-  <div class="ov-cell">
-    <div class="ov-label">최고 고도</div>
-    <div class="ov-value">3,860m</div>
-    <div class="ov-note">아라콜 패스 (알라쿨 주변)</div>
-  </div>
-  <div class="ov-cell">
-    <div class="ov-label">총예산 (항공 제외)</div>
-    <div class="ov-value">$1,250–$2,050</div>
-    <div class="ov-note">절약형 ~ 여유형</div>
+<div class="mo" id="mo">
+  <div class="mo-card">
+    <button class="mo-x" id="moX">&#x2715;</button>
+    <img src="" alt="" id="moImg" class="mo-img"/>
+    <div class="mo-body">
+      <div class="mo-ttl" id="moTtl"></div>
+      <div class="mo-meta" id="moMeta"></div>
+      <div class="mo-desc" id="moDesc"></div>
+      <div class="mo-links" id="moLinks"></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ WRAPPER ═══ -->
-<div class="wrapper">
-
-  <!-- MAP -->
-  <div class="map-section">
-    <div class="map-header">
-      <div class="map-header-icon">◎</div>
-      <span class="map-header-title">전체 이동 동선 — 알마티 → 샤린 → 콜사이 → 카라콜 → 알틴아라샨 → 복귀</span>
-    </div>
-    <div id="mainMap"></div>
+<header class="hero">
+  <div class="h-ey">Central Asia Expedition · 2025</div>
+  <h1>중앙아시아 9박 10일 여행 계획서</h1>
+  <p class="h-sub">카자흐스탄 알마티 · 키르기스스탄 카라콜 · 알틴아라샨 · 아라콜 패스</p>
+  <div class="h-pills">
+    <span class="h-pill">6월 19일 – 6월 28일</span>
+    <span class="h-pill">OZ577 출발 · ZE136 귀국</span>
+    <span class="h-pill">트레킹 + 온천 + 승마</span>
+    <span class="h-pill">총예산 $1,200 – $2,000</span>
   </div>
+</header>
 
-  <!-- ═══ DAY CARDS ═══ -->
-  <div class="days-grid">
+<div class="ov">
+  <div class="ov-c"><div class="ov-l">여행 기간</div><div class="ov-v">9박 10일</div><div class="ov-n">6/19 (목) – 6/28 (토)</div></div>
+  <div class="ov-c"><div class="ov-l">출발·귀국</div><div class="ov-v">OZ577 · ZE136</div><div class="ov-n">아시아나 출발 / 이스타 귀국</div></div>
+  <div class="ov-c"><div class="ov-l">최고 고도</div><div class="ov-v">3,860m</div><div class="ov-n">아라콜 패스</div></div>
+  <div class="ov-c"><div class="ov-l">총예산 (항공 제외)</div><div class="ov-v">$1,200–$2,000</div><div class="ov-n">절약형 ~ 여유형</div></div>
+</div>
 
-    <!-- ───── DAY 1 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">01<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 18일 (목)</div>
-          <div class="day-title">인천 출발 → 알마티 도착 · 입성 나이트</div>
-          <div class="day-tags">
-            <span class="tag tag-transport">항공 이동</span>
-            <span class="tag tag-city">알마티</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body open">
-        <div class="day-inner">
+<div class="wrap">
 
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">15:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">인천국제공항 도착 · 탑승 수속</div>
-                <div class="tl-sub">3시간 전 도착 권장. 트레킹 장비(스틱, 아이젠) 위탁 수하물 확인 필수</div>
-                <span class="tl-tip">수하물 기내 반입 불가 항목 사전 체크</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">18:10</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">KC907 탑승 · 인천 → 알마티</div>
-                <div class="tl-sub">Air Astana 직항 / 비행시간 약 6시간 15분</div>
-                <span class="tl-tip">기내에서 수면 확보 권장</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">20:50</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알마티 국제공항(ALA) 도착 · 입국 심사</div>
-                <div class="tl-sub">비자 불필요 (한국 여권 소지자 30일 무비자). 입국카드 작성 / 보관 필수</div>
-                <span class="tl-tip">수하물 찾는 데 30~45분 소요 예상</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">22:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">Yandex Go 호출 → 숙소 이동</div>
-                <div class="tl-sub">공항~시내 약 20~25분. Yandex Go가 우버보다 저렴 (USD $10~16)</div>
-                <span class="tl-tip">카자흐스탄 텡게 환전 (ATM 우선 추천)</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">23:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">숙소 체크인 · 취침</div>
-                <div class="tl-sub">내일 새벽 출발을 위해 짐 정리 미리 해두기</div>
-              </div>
-            </div>
-          </div>
+<div class="map-sec">
+  <div class="map-hd"><div class="map-dot">◎</div>전체 루트 — 알마티 → 샤린 → 콜사이 → 카인디 → 카라콜 → 아라콜 → 알틴아라샨 → 알마티</div>
+  <div id="mainMap"></div>
+</div>
 
-          <div class="sec-head">숙소 옵션</div>
-          <div class="info-grid">
-            <div class="info-block">
-              <div class="info-block-head">절약형</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">숙소</span><span class="info-row-value">아르바트 거리 게스트하우스</span></div>
-                <div class="info-row"><span class="info-row-label">비용</span><span class="info-row-value highlight">USD $25~40</span></div>
-                <div class="info-row"><span class="info-row-label">특징</span><span class="info-row-value">도심 접근성 우수, 공용 욕실</span></div>
-              </div>
-            </div>
-            <div class="info-block">
-              <div class="info-block-head">여유형</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">숙소</span><span class="info-row-value">부티크 호텔 또는 에어비앤비</span></div>
-                <div class="info-row"><span class="info-row-label">비용</span><span class="info-row-value highlight">USD $50~80</span></div>
-                <div class="info-row"><span class="info-row-label">특징</span><span class="info-row-value">전용 욕실, 조식 포함 가능</span></div>
-              </div>
-            </div>
-          </div>
+<div class="days" id="days">
 
-          <div class="info-block" style="margin-top:0">
-            <div class="info-block-head">예상 지출 (Day 1)</div>
-            <div class="info-block-body">
-              <div class="info-row"><span class="info-row-label">공항 택시 (Yandex Go)</span><span class="info-row-value">USD $10~16</span></div>
-              <div class="info-row"><span class="info-row-label">숙박</span><span class="info-row-value">USD $25~80</span></div>
-              <div class="info-row"><span class="info-row-label">심카드 (공항 구매)</span><span class="info-row-value">USD $5~10</span></div>
-              <div class="info-row"><span class="info-row-label">간식·음료</span><span class="info-row-value">USD $5~10</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 2 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">02<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 19일 (금)</div>
-          <div class="day-title">알마티 시내 정비 · 고산 적응 반나절 당일치기</div>
-          <div class="day-tags">
-            <span class="tag tag-city">알마티</span>
-            <span class="tag tag-nature">고산 적응</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="notice notice-sky">
-            내일부터 본격적인 이동이 시작됩니다. 오늘은 고산 적응 + 장비/식량 준비 + 체력 충전에 집중하세요.
-          </div>
-
-          <div class="sec-head">오전 일정 (09:00~12:00)</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">09:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">조식 후 장비·식량 점검</div>
-                <div class="tl-sub">Zelyony Bazar (그린바자르) 또는 Magnum 마트에서 행동식, 비상약, 물통 보충</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">10:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">메데우 스케이트링크 방문</div>
-                <div class="tl-sub">해발 1,691m. 알마티 아이콘. 버스 #6, 12 또는 택시 (USD $5~8)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sec-head">오후 일정 (13:00~18:00)</div>
-          <div class="compare-grid">
-            <div class="compare-card recommended">
-              <div class="compare-head sky">침블락 곤돌라 <span class="compare-badge">추천</span></div>
-              <div class="compare-body">
-                <div class="compare-item">메데우에서 케이블카 2단계 환승</div>
-                <div class="compare-item">해발 3,200m 도달 — 고산 적응 최적</div>
-                <div class="compare-item">정상 레스토랑에서 경치 감상</div>
-                <div class="compare-item">곤돌라 왕복 USD $18~25</div>
-                <div class="compare-item">접근성 최우수 (대중교통 가능)</div>
-              </div>
-            </div>
-            <div class="compare-card">
-              <div class="compare-head">빅알마티 호수 (BAO)</div>
-              <div class="compare-body">
-                <div class="compare-item">티엔산 설산 + 에메랄드 빛 호수</div>
-                <div class="compare-item">해발 2,510m / 사진 퀄리티 압도적</div>
-                <div class="compare-item">차량 대절 필수 (당일 사전 예약)</div>
-                <div class="compare-item">입장 허가증 필요 (현지 투어사 통해 취득)</div>
-                <div class="compare-item">차량 USD $50~90 (2~4인 분담 가능)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sec-head">저녁 일정 (18:00~21:00)</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">18:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">아르바트 거리 산책 · 저녁식사</div>
-                <div class="tl-sub">중앙아시아 음식 첫 경험. 베쉬바르막, 라그만, 샤슬릭 도전</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">20:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">내일 출발 짐 완전 패킹 · 취침</div>
-                <div class="tl-sub">SUV 기사에게 픽업 시간 재확인 문자 필수 (06:00 픽업)</div>
-                <span class="tl-tip">트레킹화 · 방풍재킷 · 행동식 백팩 최상단 배치</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="sec-head">추천 식당</div>
-          <div class="food-grid">
-            <div class="food-card">
-              <div class="food-name">Navat</div>
-              <div class="food-desc">전통 카자흐 인테리어. 베쉬바르막·라그만 정통</div>
-              <div class="food-price">USD $12~20 / 1인</div>
-            </div>
-            <div class="food-card">
-              <div class="food-name">Shashlik 광장 포장마차</div>
-              <div class="food-desc">한 꼬치 USD $2~3. 현지인 맛집 경험</div>
-              <div class="food-price">USD $5~10 / 1인</div>
-            </div>
-            <div class="food-card">
-              <div class="food-name">Line Brew</div>
-              <div class="food-desc">크래프트 맥주 + 서양식. 입맛 달랠 때</div>
-              <div class="food-price">USD $10~18 / 1인</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 3 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">03<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 20일 (토)</div>
-          <div class="day-title">알마티 → 샤린 협곡 → 콜사이 → 사티 마을</div>
-          <div class="day-tags">
-            <span class="tag tag-transport">장거리 이동</span>
-            <span class="tag tag-nature">샤린 협곡</span>
-            <span class="tag tag-nature">콜사이 호수</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="notice">
-            <strong>교통 핵심:</strong> 프라이빗 SUV + 기사 대절 필수. 사전 예약 강력 권장. Sygic 또는 MAPS.ME 오프라인 지도 다운로드 필수.
-          </div>
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">06:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알마티 숙소 출발</div>
-                <div class="tl-sub">SUV 픽업. 가방 트렁크 적재 확인. 간식 및 물 차 안 준비</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">09:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">샤린 협곡 도착 — Valley of Castles 트레일</div>
-                <div class="tl-sub">전체 약 3km / 1.5~2시간. 붉은 사암 협곡 장관. 국립공원 입장료 약 USD $5~8</div>
-                <span class="tl-tip">선크림 필수 — 그늘 없음</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">11:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">협곡 입구 카페에서 점심</div>
-                <div class="tl-sub">라그만 또는 베쉬바르막 / USD $5~8</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">콜사이 1호 호수 도착</div>
-                <div class="tl-sub">해발 1,818m. 에메랄드 빛 고산 호수. 보트 탑승 가능 (USD $5~10)</div>
-                <span class="tl-tip">국립공원 입장료 별도 USD $3~5</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">15:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">콜사이 1호 → 2호 호수 산책 (선택)</div>
-                <div class="tl-sub">1호~2호 편도 약 3km / 1시간. 체력 여유 있으면 적극 추천</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">17:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">사티 마을 도착 · 홈스테이 체크인</div>
-                <div class="tl-sub">매우 소박한 마을. 화장실 및 와이파이 환경 확인 필수</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">19:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">홈스테이 가정식 석식</div>
-                <div class="tl-sub">주인 가족이 차려주는 라그만 + 차이. 중앙아시아 최고의 경험 중 하나</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-grid">
-            <div class="info-block">
-              <div class="info-block-head">교통</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">차량 종류</span><span class="info-row-value">4WD SUV 필수</span></div>
-                <div class="info-row"><span class="info-row-label">기사 대절</span><span class="info-row-value highlight">USD $120~240</span></div>
-                <div class="info-row"><span class="info-row-label">총 이동거리</span><span class="info-row-value">약 380km</span></div>
-                <div class="info-row"><span class="info-row-label">소요시간</span><span class="info-row-value">약 8~9시간 (정차 포함)</span></div>
-              </div>
-            </div>
-            <div class="info-block">
-              <div class="info-block-head">숙소 (사티 홈스테이)</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">비용</span><span class="info-row-value highlight">USD $25~55</span></div>
-                <div class="info-row"><span class="info-row-label">식사</span><span class="info-row-value">조식+석식 포함 추천</span></div>
-                <div class="info-row"><span class="info-row-label">편의</span><span class="info-row-value">와이파이 불안정, 기대 낮추기</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 4 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">04<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 21일 (일)</div>
-          <div class="day-title">카인디 호수 → 케겐 국경 통과 → 카라콜 입성</div>
-          <div class="day-tags">
-            <span class="tag tag-nature">카인디 호수</span>
-            <span class="tag tag-border">국경 이동</span>
-            <span class="tag tag-city">카라콜</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="notice">
-            <strong>국경 주의:</strong> 케겐(Kegen) 국경은 오후 2시 이전 도착 강력 권장. 양측 기사 사전 매칭 필수. 카자흐 기사는 국경까지, 키르기스 기사는 국경 이후 담당.
-          </div>
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">07:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">조식 후 출발</div>
-                <div class="tl-sub">오늘은 이동이 많은 날. 07시 이전 식사 완료 목표</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">08:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카인디 호수 도착 — UAZ 차량 탑승</div>
-                <div class="tl-sub">사티에서 카인디까지 비포장 산악도로. 일반 차량 불가. UAZ만 가능</div>
-                <span class="tl-tip">UAZ 탑승 시 흔들림 심함 — 카메라 완충 포장</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">09:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카인디 호수 탐방 (약 1.5시간)</div>
-                <div class="tl-sub">1911년 지진으로 형성. 수몰된 전나무 숲이 수면 위로 솟아 있는 신비로운 경관. 수온 매우 낮음</div>
-                <span class="tl-tip">수상 트레킹 시 미끄러운 암반 주의</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">11:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">케겐 국경 방향 이동 출발</div>
-                <div class="tl-sub">약 1.5~2시간 이동. 차 안에서 점심 도시락 해결</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">케겐-카르크라 국경 통과</div>
-                <div class="tl-sub">카자흐 출국 → 키르기스 입국. 한국 여권 소지자 무비자. 대기 30분~1시간 예상</div>
-                <span class="tl-tip">국경 직원 팁 요구 시 정중히 거절 가능</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">14:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">키르기스 기사 탑승 → 카라콜 이동</div>
-                <div class="tl-sub">이식쿨 호수 북부 해안도로 경유. 호수 규모에 감탄할 것</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">17:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카라콜 도착 · CBT 게스트하우스 체크인</div>
-                <div class="tl-sub">CBT(Community Based Tourism) — 현지인 운영, 트레킹 정보 풍부, 예약 필수</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">19:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">저녁식사 · 내일 준비</div>
-                <div class="tl-sub">Fat Cat Cafe 또는 Dунган 음식 거리. 둔간 요리(중앙아시아식 중화 요리) 추천</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="notice notice-sage">
-            <strong>둔간(Dungan) 음식이란?</strong> 19세기 중국 간쑤성에서 이주한 무슬림 후예의 음식. 아슐리안탄(수제비 스타일), 라그만 등 독특한 퓨전 요리. 카라콜이 본고장.
-          </div>
-
-          <div class="info-block" style="margin-top:16px">
-            <div class="info-block-head">예상 지출 (Day 4)</div>
-            <div class="info-block-body">
-              <div class="info-row"><span class="info-row-label">카인디 UAZ 차량</span><span class="info-row-value">USD $30~60</span></div>
-              <div class="info-row"><span class="info-row-label">카자흐 기사 (국경까지)</span><span class="info-row-value">USD $40~70</span></div>
-              <div class="info-row"><span class="info-row-label">키르기스 기사 (국경~카라콜)</span><span class="info-row-value">USD $30~50</span></div>
-              <div class="info-row"><span class="info-row-label">숙소 (CBT 게스트하우스)</span><span class="info-row-value">USD $25~50</span></div>
-              <div class="info-row"><span class="info-row-label">식비</span><span class="info-row-value">USD $10~20</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 5 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">05<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 22일 (월)</div>
-          <div class="day-title">카라콜 → 알틴아라샨 산장 · 유황 온천 입욕</div>
-          <div class="day-tags">
-            <span class="tag tag-transport">UAZ 이동</span>
-            <span class="tag tag-nature">알틴아라샨</span>
-            <span class="tag tag-rest">온천</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">08:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카라콜 시장 & 마트 방문</div>
-                <div class="tl-sub">에너지바, 견과류, 초콜릿, 컵라면, 물(2L×2) 구매. 산장에서는 구입 어려움</div>
-                <span class="tl-tip">키르기스스탄 SOM 환전 / 산 속 ATM 없음</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">10:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">UAZ 차량 탑승 → 알틴아라샨 진입</div>
-                <div class="tl-sub">카라콜 계곡 비포장 산악도로 약 12km. 일반 차량 불가. 1시간~1.5시간 소요</div>
-                <span class="tl-tip">UAZ 차량 예약: CBT 게스트하우스 또는 현지 기사 직접 협상</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">11:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알틴아라샨 산장 도착 · 체크인</div>
-                <div class="tl-sub">해발 약 2,400m. 2~3채의 소규모 산장. 전기 발전기 운영 (저녁 한정)</div>
-                <span class="tl-tip">"Altyn Arashan Guesthouse" — 미리 예약 이메일 또는 WhatsApp 필수</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">점심 식사 후 고산 적응 산책</div>
-                <div class="tl-sub">주변 초원 및 계곡 탐방 (해발 2,400~2,600m). 격렬한 운동 금지. 수분 보충 지속</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">15:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">내일 트레킹 루트 사전 답사 & 가이드 미팅</div>
-                <div class="tl-sub">아라콜 패스 가이드와 날씨·눈 상태·이동 시간 협의. 내일 출발 시각 확정</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">17:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알틴아라샨 유황 온천 입욕</div>
-                <div class="tl-sub">산장에서 도보 15분. 자연 노천 온천. 수온 약 40~45°C. 탈의실 없음(수영복 착용)</div>
-                <span class="tl-tip">일몰 전 입욕 → 저온증 예방. 수건·슬리퍼 필지</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">19:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">산장 석식 · 내일 배낭 완전 패킹 · 22:00 취침</div>
-                <div class="tl-sub">알라쿨 구간 배낭: 침낭, 여벌 옷(방풍·방수), 간식, 헤드랜턴, 구급약 필수</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-grid">
-            <div class="info-block">
-              <div class="info-block-head">산장 정보</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">비용</span><span class="info-row-value highlight">USD $35~70 (3식 포함)</span></div>
-                <div class="info-row"><span class="info-row-label">전기</span><span class="info-row-value">발전기 저녁만 (충전 서두르기)</span></div>
-                <div class="info-row"><span class="info-row-label">와이파이</span><span class="info-row-value">없음</span></div>
-                <div class="info-row"><span class="info-row-label">화장실</span><span class="info-row-value">야외 공용</span></div>
-              </div>
-            </div>
-            <div class="info-block">
-              <div class="info-block-head">예상 지출 (Day 5)</div>
-              <div class="info-block-body">
-                <div class="info-row"><span class="info-row-label">UAZ 차량</span><span class="info-row-value">USD $40~95</span></div>
-                <div class="info-row"><span class="info-row-label">산장 숙박+식사</span><span class="info-row-value">USD $35~70</span></div>
-                <div class="info-row"><span class="info-row-label">마트 식량·간식</span><span class="info-row-value">USD $15~25</span></div>
-                <div class="info-row"><span class="info-row-label">온천 입장</span><span class="info-row-value">USD $3~5</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 6 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">06<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 23일 (화)</div>
-          <div class="day-title">아라콜 패스 1일차 — 알라쿨 호수 도달 · 캠핑</div>
-          <div class="day-tags">
-            <span class="tag tag-trek">고산 트레킹</span>
-            <span class="tag tag-nature">알라쿨 호수</span>
-            <span class="tag tag-rest">캠핑</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="notice">
-            <strong>최고 난이도 구간.</strong> 알틴아라샨(2,400m) → 알라쿨 호수(3,500m). 고도 차이 1,100m. 편도 약 7~9km. 눈길·빙판 가능. <strong>가이드 동행 강력 권장.</strong>
-          </div>
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">05:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">기상 · 조식</div>
-                <div class="tl-sub">고단백 식사 (달걀·빵·치즈). 행동식·물 2L 이상 배낭에 패킹 완료</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">06:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">산장 출발 — 가이드 선두 이동</div>
-                <div class="tl-sub">처음 3km는 완만한 계곡. 소나무 숲 구간. 여유 있게 페이스 유지</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">08:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">수목한계선 도달 — 급경사 시작</div>
-                <div class="tl-sub">해발 약 2,900m부터 급경사 너덜지대. 트레킹 스틱 두 개 모두 활용</div>
-                <span class="tl-tip">10분 이동 / 2분 휴식 루틴 권장</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">10:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">설원 구간 진입 (약 3,200m~)</div>
-                <div class="tl-sub">6월에도 잔설 가능. 눈 위 가이드 선행 자국 따르기. 선글라스 필수 (설맹 주의)</div>
-                <span class="tl-tip">선글라스 없으면 눈 손상 위험</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">12:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알라쿨 호수 도달 (해발 3,500m)</div>
-                <div class="tl-sub">밀키블루~에메랄드 빙하호. 주변 빙하와 설산 파노라마. 여기서 반드시 사진 촬영</div>
-                <span class="tl-tip">바람 매우 강함 — 방풍재킷 즉시 착용</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">호수 인근 점심 (행동식)</div>
-                <div class="tl-sub">에너지바, 견과류, 초콜릿. 따뜻한 보온병 커피/차 강력 추천</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">14:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">호수 주변 탐방 · 촬영</div>
-                <div class="tl-sub">호수 동쪽 능선 전망 포인트 추천. 맑은 날 텐리탁 산군 파노라마</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">16:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">캠프 설치 또는 유르트 체크인</div>
-                <div class="tl-sub">텐트 캠핑: 바람막이 위치 선정 중요. 유르트: 사전 예약 or 현장 협상 (USD $25~40/인)</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">20:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">일몰 감상 · 취침</div>
-                <div class="tl-sub">기온 영하 가능. 침낭 등급 최소 -5°C 이하 권장</div>
-                <span class="tl-tip">고산 두통 시 이부프로펜 + 수분 보충. 증상 심하면 즉시 하산</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="info-block-head">예상 지출 (Day 6)</div>
-            <div class="info-block-body">
-              <div class="info-row"><span class="info-row-label">가이드 (1일)</span><span class="info-row-value">USD $55~120</span></div>
-              <div class="info-row"><span class="info-row-label">유르트 / 캠핑</span><span class="info-row-value">USD $25~50</span></div>
-              <div class="info-row"><span class="info-row-label">식사·행동식</span><span class="info-row-value">USD $10~20</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 7 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">07<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 24일 (수)</div>
-          <div class="day-title">아라콜 패스 2일차 → 카라콜 복귀 · 회복의 날</div>
-          <div class="day-tags">
-            <span class="tag tag-trek">패스 통과</span>
-            <span class="tag tag-city">카라콜</span>
-            <span class="tag tag-rest">회복</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">05:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">일출 감상 (알라쿨 호수)</div>
-                <div class="tl-sub">텐리탁 산군 첫 빛. 이 여행 최고의 순간 중 하나. 카메라·보조배터리 준비</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">07:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">간식 아침 · 캠프 철수 · 아라콜 패스 도전</div>
-                <div class="tl-sub">아라콜 패스 정상 약 3,860m. 알라쿨에서 편도 약 1시간. 최고 급경사 구간</div>
-                <span class="tl-tip">정상에서 양쪽 계곡 조망 — 파노라마 사진 황금 타이밍</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">09:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">아라콜 패스 정상 통과</div>
-                <div class="tl-sub">카라콜 계곡 방향 하산 시작. 초원 + 전나무 숲 + 계곡 따라 내려오는 환상적 구간</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">12:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카라콜 계곡 하산 완료 · 픽업 차량 탑승</div>
-                <div class="tl-sub">사전 예약 기사가 하산 지점 대기. 카라콜 시내까지 약 30분</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카라콜 도착 · 샤워 · 점심</div>
-                <div class="tl-sub">Fat Cat Cafe 추천 — 버거, 피자 등 서양식. 트레킹 후 보상 식사</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">15:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">제티오구스 협곡 방문 (선택)</div>
-                <div class="tl-sub">"일곱 마리 황소" 붉은 사암 지형. 카라콜에서 약 30분. 체력 여유 시 방문</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">17:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">마사지 (Traditional Kyrgyz Massage)</div>
-                <div class="tl-sub">USD $15~35 / 1시간. 2일간 트레킹 피로 해소. 카라콜 시내 마사지샵 다수</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">19:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">저녁식사 · 내일 이동 준비</div>
-                <div class="tl-sub">Karakol Meeting Point 또는 둔간 식당. 내일 알마티 복귀 기사 재확인</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="info-block-head">예상 지출 (Day 7)</div>
-            <div class="info-block-body">
-              <div class="info-row"><span class="info-row-label">픽업 택시 (계곡~카라콜)</span><span class="info-row-value">USD $15~30</span></div>
-              <div class="info-row"><span class="info-row-label">제티오구스 근교 택시</span><span class="info-row-value">USD $20~40</span></div>
-              <div class="info-row"><span class="info-row-label">마사지</span><span class="info-row-value">USD $15~35</span></div>
-              <div class="info-row"><span class="info-row-label">숙소</span><span class="info-row-value">USD $30~60</span></div>
-              <div class="info-row"><span class="info-row-label">식비</span><span class="info-row-value">USD $15~30</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 8 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">08<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 25일 (목)</div>
-          <div class="day-title">카라콜 → 케겐 국경 → 알마티 복귀</div>
-          <div class="day-tags">
-            <span class="tag tag-transport">장거리 이동</span>
-            <span class="tag tag-border">국경</span>
-            <span class="tag tag-city">알마티</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="notice">
-            오늘은 이동 중심의 날. 차 안에서 지나간 일정 사진 정리 · 메모 추천.
-          </div>
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">07:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카라콜 출발</div>
-                <div class="tl-sub">프라이빗 차량 + 키르기스 기사. 이식쿨 호수 남부 해안도로 경유 — 북부와 다른 풍경</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">09:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카르크라-케겐 국경 도착</div>
-                <div class="tl-sub">키르기스 출국 → 카자흐 입국. 오전 통과로 대기 최소화</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">11:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">카자흐 기사 탑승 → 알마티 이동</div>
-                <div class="tl-sub">도중 콜사이 근처 카페에서 점심 (USD $6~10)</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">16:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알마티 도착 · 업그레이드 숙소 체크인</div>
-                <div class="tl-sub">마지막 2박은 조금 좋은 숙소 추천. 여행 마무리 보상 — USD $70~120</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">18:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알마티 저녁 — 콕토베 야경</div>
-                <div class="tl-sub">케이블카 탑승 (USD $5~8). 알마티 시내 야경 파노라마. 날씨 맑으면 설산까지</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="info-block-head">예상 지출 (Day 8)</div>
-            <div class="info-block-body">
-              <div class="info-row"><span class="info-row-label">프라이빗 장거리 차량</span><span class="info-row-value">USD $150~280</span></div>
-              <div class="info-row"><span class="info-row-label">숙박 (업그레이드)</span><span class="info-row-value">USD $70~120</span></div>
-              <div class="info-row"><span class="info-row-label">식비</span><span class="info-row-value">USD $15~35</span></div>
-              <div class="info-row"><span class="info-row-label">콕토베 케이블카</span><span class="info-row-value">USD $5~8</span></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ───── DAY 9 ───── -->
-    <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)">
-        <div class="day-num">09<div class="day-num-label">Day</div></div>
-        <div class="day-title-block">
-          <div class="day-date">6월 26일 (금)</div>
-          <div class="day-title">알마티 마지막 날 — 시내 관광 · 쇼핑 · 귀국 준비</div>
-          <div class="day-tags">
-            <span class="tag tag-city">알마티</span>
-            <span class="tag tag-rest">쇼핑</span>
-            <span class="tag tag-transport">귀국 준비</span>
-          </div>
-        </div>
-      </div>
-      <div class="day-body">
-        <div class="day-inner">
-
-          <div class="sec-head">시간별 일정</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">09:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">젠코프 러시아 정교회 성당</div>
-                <div class="tl-sub">1907년 건립 목조 건축물. 세계에서 두 번째로 큰 목조 성당. 무료 입장</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">10:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">판필로프 파크 & 전쟁 영웅 기념관</div>
-                <div class="tl-sub">알마티 대표 공원. 산책하기 좋음. 영원의 불꽃 기념비</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">12:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">젤료니 바자르 (그린 시장) 쇼핑</div>
-                <div class="tl-sub">알마티 최대 재래시장. 견과류, 말린 과일, 수제 잼 등 기념품 구입</div>
-                <span class="tl-tip">흥정 가능. 라흐트 초콜릿 · 말린 살구 · 사과 가공품 추천</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">13:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">Navat 레스토랑 마지막 카자흐 정식 점심</div>
-                <div class="tl-sub">베쉬바르막 (카자흐 대표 양고기 요리) + 쿠미스 (말젖) 도전</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">15:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">아르바트 보행자 거리 산책 · 기념품 쇼핑</div>
-                <div class="tl-sub">카자흐 수공예품, 유목민 패턴 제품, 마그넷 등</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">17:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">숙소 귀환 · 짐 패킹 최종 점검</div>
-                <div class="tl-sub">내일 새벽 비행 대비. 수하물 무게 측정 (트레킹 장비 + 기념품)</div>
-                <span class="tl-tip">초과 수하물 USD $10~20/kg — 미리 정리</span>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">19:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">Assorti 또는 Line Brew — 마지막 저녁식사</div>
-                <div class="tl-sub">여행 마무리 건배. 텡게 잔돈 모두 사용</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">22:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">취침 (내일 새벽 출발)</div>
-                <div class="tl-sub">알람 04:30 설정 / Yandex Go 출발 05:00 예약</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sec-head">귀국 (6월 27일 토)</div>
-          <div class="tl">
-            <div class="tl-item">
-              <div class="tl-time">05:00</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">알마티 공항 이동</div>
-                <div class="tl-sub">Yandex Go. 3시간 전 도착 목표</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">08:10</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">KC908 탑승 · 알마티 → 인천</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-time">22:30</div>
-              <div class="tl-dot"></div>
-              <div class="tl-content">
-                <div class="tl-main">인천국제공항 도착 — 여행 완료</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sec-head">쇼핑 추천 목록</div>
-          <div class="food-grid">
-            <div class="food-card">
-              <div class="food-name">라흐트 초콜릿</div>
-              <div class="food-desc">카자흐스탄 대표 초콜릿 브랜드. 아몬드·헤이즐넛 입맛</div>
-              <div class="food-price">USD $3~8 / 박스</div>
-            </div>
-            <div class="food-card">
-              <div class="food-name">말린 살구 (урюк)</div>
-              <div class="food-desc">젤료니 바자르 직거래. 한국보다 훨씬 저렴하고 맛있음</div>
-              <div class="food-price">USD $2~4 / kg</div>
-            </div>
-            <div class="food-card">
-              <div class="food-name">혼합 견과류</div>
-              <div class="food-desc">피스타치오, 호두, 아몬드 등 산지직송 신선 견과류</div>
-              <div class="food-price">USD $3~6 / kg</div>
-            </div>
-            <div class="food-card">
-              <div class="food-name">카자흐 사과잼·꿀</div>
-              <div class="food-desc">알마티는 사과(Apple)의 어원 도시. 수제 잼이 최고</div>
-              <div class="food-price">USD $2~5 / 병</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /days-grid -->
-
-  <!-- ═══ CHECKLIST ═══ -->
-  <div style="margin-top:50px">
-    <h2 style="font-family:'Nanum Myeongjo',serif; font-size:22px; color:var(--ink); margin-bottom:4px;">준비물 체크리스트</h2>
-    <p style="font-size:13px; color:#888; margin-bottom:20px;">클릭하면 체크 표시가 됩니다</p>
-
-    <div class="checklist-grid">
-      <div class="checklist-card">
-        <div class="checklist-head">👕 의류 · 방한</div>
-        <div class="checklist-body">
-          <label class="check-item"><input type="checkbox"> 방수 고어텍스 트레킹화</label>
-          <label class="check-item"><input type="checkbox"> 방풍 재킷 (필수)</label>
-          <label class="check-item"><input type="checkbox"> 경량 다운패딩</label>
-          <label class="check-item"><input type="checkbox"> 기능성 긴팔 언더레이어</label>
-          <label class="check-item"><input type="checkbox"> 트레킹 바지 (2벌)</label>
-          <label class="check-item"><input type="checkbox"> 두꺼운 양말 (3켤레)</label>
-          <label class="check-item"><input type="checkbox"> 장갑 · 비니 (3,800m용)</label>
-          <label class="check-item"><input type="checkbox"> 우비 또는 방수 폰초</label>
-          <label class="check-item"><input type="checkbox"> UV 차단 모자</label>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <div class="checklist-head">🥾 트레킹 장비</div>
-        <div class="checklist-body">
-          <label class="check-item"><input type="checkbox"> 트레킹 스틱 (2개)</label>
-          <label class="check-item"><input type="checkbox"> 30L 데이팩</label>
-          <label class="check-item"><input type="checkbox"> 침낭 (-5°C 이하)</label>
-          <label class="check-item"><input type="checkbox"> 헤드랜턴 + 여분 배터리</label>
-          <label class="check-item"><input type="checkbox"> 자외선 차단 선글라스</label>
-          <label class="check-item"><input type="checkbox"> 보온 물통 (500ml)</label>
-          <label class="check-item"><input type="checkbox"> 에너지바·견과류 행동식</label>
-          <label class="check-item"><input type="checkbox"> 경량 매트 (캠핑 시)</label>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <div class="checklist-head">📱 전자기기</div>
-        <div class="checklist-body">
-          <label class="check-item"><input type="checkbox"> 스마트폰 (오프라인 지도 저장)</label>
-          <label class="check-item"><input type="checkbox"> 20,000mAh 보조배터리</label>
-          <label class="check-item"><input type="checkbox"> 소형 태양광 충전기 (선택)</label>
-          <label class="check-item"><input type="checkbox"> 멀티 어댑터 (C타입)</label>
-          <label class="check-item"><input type="checkbox"> 액션캠 / DSLR</label>
-          <label class="check-item"><input type="checkbox"> 여분 메모리카드</label>
-          <label class="check-item"><input type="checkbox"> 카자흐+키르기스 SIM 카드</label>
-        </div>
-      </div>
-      <div class="checklist-card">
-        <div class="checklist-head">💊 건강 · 서류</div>
-        <div class="checklist-body">
-          <label class="check-item"><input type="checkbox"> 다이아목스 (고산병 예방약)</label>
-          <label class="check-item"><input type="checkbox"> 이부프로펜·진통제</label>
-          <label class="check-item"><input type="checkbox"> 소화제·지사제</label>
-          <label class="check-item"><input type="checkbox"> 멀미약 (SUV 비포장길)</label>
-          <label class="check-item"><input type="checkbox"> 상처 연고 · 밴드</label>
-          <label class="check-item"><input type="checkbox"> 여행자보험 증서 출력</label>
-          <label class="check-item"><input type="checkbox"> 여권 (유효기간 6개월+)</label>
-          <label class="check-item"><input type="checkbox"> USD 현금 $300 이상</label>
-        </div>
-      </div>
-    </div>
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">01<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 19일 (목)</div>
+    <div class="dtt">인천 T2 출발 OZ577 → 알마티 T2 도착</div>
+    <div class="dtg"><span class="tag t-fl">OZ577 · 아시아나</span><span class="tag t-ci">알마티 도착</span></div>
   </div>
+</div>
+<div class="db open"><div class="di">
 
-  <!-- ═══ BUDGET SUMMARY ═══ -->
-  <div style="margin-top:50px">
-    <h2 style="font-family:'Nanum Myeongjo',serif; font-size:22px; color:var(--ink); margin-bottom:20px;">총 예산 요약 (항공권 제외)</h2>
-    <div class="budget-grid">
-      <div class="budget-card">
-        <div class="budget-label">절약형 총예산</div>
-        <div class="budget-amount">~$1,250</div>
-        <div class="budget-range">홈스테이 · 도미토리 중심</div>
-      </div>
-      <div class="budget-card">
-        <div class="budget-label">표준형 총예산</div>
-        <div class="budget-amount">~$1,650</div>
-        <div class="budget-range">게스트하우스 · 가이드 포함</div>
-      </div>
-      <div class="budget-card">
-        <div class="budget-label">여유형 총예산</div>
-        <div class="budget-amount">~$2,050</div>
-        <div class="budget-range">부티크 호텔 · 풀옵션</div>
-      </div>
-    </div>
+<div class="sh">항공편 — OZ577</div>
+<div class="ig">
+  <div class="ib"><div class="ibh">출발편 상세</div><div class="ibb">
+    <div class="ir"><span class="irl">항공사</span><span class="irv">아시아나항공 OZ577</span></div>
+    <div class="ir"><span class="irl">출발</span><span class="irv hl">6/19 18:10 · 인천 T2</span></div>
+    <div class="ir"><span class="irl">도착</span><span class="irv hl">6/19 20:50 · 알마티 T2 (현지)</span></div>
+    <div class="ir"><span class="irl">좌석</span><span class="irv">36D · 36F (눕코노미)</span></div>
+    <div class="ir"><span class="irl">위탁 수하물</span><span class="irv ok">2개 포함</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">수하물 구성</div><div class="ibb">
+    <div class="ir"><span class="irl">위탁 ①</span><span class="irv">24인치 캐리어</span></div>
+    <div class="ir"><span class="irl">위탁 ②</span><span class="irv">40L 백팩</span></div>
+    <div class="ir"><span class="irl">기내 반입</span><span class="irv">20L 백팩</span></div>
+    <div class="ir"><span class="irl">주의</span><span class="irv">스틱·보조배터리 분류 필수</span></div>
+  </div></div>
+</div>
 
-    <div class="info-block" style="margin-top:16px">
-      <div class="info-block-head">항목별 예산 분류</div>
-      <div class="info-block-body">
-        <div class="info-row"><span class="info-row-label">숙박 (9박)</span><span class="info-row-value">USD $250~500</span></div>
-        <div class="info-row"><span class="info-row-label">차량·교통</span><span class="info-row-value">USD $450~750</span></div>
-        <div class="info-row"><span class="info-row-label">가이드 (2일)</span><span class="info-row-value">USD $110~240</span></div>
-        <div class="info-row"><span class="info-row-label">식비</span><span class="info-row-value">USD $150~280</span></div>
-        <div class="info-row"><span class="info-row-label">입장료·활동</span><span class="info-row-value">USD $60~120</span></div>
-        <div class="info-row"><span class="info-row-label">쇼핑·예비비</span><span class="info-row-value">USD $80~160</span></div>
-      </div>
-    </div>
+<div class="sh">좌석 — 눕코노미 전략 (2-4-2 배열)</div>
+<div class="sm">
+  <div style="text-align:center;font-size:11px;color:var(--sand-d);font-weight:600;margin-bottom:8px">ROW 36 · 이코노미 2-4-2 배열</div>
+  <div class="sm-row">
+    <div class="seat s-t">A</div><div class="seat s-t">B</div>
+    <div class="s-ai"></div>
+    <div class="seat s-t">C</div><div class="seat s-o">D</div><div class="seat s-e">E</div><div class="seat s-o">F</div>
+    <div class="s-ai"></div>
+    <div class="seat s-t">G</div><div class="seat s-t">H</div>
   </div>
+  <div class="sm-lbl">← 창가 ── 통로 ───────────── 통로 ── 창가 →</div>
+  <div class="sm-leg">
+    <div class="sm-li"><div class="sm-dot" style="background:var(--ink)"></div>우리 좌석 (36D·36F)</div>
+    <div class="sm-li"><div class="sm-dot" style="background:#f0ede8;border:1px solid #ccc"></div>빈 좌석 36E (미예약)</div>
+    <div class="sm-li"><div class="sm-dot" style="background:#e5e5e5;border:1px solid #bbb"></div>타인</div>
+  </div>
+</div>
+<div class="note note-sky"><strong>눕코노미 전략:</strong> 4열 중앙 블록에서 D·F만 예약해 가운데 E를 비워뒀습니다. 탑승 후 E가 공석이면 D·E·F 3석에 걸쳐 누울 수 있습니다. 출발 당일 앱으로 E 공석 재확인 권장.</div>
 
-</div><!-- /wrapper -->
+<div class="sh">시간별 일정</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">15:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">인천 T2 도착 · 탑승 수속</div><div class="tl-sub">아시아나 카운터 T2 3층 G·H 구역. 위탁 2개. 트레킹 스틱 위탁 필수</div><span class="tl-tip">보조배터리 → 기내 20L 백팩으로</span></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">18:10</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">OZ577 출발 · 인천 T2 → 알마티 T2</div><div class="tl-sub">비행시간 약 6시간 40분. 알마티는 KST-3 (한국보다 3시간 느림)</div><span class="tl-tip">E석 공석 확인 → 눕코노미 즉시 시작</span></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">20:50</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알마티 T2 도착 · 입국 심사</div><div class="tl-sub">한국 여권 무비자 30일. 입국카드 작성 후 출국 시까지 보관 필수</div><button class="sp-btn" data-spot="almaty">📍 알마티 공항 정보</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">22:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">ATM 환전 + 심카드 → Yandex Go → 숙소</div><div class="tl-sub">공항 ATM이 환율 유리. KZT 50,000 출금. T2 출구 Beeline·Kcell 심카드 $5~10</div><span class="tl-tip">공항~시내 약 25분, $10~16</span></div>
+  </div>
+</div>
 
-<footer>
-  Central Asia Expedition Plan 2025 · Almaty · Karakol · Altyn Arashan · Ala-Kul Pass
-</footer>
+</div></div></div>
 
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">2·3<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 20일 (금) – 21일 (토)</div>
+    <div class="dtt">샤린 협곡 → 콜사이 호수 → 사티 → 카인디 → 카라콜 (1박 2일 택시 투어)</div>
+    <div class="dtg"><span class="tag t-tr">택시 투어 ✅</span><span class="tag t-na">샤린·콜사이·카인디</span><span class="tag t-ci">카라콜 도착</span></div>
+  </div>
+</div>
+<div class="db open"><div class="di">
+
+<div class="note note-sage"><strong>1박 2일 택시 투어:</strong> 알마티 → 샤린 협곡 → 콜사이 호수 → 사티 마을 (1박) → 카인디 호수 → 케겐 국경 → 카라콜. 프라이빗 SUV + 기사 사전 예약 필수.</div>
+
+<div class="sh">Day 2 — 6월 20일 (금)</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">06:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알마티 출발 · SUV 픽업</div><div class="tl-sub">짐 트렁크 적재. 간식·물 차 안 준비. MAPS.ME 오프라인 지도 필수</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">09:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">샤린 협곡 — Valley of Castles 트레일</div><div class="tl-sub">약 3km / 1.5~2시간. 국립공원 입장료 $5~8</div><span class="tl-tip">그늘 없음 — 선크림 필수</span><button class="sp-btn" data-spot="charyn">📍 샤린 협곡 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">11:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">협곡 입구 카페 점심</div><div class="tl-sub">라그만·샤슬릭 $5~8</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">14:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">콜사이 1호 호수 도착</div><div class="tl-sub">해발 1,818m. 에메랄드 빛 고산 호수. 보트 $5~10. 입장료 $3~5</div><button class="sp-btn" data-spot="kolsai">📍 콜사이 호수 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">16:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">1호 → 2호 호수 산책 (선택, 약 1시간)</div><div class="tl-sub">체력 여유 시 강력 추천</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">18:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">사티 마을 홈스테이 체크인 · 가정식 석식</div><div class="tl-sub">조식+석식 포함 권장. 라그만+차이. 와이파이 없음</div><span class="tl-tip">$25~55 / 내일 짐 사전 준비</span></div>
+  </div>
+</div>
+
+<div class="sh">Day 3 — 6월 21일 (토)</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">07:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">조식 후 카인디 UAZ 탑승</div><div class="tl-sub">사티 → 카인디 비포장 산악도로. UAZ만 진입 가능</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">08:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">카인디 호수 탐방 (약 1.5시간)</div><div class="tl-sub">1911년 지진으로 형성된 수몰 전나무 숲. 수온 낮음</div><span class="tl-tip">미끄러운 암반 주의</span><button class="sp-btn" data-spot="kaindy">📍 카인디 호수 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">11:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">케겐 국경 이동 출발</div><div class="tl-sub">오후 2시 전 도착 강력 권장. 카자흐·키르기스 기사 사전 매칭</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">13:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">케겐-카르크라 국경 통과</div><div class="tl-sub">카자흐 출국 → 키르기스 입국. 무비자. 대기 30~60분</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">17:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">카라콜 도착 · CBT 게스트하우스 체크인</div><div class="tl-sub">이식쿨 북부 해안도로 경유. CBT는 가이드·말·지프 예약 허브</div><button class="sp-btn" data-spot="karakol">📍 카라콜 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">19:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">저녁식사 — 둔간 요리 or Fat Cat Cafe</div><div class="tl-sub">둔간: 19세기 간쑤성 이주민 음식. 아슐리안탄·라그만. 카라콜이 본고장</div></div>
+  </div>
+</div>
+
+<div class="sh">관광지 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="charyn"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop" alt="샤린 협곡" loading="lazy"/><div class="pc-lbl">샤린 협곡</div><button class="pc-map" data-mspot="charyn">지도 ↗</button></div>
+  <div class="pc" data-spot="kolsai"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=600&auto=format&fit=crop" alt="콜사이 호수" loading="lazy"/><div class="pc-lbl">콜사이 호수</div><button class="pc-map" data-mspot="kolsai">지도 ↗</button></div>
+  <div class="pc" data-spot="kaindy"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop" alt="카인디 호수" loading="lazy"/><div class="pc-lbl">카인디 호수</div><button class="pc-map" data-mspot="kaindy">지도 ↗</button></div>
+</div>
+
+<div class="ig">
+  <div class="ib"><div class="ibh">교통 (1박 2일 투어)</div><div class="ibb">
+    <div class="ir"><span class="irl">프라이빗 SUV+기사</span><span class="irv hl">$120~240</span></div>
+    <div class="ir"><span class="irl">카인디 UAZ 추가</span><span class="irv">$30~60</span></div>
+    <div class="ir"><span class="irl">키르기스 기사 (국경~카라콜)</span><span class="irv">$30~50</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">숙박·식비</div><div class="ibb">
+    <div class="ir"><span class="irl">사티 홈스테이</span><span class="irv">$25~55</span></div>
+    <div class="ir"><span class="irl">카라콜 CBT 게하</span><span class="irv">$25~50</span></div>
+    <div class="ir"><span class="irl">식비 (2일)</span><span class="irv">$20~40</span></div>
+  </div></div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">4~6<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 22일 (일) – 24일 (화)</div>
+    <div class="dtt">트레킹 3일 — 세컨브릿지 → 시로타 유르트 → 아라콜 호수 → 아라콜 패스 → 알틴아라샨 → 악수 온천</div>
+    <div class="dtg"><span class="tag t-tk">고산 트레킹 ✅</span><span class="tag t-na">아라콜 3,500m · 패스 3,860m</span><span class="tag t-rs">온천·승마·지프</span></div>
+  </div>
+</div>
+<div class="db open"><div class="di">
+
+<div class="note"><strong>2박 3일 트레킹:</strong> 카라콜 → 세컨브릿지(지프) → 시로타 캠프 유르트(1박) → 아라콜 호수(3,500m) → 아라콜 패스(3,860m) → 알틴아라샨 게하(1박) → 악수 온천 → 하산.</div>
+
+<div class="sh">Day 4 — 6월 22일 (일) · 세컨브릿지 → 시로타 캠프</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">08:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">카라콜 마트 — 3일치 행동식·물 구매</div><div class="tl-sub">에너지바·견과류·초콜릿·컵라면·물 2L×3. 산속 구입 불가</div><span class="tl-tip">키르기스 SOM 환전 필수 / 산속 ATM 없음</span></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">10:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">지프 탑승 → 세컨브릿지 트레킹 시작점</div><div class="tl-sub">카라콜 계곡 비포장도로. 지프로 약 40분</div><button class="sp-btn" data-spot="karakol_valley">📍 카라콜 계곡 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">11:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">세컨브릿지 → 시로타 캠프 트레킹</div><div class="tl-sub">약 10~12km / 4~5시간. 전나무 숲 + 초원. 승마 옵션 활용 가능</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">16:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">시로타 캠프 유르트 도착</div><div class="tl-sub">해발 약 3,000m. 유르트 숙박. 따뜻한 차이·저녁 제공. 침낭 -5°C 이하 필수</div><button class="sp-btn" data-spot="sirota">📍 시로타 캠프</button></div>
+  </div>
+</div>
+
+<div class="sh">Day 5 — 6월 23일 (월) · 아라콜 호수 → 아라콜 패스 → 알틴아라샨</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">05:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">기상 · 조식 · 출발</div><div class="tl-sub">행동식·물 2L 이상. 방풍재킷·선글라스 배낭 최상단</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">09:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">아라콜 호수 도달 (해발 3,500m)</div><div class="tl-sub">밀키블루~에메랄드 빙하호. 바람 매우 강함</div><span class="tl-tip">방풍재킷 즉시 착용 / 선글라스 필수 (설맹 위험)</span><button class="sp-btn" data-spot="alakul">📍 아라콜 호수 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">10:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">아라콜 패스 정상 통과 (3,860m)</div><div class="tl-sub">호수 → 정상 약 1.5시간 급경사. 양쪽 계곡 파노라마</div><button class="sp-btn" data-spot="arakolpass">📍 아라콜 패스</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">15:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알틴아라샨 게스트하우스 도착</div><div class="tl-sub">해발 2,400m. 발전기 전기 저녁 한정. 와이파이 없음</div><button class="sp-btn" data-spot="altyn">📍 알틴아라샨 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">17:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">유황 온천 입욕</div><div class="tl-sub">게하 도보 15분. 수온 40~45°C. 수영복·수건·슬리퍼 지참. $3~5</div><span class="tl-tip">일몰 전 입욕 완료 — 저온증 예방</span></div>
+  </div>
+</div>
+
+<div class="sh">Day 6 — 6월 24일 (화) · 하산 · 악수 온천</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">07:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">조식 · 하산 출발 — 알틴아라샨 → 카라콜</div><div class="tl-sub">지프 또는 도보. 악수 온천 루트 가이드 확인</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">09:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">악수(Aksu) 온천 방문</div><div class="tl-sub">알틴아라샨 인근 자연 온천. 3일 트레킹 피로 완전 해소</div><span class="tl-tip">하산 루트 상 위치 — 가이드와 경로 협의</span></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">12:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">카라콜 도착 · Fat Cat Cafe 점심</div><div class="tl-sub">버거·피자 서양식. 트레킹 후 최고의 보상 식사</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">15:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">마사지 · 휴식</div><div class="tl-sub">전통 키르기스 마사지 $15~35 / 1시간</div></div>
+  </div>
+</div>
+
+<div class="sh">관광지 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="alakul"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" alt="아라콜 호수" loading="lazy"/><div class="pc-lbl">아라콜 호수 3,500m</div><button class="pc-map" data-mspot="alakul">지도 ↗</button></div>
+  <div class="pc" data-spot="arakolpass"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="아라콜 패스" loading="lazy"/><div class="pc-lbl">아라콜 패스 3,860m</div><button class="pc-map" data-mspot="arakolpass">지도 ↗</button></div>
+  <div class="pc" data-spot="altyn"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=600&auto=format&fit=crop" alt="알틴아라샨" loading="lazy"/><div class="pc-lbl">알틴아라샨 &amp; 온천</div><button class="pc-map" data-mspot="altyn">지도 ↗</button></div>
+</div>
+
+<div class="ig">
+  <div class="ib"><div class="ibh">교통·가이드 (3일)</div><div class="ibb">
+    <div class="ir"><span class="irl">가이드 (3일)</span><span class="irv hl">$150~300</span></div>
+    <div class="ir"><span class="irl">지프 카라콜↔세컨브릿지</span><span class="irv">$40~80</span></div>
+    <div class="ir"><span class="irl">승마 (선택)</span><span class="irv">$20~50 / 반일</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">숙박·기타 (3일)</div><div class="ibb">
+    <div class="ir"><span class="irl">시로타 유르트 (1박)</span><span class="irv">$30~60</span></div>
+    <div class="ir"><span class="irl">알틴아라샨 게하 (1박)</span><span class="irv">$35~70</span></div>
+    <div class="ir"><span class="irl">온천 입장 (2회)</span><span class="irv">$6~10</span></div>
+  </div></div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">07<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 25일 (수)</div>
+    <div class="dtt">카라콜 → 알마티 (합승 택시 or 버스) · 제티오구스·이식쿨 찍먹</div>
+    <div class="dtg"><span class="tag t-tr">합승 택시 ✅</span><span class="tag t-na">제티오구스 · 이식쿨</span><span class="tag t-ci">알마티 복귀</span></div>
+  </div>
+</div>
+<div class="db"><div class="di">
+
+<div class="note note-sage"><strong>이동 전략:</strong> 인원 모이면 합승 택시 ($30~50/인). 안 되면 버스 ($5~10). 택시 이동 시 오전 제티오구스 협곡 또는 이식쿨 호수 서쪽 찍먹 가능.</div>
+
+<div class="cg">
+  <div class="cc rec"><div class="ch sky">합승 택시 <span class="cbadge">권장 ✅</span></div><div class="cbody">
+    <div class="ci">$30~50 / 인</div><div class="ci">약 6~7시간 소요</div>
+    <div class="ci">제티오구스 중간 기착 가능</div><div class="ci">전날 CBT에서 인원 모집</div>
+  </div></div>
+  <div class="cc"><div class="ch">버스 이동 (대안)</div><div class="cbody">
+    <div class="ci">$5~10</div><div class="ci">약 8~10시간 (환승 필요)</div>
+    <div class="ci">카라콜 → 비쉬켁 → 알마티</div><div class="ci">중간 기착 어려움</div>
+  </div></div>
+</div>
+
+<div class="sh">시간별 일정</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">07:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">카라콜 출발 — 이식쿨 남쪽 해안도로</div><div class="tl-sub">북부 해안과 다른 풍경</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">08:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">[택시] 제티오구스 협곡 or 이식쿨 찍먹</div><div class="tl-sub">제티오구스: 붉은 사암 "일곱 마리 황소" 지형. 약 1시간</div><button class="sp-btn" data-spot="jeti">📍 제티오구스 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">10:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">케겐 국경 통과</div><div class="tl-sub">키르기스 출국 → 카자흐 입국. 오전 통과로 대기 최소화</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">17:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알마티 도착 · 업그레이드 숙소 체크인</div><div class="tl-sub">마지막 2박 좋은 숙소. $70~120</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">19:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">콕토베 야경</div><div class="tl-sub">케이블카 $5~8. 알마티 시내 야경 + 설산 조망</div><button class="sp-btn" data-spot="koktobe">📍 콕토베 · 지도</button></div>
+  </div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">08<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 26일 (목)</div>
+    <div class="dtt">알마티 근교 — 빅알마티 호수 or 침블락 (택시 투어)</div>
+    <div class="dtg"><span class="tag t-na">빅알마티 ✅ · 침블락</span><span class="tag t-tr">택시 투어</span><span class="tag t-ci">알마티 시내</span></div>
+  </div>
+</div>
+<div class="db"><div class="di">
+
+<div class="note note-sky">후보 1 빅알마티 호수 (택시 투어 ✅) 또는 후보 2 침블락 곤돌라. 알마티 근교 여행을 6/20(Day 2) 먼저 소화하고 나머지 일정을 뒤로 미루는 것도 가능.</div>
+
+<div class="cg">
+  <div class="cc rec"><div class="ch sky">빅알마티 호수 <span class="cbadge">추천 ✅</span></div><div class="cbody">
+    <div class="ci">에메랄드 빛 고산호수. 해발 2,510m</div>
+    <div class="ci">티엔산 설산 반영 사진 압도적</div>
+    <div class="ci">택시 대절 $50~90 (2~4인 분담)</div>
+    <div class="ci">입장 허가증 필요 → 투어사 통해</div>
+  </div></div>
+  <div class="cc"><div class="ch">침블락 곤돌라</div><div class="cbody">
+    <div class="ci">메데우 → 2단 케이블카. 해발 3,200m</div>
+    <div class="ci">대중교통 접근 가능 (버스 #6·12)</div>
+    <div class="ci">곤돌라 왕복 $18~25</div>
+    <div class="ci">편의성 최우수</div>
+  </div></div>
+</div>
+
+<div class="sh">시간별 일정 (빅알마티 기준)</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">09:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">빅알마티 택시 출발</div><div class="tl-sub">시내에서 약 35분. 오전 빛이 가장 아름다움</div><button class="sp-btn" data-spot="bigalmaty">📍 빅알마티 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">10:30</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">빅알마티 호수 탐방 (1.5~2시간)</div><div class="tl-sub">설산 반영 파노라마</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">13:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알마티 복귀 · 점심</div><div class="tl-sub">Navat 또는 Assorti 추천</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">15:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">젠코프 성당 · 판필로프 파크 산책</div><div class="tl-sub">1907년 목조 정교회 성당</div><button class="sp-btn" data-spot="zenkova">📍 젠코프 성당 · 지도</button></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">18:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">젤료니 바자르 쇼핑 · 기념품</div><div class="tl-sub">라흐트 초콜릿·견과류·말린 살구 구입</div></div>
+  </div>
+</div>
+
+<div class="sh">관광지 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="bigalmaty"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop" alt="빅알마티" loading="lazy"/><div class="pc-lbl">빅알마티 호수 2,510m</div><button class="pc-map" data-mspot="bigalmaty">지도 ↗</button></div>
+  <div class="pc" data-spot="koktobe"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="콕토베" loading="lazy"/><div class="pc-lbl">콕토베 야경</div><button class="pc-map" data-mspot="koktobe">지도 ↗</button></div>
+  <div class="pc" data-spot="zenkova"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop" alt="젠코프" loading="lazy"/><div class="pc-lbl">젠코프 성당</div><button class="pc-map" data-mspot="zenkova">지도 ↗</button></div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">09<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">6월 27일 (금)</div>
+    <div class="dtt">알마티 자유일 · ZE136 심야 출발 → 6/28 인천 도착</div>
+    <div class="dtg"><span class="tag t-ci">자유 일정</span><span class="tag t-fl">ZE136 23:40 출발</span></div>
+  </div>
+</div>
+<div class="db"><div class="di">
+
+<div class="sh">항공편 — 귀국편 ZE136</div>
+<div class="ig">
+  <div class="ib"><div class="ibh">귀국편 상세</div><div class="ibb">
+    <div class="ir"><span class="irl">항공사</span><span class="irv">이스타항공 ZE136</span></div>
+    <div class="ir"><span class="irl">출발</span><span class="irv hl">6/27 23:40 · 알마티 (현지)</span></div>
+    <div class="ir"><span class="irl">도착</span><span class="irv hl">6/28 10:05 · 인천</span></div>
+    <div class="ir"><span class="irl">위탁 수하물</span><span class="irv hl">1개 · 15kg 제한</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">귀국 수하물 전략</div><div class="ibb">
+    <div class="ir"><span class="irl">위탁 1개</span><span class="irv hl">15kg 이내 엄격 준수</span></div>
+    <div class="ir"><span class="irl">추천 구성</span><span class="irv">캐리어 위탁 / 40L 기내</span></div>
+    <div class="ir"><span class="irl">초과 요금</span><span class="irv">kg당 $20~30</span></div>
+  </div></div>
+</div>
+<div class="note"><strong>출발편(OZ577)은 위탁 2개</strong>였지만 <strong>귀국편(ZE136)은 위탁 1개·15kg 제한.</strong> 오늘 수하물 무게 측정 필수.</div>
+
+<div class="sh">시간별 일정</div>
+<div class="tl">
+  <div class="tl-row">
+    <div class="tl-badge">자유</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">알마티 자유 시간</div><div class="tl-sub">전날 못 간 곳 방문. 마지막 카자흐 음식 즐기기</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">12:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">Navat — 마지막 카자흐 정식 점심</div><div class="tl-sub">베쉬바르막 + 쿠미스(말젖) 도전. 텡게 잔돈 소진</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">15:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">수하물 무게 측정 · 최종 패킹</div><div class="tl-sub">위탁 짐 15kg 이내 확인. 보조배터리 반드시 기내 반입</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">19:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">마지막 저녁 — Line Brew or Assorti</div><div class="tl-sub">9박 10일 원정 마무리 건배</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">21:00</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">Yandex Go → 알마티 공항 출발</div><div class="tl-sub">23:40 출발 기준 3시간 전 도착. 심야 카운터 오픈 시간 사전 확인</div></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-badge">23:40</div>
+    <div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div>
+    <div class="tl-body"><div class="tl-main">ZE136 탑승 · 알마티 → 인천 (약 7시간)</div><div class="tl-sub">6/28 10:05 인천 도착. 9박 10일 중앙아시아 원정 완료</div></div>
+  </div>
+</div>
+
+<div class="sh">쇼핑 추천</div>
+<div class="fg">
+  <div class="fc"><div class="fn">라흐트 초콜릿</div><div class="fd">카자흐 대표. 아몬드·헤이즐넛</div><div class="fp">$3~8 / 박스</div></div>
+  <div class="fc"><div class="fn">말린 살구</div><div class="fd">젤료니 바자르 직거래. 매우 저렴</div><div class="fp">$2~4 / kg</div></div>
+  <div class="fc"><div class="fn">혼합 견과류</div><div class="fd">피스타치오·호두·아몬드 산지직송</div><div class="fp">$3~6 / kg</div></div>
+  <div class="fc"><div class="fn">카자흐 사과잼·꿀</div><div class="fd">알마티(Apple 어원 도시) 수제 잼</div><div class="fp">$2~5 / 병</div></div>
+</div>
+
+</div></div></div>
+
+</div><!-- /days -->
+
+<div style="margin-top:44px">
+  <h2 style="font-family:Nanum Myeongjo,serif;font-size:20px;color:var(--ink);margin-bottom:4px">준비물 체크리스트</h2>
+  <p style="font-size:12px;color:#999;margin-bottom:14px">클릭하면 완료 처리</p>
+  <div class="clg">
+    <div class="clc"><div class="clh">의류 · 방한</div><div class="clb">
+      <label class="cl-i"><input type="checkbox"> 방수 고어텍스 트레킹화</label>
+      <label class="cl-i"><input type="checkbox"> 방풍 재킷 (필수)</label>
+      <label class="cl-i"><input type="checkbox"> 경량 다운패딩</label>
+      <label class="cl-i"><input type="checkbox"> 기능성 긴팔 언더레이어</label>
+      <label class="cl-i"><input type="checkbox"> 트레킹 바지 2벌</label>
+      <label class="cl-i"><input type="checkbox"> 두꺼운 양말 3켤레</label>
+      <label class="cl-i"><input type="checkbox"> 장갑·비니 (3,860m용)</label>
+      <label class="cl-i"><input type="checkbox"> 수영복 (온천용)</label>
+    </div></div>
+    <div class="clc"><div class="clh">트레킹 장비</div><div class="clb">
+      <label class="cl-i"><input type="checkbox"> 트레킹 스틱 2개</label>
+      <label class="cl-i"><input type="checkbox"> 40L 백팩</label>
+      <label class="cl-i"><input type="checkbox"> 침낭 -5°C 이하</label>
+      <label class="cl-i"><input type="checkbox"> 헤드랜턴 + 여분 배터리</label>
+      <label class="cl-i"><input type="checkbox"> 선글라스 (설맹 방지)</label>
+      <label class="cl-i"><input type="checkbox"> 보온 물통 500ml</label>
+      <label class="cl-i"><input type="checkbox"> 에너지바·견과류 3일치</label>
+      <label class="cl-i"><input type="checkbox"> 수건·슬리퍼 (온천용)</label>
+    </div></div>
+    <div class="clc"><div class="clh">전자기기</div><div class="clb">
+      <label class="cl-i"><input type="checkbox"> 스마트폰 (오프라인 지도)</label>
+      <label class="cl-i"><input type="checkbox"> 보조배터리 20,000mAh</label>
+      <label class="cl-i"><input type="checkbox"> 멀티 어댑터 C타입</label>
+      <label class="cl-i"><input type="checkbox"> 액션캠 / 카메라</label>
+      <label class="cl-i"><input type="checkbox"> Yandex Go · MAPS.ME 설치</label>
+    </div></div>
+    <div class="clc"><div class="clh">건강 · 서류</div><div class="clb">
+      <label class="cl-i"><input type="checkbox"> 다이아목스 (고산병 예방)</label>
+      <label class="cl-i"><input type="checkbox"> 이부프로펜·진통제</label>
+      <label class="cl-i"><input type="checkbox"> 소화제·지사제·멀미약</label>
+      <label class="cl-i"><input type="checkbox"> 상처 연고·밴드</label>
+      <label class="cl-i"><input type="checkbox"> 여행자보험 증서 출력</label>
+      <label class="cl-i"><input type="checkbox"> 여권 (유효기간 6개월+)</label>
+      <label class="cl-i"><input type="checkbox"> USD 현금 $300 이상</label>
+    </div></div>
+  </div>
+</div>
+
+<div style="margin-top:44px">
+  <h2 style="font-family:Nanum Myeongjo,serif;font-size:20px;color:var(--ink);margin-bottom:14px">총 예산 요약 (항공권 제외)</h2>
+  <div class="bg">
+    <div class="bc"><div class="bl">절약형</div><div class="ba">~$1,200</div><div class="br">홈스테이 · 합승 버스</div></div>
+    <div class="bc"><div class="bl">표준형</div><div class="ba">~$1,600</div><div class="br">게하 · 가이드 포함</div></div>
+    <div class="bc"><div class="bl">여유형</div><div class="ba">~$2,000</div><div class="br">부티크 호텔 · 풀옵션</div></div>
+  </div>
+  <div class="ib"><div class="ibh">항목별 예산</div><div class="ibb">
+    <div class="ir"><span class="irl">숙박 (9박)</span><span class="irv">$250~520</span></div>
+    <div class="ir"><span class="irl">택시 투어 + 장거리 이동</span><span class="irv">$350~650</span></div>
+    <div class="ir"><span class="irl">트레킹 가이드 (3일)</span><span class="irv">$150~300</span></div>
+    <div class="ir"><span class="irl">식비 (9일)</span><span class="irv">$130~250</span></div>
+    <div class="ir"><span class="irl">입장료·활동비</span><span class="irv">$70~130</span></div>
+    <div class="ir"><span class="irl">쇼핑·예비비</span><span class="irv">$80~150</span></div>
+  </div></div>
+</div>
+
+</div><!-- /wrap -->
+<footer>Central Asia Expedition 2025 · Almaty · Charyn · Kolsai · Kaindy · Karakol · Ala-Kul · Altyn Arashan</footer>
 <script>
-  // ── DAY TOGGLE ──
-  function toggleDay(header) {
-    const body = header.nextElementSibling;
-    body.classList.toggle('open');
+document.addEventListener("DOMContentLoaded", function() {
+
+  var S = {
+    almaty:{t:"알마티 국제공항",i:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=900&auto=format&fit=crop",m:["카자흐스탄 알마티","해발 682m"],d:"중앙아시아 최대 도시 알마티의 국제공항. OZ577은 T2 도착. 공항 ATM이 환율 유리. 출구 앞에서 Beeline·Kcell 심카드 구매 가능.",u:"https://maps.google.com/?q=43.3521,77.0405"},
+    charyn:{t:"샤린 협곡 (Charyn Canyon)",i:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop",m:["카자흐스탄 알마티주","해발 약 900m"],d:"중앙아시아의 그랜드 캐니언. Valley of Castles 트레일 약 3km / 1.5~2시간. 선크림 필수. 입장료 $5~8.",u:"https://maps.google.com/?q=43.3500,79.0800"},
+    kolsai:{t:"콜사이 호수 (Kolsai Lakes)",i:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=900&auto=format&fit=crop",m:["카자흐스탄 알마티주","1호 해발 1,818m"],d:"티엔산 에메랄드 빛 고산 호수 3개. 1호는 차량 접근 가능. 1호→2호 약 3km 산책 추천. 보트 $5~10. 입장료 $3~5.",u:"https://maps.google.com/?q=42.9800,78.3300"},
+    kaindy:{t:"카인디 호수 (Kaindy Lake)",i:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop",m:["카자흐스탄 알마티주","해발 약 2,000m"],d:"1911년 지진으로 형성된 수몰 호수. 전나무가 수면 위로 솟아 있는 신비로운 경관. UAZ 필수. 미끄러운 암반 주의.",u:"https://maps.google.com/?q=42.9900,78.4700"},
+    karakol:{t:"카라콜 (Karakol)",i:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=900&auto=format&fit=crop",m:["키르기스스탄 이식쿨주","트레킹 베이스캠프"],d:"키르기스스탄 최고 트레킹 베이스캠프. CBT에서 가이드·말·지프 예약 가능. 둔간 요리 본고장. Fat Cat Cafe는 트레킹 후 보상 맛집.",u:"https://maps.google.com/?q=42.4900,78.3936"},
+    karakol_valley:{t:"카라콜 계곡",i:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=900&auto=format&fit=crop",m:["키르기스스탄","트레킹 시작점"],d:"카라콜 시내에서 약 12km. 전나무 숲과 초원 계곡. 세컨브릿지까지 지프로 약 40분. 알틴아라샨 방향 트레킹 시작점.",u:"https://maps.google.com/?q=42.3900,78.4800"},
+    sirota:{t:"시로타 캠프 유르트",i:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=900&auto=format&fit=crop",m:["해발 약 3,000m","트레킹 첫 번째 캠프"],d:"아라콜 패스 트레킹 첫 캠프. 해발 약 3,000m. 유르트 숙박. 따뜻한 식사·차이 제공. 별이 쏟아지는 고원 야경. 침낭 -5°C 이하 필수.",u:"https://maps.google.com/?q=42.36,78.55"},
+    alakul:{t:"아라콜 호수 (Ala-Kul Lake)",i:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=900&auto=format&fit=crop",m:["해발 3,500m","빙하호"],d:"밀키블루~에메랄드 빛 빙하호. 6월에도 잔설 가능. 선글라스 미착용 시 설맹 위험. 바람 매우 강해 방풍재킷 필수.",u:"https://maps.google.com/?q=42.3160,78.6210"},
+    arakolpass:{t:"아라콜 패스 (Arakel Pass)",i:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=900&auto=format&fit=crop",m:["해발 3,860m","여정 최고 고도"],d:"여정 최고 고도 3,860m. 아라콜 호수에서 약 1.5시간 급경사. 정상에서 양쪽 계곡 파노라마. 6월에도 눈·빙판 가능.",u:"https://maps.google.com/?q=42.32,78.59"},
+    altyn:{t:"알틴아라샨 (Altyn Arashan)",i:"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop",m:["해발 약 2,400m","유황 온천 지대"],d:"황금 온천이라는 뜻. 자연 유황 온천 수온 40~45°C. 악수 온천도 인근. 전기 발전기 저녁 한정. 와이파이 없음.",u:"https://maps.google.com/?q=42.3700,78.5300"},
+    jeti:{t:"제티오구스 협곡 (Jeti-Oguz)",i:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=900&auto=format&fit=crop",m:["카라콜 서쪽 25km","붉은 사암 지형"],d:"일곱 마리 황소 붉은 사암 절벽. 카라콜에서 약 30분. Broken Heart 바위·초원 산책 1~2시간.",u:"https://maps.google.com/?q=42.3800,78.2100"},
+    bigalmaty:{t:"빅알마티 호수 (Big Almaty Lake)",i:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=900&auto=format&fit=crop",m:["알마티 남쪽 15km","해발 2,510m"],d:"알마티 남쪽 에메랄드 빛 고산 호수. 티엔산 설산 반영. 입장 허가증 필요. 택시 대절 필수. 오전 빛이 최고.",u:"https://maps.google.com/?q=43.0570,76.9790"},
+    koktobe:{t:"콕토베 (Kok-Tobe)",i:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",m:["알마티 동쪽 언덕","케이블카 접근"],d:"해발 1,130m 언덕. 케이블카 $5~8. 알마티 시내 전경 + 맑은 날 설산 파노라마. 일몰 후 야경이 아름다움.",u:"https://maps.google.com/?q=43.2200,76.9680"},
+    zenkova:{t:"젠코프 성당 & 판필로프 파크",i:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=900&auto=format&fit=crop",m:["알마티 시내","1907년 건립"],d:"목조 러시아 정교회 성당. 세계 두 번째로 큰 목조 성당. 무료 입장. 옆 판필로프 파크는 알마티 대표 시민 공원.",u:"https://maps.google.com/?q=43.2600,76.9400"}
+  };
+
+  function openSpot(k) {
+    var s = S[k]; if (!s) return;
+    document.getElementById("moImg").src = s.i;
+    document.getElementById("moTtl").textContent = s.t;
+    document.getElementById("moMeta").innerHTML = s.m.map(function(x){return "<span>"+x+"</span>";}).join("");
+    document.getElementById("moDesc").textContent = s.d;
+    document.getElementById("moLinks").innerHTML = "<a class=\"mo-link\" href=\""+s.u+"\" target=\"_blank\" rel=\"noopener\">구글맵에서 보기 ↗</a>";
+    document.getElementById("mo").classList.add("active");
   }
 
-  // ── CHECKLIST ──
-  document.querySelectorAll('.check-item').forEach(item => {
-    item.addEventListener('change', () => {
-      item.classList.toggle('done', item.querySelector('input').checked);
-    });
+  document.getElementById("moX").addEventListener("click", function(){ document.getElementById("mo").classList.remove("active"); });
+  document.getElementById("mo").addEventListener("click", function(e){ if(e.target===this) this.classList.remove("active"); });
+
+  document.getElementById("days").addEventListener("click", function(e){
+    var h = e.target.closest("[data-tog]");
+    if (h) { var b = h.nextElementSibling; if(b) b.classList.toggle("open"); }
   });
 
-  // ── MAIN MAP ──
-  const mainMap = L.map('mainMap').setView([42.6, 77.8], 6);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(mainMap);
+  document.addEventListener("click", function(e){
+    var sb = e.target.closest(".sp-btn");
+    if (sb) { openSpot(sb.dataset.spot); return; }
+    var pm = e.target.closest(".pc-map");
+    if (pm) { e.stopPropagation(); var s=S[pm.dataset.mspot]; if(s) window.open(s.u,"_blank"); return; }
+    var pc = e.target.closest(".pc");
+    if (pc && !e.target.closest(".pc-map")) { openSpot(pc.dataset.spot); }
+  });
 
-  const waypoints = [
-    { coord: [43.2389, 76.8897], label: '알마티', day: 'D1' },
-    { coord: [43.3500, 79.0800], label: '샤린 협곡', day: 'D3' },
-    { coord: [42.9800, 78.3300], label: '콜사이 호수', day: 'D3' },
-    { coord: [42.9900, 78.4700], label: '카인디 호수', day: 'D4' },
-    { coord: [42.4900, 78.3936], label: '카라콜', day: 'D4-7' },
-    { coord: [42.3900, 78.4800], label: '알틴아라샨', day: 'D5' },
-    { coord: [42.3160, 78.6210], label: '알라쿨 호수', day: 'D6' },
+  document.querySelectorAll(".cl-i").forEach(function(item){
+    item.addEventListener("change", function(){ item.classList.toggle("done", item.querySelector("input").checked); });
+  });
+
+  var map = L.map("mainMap").setView([42.8, 77.8], 6);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
+  var pts = [
+    {c:[43.2389,76.8897],l:"알마티"},{c:[43.3500,79.0800],l:"샤린 협곡"},
+    {c:[42.9800,78.3300],l:"콜사이"},{c:[42.9900,78.4700],l:"카인디"},
+    {c:[42.4900,78.3936],l:"카라콜"},{c:[42.3160,78.6210],l:"아라콜 호수"},
+    {c:[42.3700,78.5300],l:"알틴아라샨"},{c:[43.2389,76.8897],l:"알마티 복귀"}
   ];
-
-  const route = waypoints.map(w => w.coord);
-  L.polyline(route, { color: '#1A1208', weight: 3, dashArray: '6,5', opacity: 0.6 }).addTo(mainMap);
-
-  const markerStyle = (day) => `
-    background: #1A1208;
-    color: #D4B896;
-    border-radius: 4px;
-    padding: 2px 7px;
-    font-size: 11px;
-    font-weight: 600;
-    font-family: sans-serif;
-    white-space: nowrap;
-    border: 1px solid #8B6A42;
-  `;
-
-  waypoints.forEach(w => {
-    const icon = L.divIcon({
-      className: '',
-      html: `<div style="${markerStyle(w.day)}">${w.label}</div>`,
-      iconAnchor: [0, 10]
-    });
-    L.marker(w.coord, { icon }).addTo(mainMap);
+  L.polyline(pts.map(function(p){return p.c;}),{color:"#1A1208",weight:3,dashArray:"5,4",opacity:.7}).addTo(map);
+  pts.forEach(function(p){
+    var icon = L.divIcon({className:"",html:"<div style=\"background:#1A1208;color:#D4B896;border-radius:3px;padding:2px 7px;font-size:10px;font-weight:600;font-family:sans-serif;white-space:nowrap;border:1px solid #8B6A42\">"+p.l+"</div>",iconAnchor:[0,8]});
+    L.marker(p.c,{icon:icon}).addTo(map);
   });
+
+});
 </script>
 </body>
 </html>
