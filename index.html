@@ -1,329 +1,627 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2박 3일 나고야 & 근교 렌터카 여행 계획표</title>
-    <style>
-        :root {
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --card-bg: #ffffff;
-            --border-color: #dee2e6;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>나고야 2박3일 여행 계획서 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C0392B;--red-l:#FDEDEC;--red-d:#922B21;--ink:#1a0a00;--ink-m:#4a2a10;--gold:#c9a84c;--gold-l:#FEF9EC;--gold-d:#8B6914;--sage:#5D7A61;--sage-l:#EAF2EB;--sky:#2C6FAC;--sky-l:#EAF2FB;--cream:#FDFAF5;--bdr:rgba(90,50,10,0.15)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans KR",sans-serif;background:var(--cream);color:var(--ink);line-height:1.75}
+.hero{position:relative;background:var(--ink);min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px 50px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 18px,rgba(201,168,76,.04) 18px,rgba(201,168,76,.04) 19px)}
+.h-ey{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500;position:relative}
+.hero h1{font-family:"Noto Serif KR",serif;font-size:clamp(26px,4.5vw,44px);font-weight:900;color:#FFF8EF;line-height:1.25;position:relative}
+.hero h1 em{color:var(--gold);font-style:normal}
+.h-sub{margin-top:11px;font-size:13px;color:rgba(255,248,239,.6);position:relative}
+.h-pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:20px;position:relative}
+.h-pill{border:1px solid rgba(201,168,76,.4);border-radius:100px;padding:4px 14px;font-size:11px;color:var(--gold)}
+.ov{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bdr)}
+.ov-c{padding:20px 18px;border-right:1px solid var(--bdr);background:#fff}
+.ov-c:last-child{border-right:none}
+.ov-l{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d);font-weight:500;margin-bottom:4px}
+.ov-v{font-family:"Noto Serif KR",serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.3}
+.ov-n{font-size:11px;color:#888;margin-top:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+.days{display:flex;flex-direction:column;margin-top:34px}
+.dc{background:#fff;border:1px solid var(--bdr);border-top:none;overflow:hidden}
+.dc:first-child{border-top:1px solid var(--bdr);border-radius:6px 6px 0 0}
+.dc:last-child{border-radius:0 0 6px 6px}
+.dh{display:grid;grid-template-columns:120px 1fr;min-height:68px;cursor:pointer;user-select:none}
+.dn{background:var(--ink);color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Noto Serif KR",serif;font-size:24px;font-weight:900;padding:12px}
+.dn-l{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.5);font-family:"Noto Sans KR",sans-serif;font-weight:400;margin-top:2px}
+.dt{padding:11px 18px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--bdr)}
+.dd{font-size:10px;letter-spacing:.12em;color:var(--gold-d);font-weight:500;text-transform:uppercase;margin-bottom:3px}
+.dtt{font-family:"Noto Serif KR",serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.dtg{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{font-size:10px;padding:2px 8px;border-radius:100px;font-weight:500}
+.t-tr{background:var(--sky-l);color:var(--sky)}.t-na{background:var(--sage-l);color:var(--sage)}.t-ci{background:var(--gold-l);color:var(--gold-d)}.t-fd{background:var(--red-l);color:var(--red-d)}.t-on{background:#F5EEF8;color:#6C3483}
+.db{border-top:1px solid var(--bdr);display:none}.db.open{display:block}.di{padding:22px 26px}
+.tl{margin:16px 0}
+.tl-row{display:flex;align-items:flex-start;margin-bottom:13px}
+.tl-row:last-child{margin-bottom:0}
+.tl-badge{min-width:54px;max-width:54px;background:var(--ink);color:var(--gold);border-radius:4px;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:5px 3px;flex-shrink:0;line-height:1.3;text-align:center}
+.tl-spine{display:flex;flex-direction:column;align-items:center;width:20px;flex-shrink:0;align-self:stretch;padding-top:8px;margin:0 6px}
+.tl-top{width:1px;height:8px;background:var(--bdr)}.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-d);flex-shrink:0}.tl-bot{width:1px;flex:1;background:var(--bdr);min-height:6px}
+.tl-row:last-child .tl-bot{display:none}
+.tl-body{flex:1;padding-bottom:11px}
+.tl-main{font-size:13px;font-weight:600;color:var(--ink);line-height:1.5}
+.tl-sub{font-size:11.5px;color:#666;margin-top:2px;line-height:1.6}
+.tl-tip{display:inline-block;background:var(--gold-l);color:var(--gold-d);font-size:10px;padding:2px 8px;border-radius:3px;margin-top:4px;font-weight:600;border:1px solid rgba(201,168,76,.3)}
+.sh{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);font-weight:600;margin:20px 0 9px;display:flex;align-items:center;gap:7px}
+.sh::after{content:"";flex:1;height:1px;background:var(--bdr)}
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:13px 0}
+.ib{border:1px solid var(--bdr);border-radius:5px;overflow:hidden}
+.ibh{padding:8px 13px;background:var(--gold-l);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold-d);border-bottom:1px solid rgba(201,168,76,.2)}
+.ibb{padding:10px 13px}
+.ir{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(90,50,10,.06);gap:8px}
+.ir:last-child{border-bottom:none}
+.irl{color:#666;flex-shrink:0}.irv{font-weight:500;color:var(--ink);text-align:right}.irv.hl{color:var(--red-d)}.irv.ok{color:var(--sage)}
+.note{border-left:3px solid var(--gold-d);background:var(--gold-l);padding:9px 14px;border-radius:0 5px 5px 0;margin:11px 0;font-size:12px;color:var(--ink-m);line-height:1.65}
+.note strong{color:var(--red-d);font-weight:700}
+.note-red{border-left-color:var(--red);background:var(--red-l);color:var(--red-d)}
+.note-sage{border-left-color:var(--sage);background:var(--sage-l);color:#2E5C33}
+.note-sky{border-left-color:var(--sky);background:var(--sky-l);color:var(--sky)}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin:13px 0}
+.pc{border-radius:7px;overflow:hidden;cursor:pointer;position:relative;aspect-ratio:4/3;background:var(--gold-l)}
+.pc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.pc:hover img{transform:scale(1.05)}
+.pc-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,10,0,.72));color:#fff;font-size:10.5px;padding:16px 8px 6px;font-weight:500}
+.pc-src{position:absolute;top:5px;left:6px;background:rgba(26,10,0,.55);color:rgba(255,255,255,.75);font-size:9px;padding:2px 6px;border-radius:3px}
+.mo{position:fixed;inset:0;background:rgba(26,10,0,.82);z-index:9000;display:none;align-items:center;justify-content:center;padding:18px}
+.mo.active{display:flex}
+.mo-card{background:#fff;border-radius:10px;overflow:hidden;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.mo-img{width:100%;height:250px;object-fit:cover;display:block}
+.mo-body{padding:18px 22px}
+.mo-ttl{font-family:"Noto Serif KR",serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.mo-meta{font-size:11px;margin-bottom:10px;display:flex;gap:6px;flex-wrap:wrap}
+.mo-meta span{background:var(--gold-l);color:var(--gold-d);padding:2px 9px;border-radius:100px;font-weight:500}
+.mo-desc{font-size:12.5px;color:var(--ink-m);line-height:1.7;margin-bottom:11px}
+.mo-hist{background:var(--gold-l);border-left:3px solid var(--gold-d);padding:10px 13px;border-radius:0 5px 5px 0;margin-bottom:11px}
+.mo-hist-h{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-bottom:5px}
+.mo-hist-b{font-size:12px;color:var(--ink-m);line-height:1.7}
+.mo-tip{background:var(--red-l);border-left:3px solid var(--red);padding:10px 13px;border-radius:0 5px 5px 0;margin-bottom:11px}
+.mo-tip-h{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-d);font-weight:700;margin-bottom:5px}
+.mo-tip-b{font-size:12px;color:var(--red-d);line-height:1.7}
+.mo-links{display:flex;gap:8px;flex-wrap:wrap}
+.mo-link{display:inline-flex;align-items:center;background:var(--ink);color:var(--gold);font-size:11px;padding:5px 13px;border-radius:4px;text-decoration:none;font-weight:500}
+.mo-link:hover{background:var(--gold-d)}
+.mo-x{position:absolute;top:10px;right:12px;background:rgba(26,10,0,.65);color:#fff;border:none;border-radius:50%;width:29px;height:29px;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+.sp-btn{display:inline-flex;align-items:center;gap:4px;background:var(--ink);color:var(--gold);font-size:10px;padding:3px 9px;border-radius:3px;margin-top:4px;cursor:pointer;border:none;font-family:inherit;font-weight:500}
+.sp-btn:hover{background:var(--gold-d)}
+.sv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:10px;margin:13px 0}
+.sv-card{border:1px solid var(--bdr);border-radius:6px;padding:12px 13px;background:#fff}
+.sv-icon{font-size:22px;margin-bottom:5px}
+.sv-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.sv-desc{font-size:11px;color:#666;line-height:1.55}
+.sv-where{font-size:10px;color:var(--gold-d);font-weight:600;margin-top:5px}
+.jp-sec{margin-bottom:24px}
+.jp-cat-h{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:9px;padding-bottom:6px;border-bottom:2px solid var(--gold-l);display:flex;align-items:center;gap:6px}
+.jp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:7px}
+.jp-card{border:1px solid var(--bdr);border-radius:6px;padding:10px 12px;background:#fff;cursor:pointer;transition:background .15s,border-color .15s;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.jp-card:hover{background:var(--gold-l);border-color:var(--gold-d)}
+.jp-card.playing{background:var(--ink)}
+.jp-card.playing .jp-ko,.jp-card.playing .jp-jp,.jp-card.playing .jp-pron{color:var(--gold)}
+.jp-left{flex:1}
+.jp-ko{font-size:11.5px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.jp-jp{font-size:14px;font-weight:700;color:var(--red-d)}
+.jp-pron{font-size:10px;color:#999;font-style:italic;margin-top:1px}
+.jp-play{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:10px;border:none;cursor:pointer}
+.jp-card.playing .jp-play{background:var(--gold-d)}
+.jp-note{font-size:11.5px;color:#999;margin-top:-4px;margin-bottom:15px;line-height:1.6}
+.clg{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:16px 0}
+.clc{border:1px solid var(--bdr);border-radius:6px;overflow:hidden}
+.clh{padding:9px 13px;background:var(--ink);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.06em}
+.clb{padding:9px 13px}
+.cl-i{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-m);padding:4px 0;border-bottom:1px dashed rgba(90,50,10,.08);cursor:pointer}
+.cl-i:last-child{border-bottom:none}
+.cl-i input{width:13px;height:13px;accent-color:var(--ink);flex-shrink:0;cursor:pointer}
+.cl-i.done{text-decoration:line-through;color:#bbb}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        header p {
-            margin: 10px 0 0 0;
-            opacity: 0.8;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            border-left: 5px solid var(--primary-color);
-            padding-left: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .timetable {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .timetable th, .timetable td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .timetable th {
-            background-color: #f1f3f5;
-            color: var(--primary-color);
-            font-weight: 600;
-            width: 25%;
-        }
-
-        .deep-dive {
-            background-color: #f8f9fa;
-            border-left: 4px solid #adb5bd;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
-        }
-
-        .deep-dive ul {
-            margin: 5px 0 0 0;
-            padding-left: 20px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #495057;
-        }
-
-        .checklist {
-            list-style: none;
-            padding: 0;
-        }
-
-        .checklist li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-
-        .checklist input[type="checkbox"] {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-        }
-
-        .lang-table td {
-            padding: 8px;
-        }
-        
-        .lang-kr { font-weight: bold; color: #343a40; }
-        .lang-jp { color: #664d03; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            body { padding: 10px; }
-            .timetable th, .timetable td { display: block; width: 100%; box-sizing: border-box; }
-            .timetable th { background-color: #e9ecef; }
-        }
-    </style>
+.pc img.error{display:none}
+.pc.img-error{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold-d) 100%);display:flex;align-items:center;justify-content:center}
+.pc.img-error::after{content:attr(data-name);color:var(--ink);font-size:11px;font-weight:600;text-align:center;padding:8px}
+footer{text-align:center;padding:32px 20px;font-size:11px;color:#aaa;letter-spacing:.08em;border-top:1px solid var(--bdr)}
+@media(max-width:680px){.ov{grid-template-columns:1fr 1fr}.ov-c:nth-child(2){border-right:none}.dh{grid-template-columns:90px 1fr}.dn{font-size:20px}}
+</style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <h1>🚗 나고야 & 근교 2박 3일 여행 계획표</h1>
-        <p>7월 17일 ~ 7월 19일 (렌터카 투어)</p>
-    </header>
-
-    <!-- DAY 1 -->
-    <h2>📅 DAY 1 : 나고야 시내 탐방 및 쇼핑 (7월 17일)</h2>
-    <div class="card">
-        <table class="timetable">
-            <tr>
-                <th>09:25 ~</th>
-                <td><strong>🛬 나고야 공항 도착 & 렌터카 대여</strong><br><span class="badge">이동</span> 입국 수속 후 렌터카 카운터로 이동하여 차량 수령</td>
-            </tr>
-            <tr>
-                <th>10:30 ~</th>
-                <td><strong>🚗 교와역(共和駅) 근처 주차장 이동</strong><br>공항에서 약 30분 거리. 복잡한 시내 주행을 피하기 위한 주차 스팟 (지하철로 시내 진입)</td>
-            </tr>
-            <tr>
-                <th>12:00 ~</th>
-                <td><strong>🏯 나고야성(名古屋城) 도착</strong><br>나고야의 상징인 천수각 외관 및 화려한 혼마루어전 내부 관람</td>
-            </tr>
-            <tr>
-                <th>점심 식사</th>
-                <td><strong>🍱 히츠마부시 나고야 빈쵸(備長)</strong><br><span class="badge">맛집</span> 겉바속촉 나고야 전통 장어덮밥 별미 명소</td>
-            </tr>
-            <tr>
-                <th>15:00 ~ 17:00</th>
-                <td><strong>🛍️ 오스 상점가(大須商店街)</strong><br>전통 사찰 구경과 다양한 길거리 음식(카라아게, 당고) 먹부림</td>
-            </tr>
-            <tr>
-                <th>19:00 ~</th>
-                <td><strong>🌌 오아시스 21 (Oasis 21)</strong><br>우주선을 형상화한 랜드마크 옥상 물의 우주선 산책로 야경 감상</td>
-            </tr>
-            <tr>
-                <th>숙소 복귀 길</th>
-                <td><strong>🛒 The Big Extra Kariya</strong><br><span class="badge">쇼핑</span> 대형 마트에 들러 현지 야식거리와 맥주 쇼핑</td>
-            </tr>
-        </table>
-
-        <div class="deep-dive">
-            <strong>💡 명소 꿀팁 & 역사 돋보기</strong>
-            <ul>
-                <li><strong>나고야성:</strong> 도쿠가와 이에야스가 지은 성으로 지붕 위 황금 샤치호코가 유명합니다. 현재 천수각은 복원 공사 중일 수 있으나 화려한 <strong>혼마루어전</strong> 내부 관람만으로도 가치가 충분합니다.</li>
-                <li><strong>히츠마부시 4등분 법칙:</strong> 1) 기본 맛 즐기기 2) 와사비·파·김가루 얹기 3) 따뜻한 육수를 부어 오차즈케로 먹기 4) 가장 맛있었던 방식으로 마무리!</li>
-            </ul>
-        </div>
+<div class="mo" id="mo">
+  <div class="mo-card">
+    <button class="mo-x" id="moX">&#x2715;</button>
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="" alt="" id="moImg" class="mo-img"/>
+    <div class="mo-body">
+      <div class="mo-ttl" id="moTtl"></div>
+      <div class="mo-meta" id="moMeta"></div>
+      <div class="mo-desc" id="moDesc"></div>
+      <div class="mo-hist" id="moHist" style="display:none"><div class="mo-hist-h">&#128271; 역사 &amp; 배경 이야기</div><div class="mo-hist-b" id="moHistB"></div></div>
+      <div class="mo-tip" id="moTip" style="display:none"><div class="mo-tip-h">&#128204; 여행자 꿀팁</div><div class="mo-tip-b" id="moTipB"></div></div>
+      <div class="mo-links" id="moLinks"></div>
     </div>
+  </div>
+</div>
+<header class="hero">
+  <div class="h-ey">Japan · Nagoya · 2025 · 2박3일</div>
+  <h1><em>나고야</em> 2박 3일 여행 계획서</h1>
+  <p class="h-sub">아이치현 나고야 · 기소지 나카센도 역참마을 · 미에현 고자이쇼산 · 유노야마 온천</p>
+  <div class="h-pills">
+    <span class="h-pill">7/17(목) – 7/19(토)</span>
+    <span class="h-pill">렌터카 이동</span>
+    <span class="h-pill">히츠마부시 · 나카센도 · 온천</span>
+  </div>
+</header>
+<div class="ov">
+  <div class="ov-c"><div class="ov-l">여행 기간</div><div class="ov-v">2박 3일</div><div class="ov-n">7/17(목) – 7/19(토)</div></div>
+  <div class="ov-c"><div class="ov-l">이동 수단</div><div class="ov-v">렌터카</div><div class="ov-n">공항픽업·교와역 주차 후 지하철</div></div>
+  <div class="ov-c"><div class="ov-l">핵심 코스</div><div class="ov-v">나고야→기소→미에</div><div class="ov-n">나카센도·고자이쇼·유노야마</div></div>
+  <div class="ov-c"><div class="ov-l">꼭 먹을 것</div><div class="ov-v">히츠마부시</div><div class="ov-n">나고야 빈쵸 · 나고야메시</div></div>
+</div><div class="wrap"><div class="days" id="days">
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">01<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">7월 17일 (목) · 공항 09:25 도착</div>
+    <div class="dtt">공항 도착 → 렌터카 → 나고야성 → 히츠마부시 빈쵸 → 오스상점가 → 오아시스21</div>
+    <div class="dtg"><span class="tag t-tr">렌터카</span><span class="tag t-ci">나고야성</span><span class="tag t-fd">히츠마부시</span><span class="tag t-ci">오스상점가</span><span class="tag t-na">오아시스21</span></div>
+  </div>
+</div>
+<div class="db open"><div class="di">
 
-    <!-- DAY 2 -->
-    <h2>📅 DAY 2 : 나카센도 고대 도보 여행 (7월 18일)</h2>
-    <div class="card">
-        <table class="timetable">
-            <tr>
-                <th>08:30 ~</th>
-                <td><strong>🚗 숙소 출발</strong><br>기후현/나가노현 방면 고속도로 드라이브</td>
-            </tr>
-            <tr>
-                <th>10:00 ~ 11:00</th>
-                <td><strong>🏞️ 마고메주쿠(馬籠宿) 도착</strong><br>에도시대의 풍경이 고스낙히 보존된 아름다운 역참 마을 구경</td>
-            </tr>
-            <tr>
-                <th>11:00 ~ 14:00</th>
-                <td><strong>🥾 나카센도(中山道) 하이킹</strong><br>마고메주쿠에서 쓰마고주쿠까지 이어지는 옛길 걷기 (약 7~8km 완만한 코스)</td>
-            </tr>
-            <tr>
-                <th>14:00 ~ 15:00</th>
-                <td><strong>🍱 쓰마고주쿠(妻籠宿) 도착</strong><br>늦은 점심 식사(소바, 고헤이모찌 추천) 및 고풍스러운 마을 휴식</td>
-            </tr>
-            <tr>
-                <th>17:30 ~</th>
-                <td><strong>♨️ 천연온천 카키츠바타(かきつばた)</strong><br><span class="badge">힐링</span> 카리야 하이웨이 오아시스 내 위치. 하이킹 피로를 녹여줄 온천 휴식</td>
-            </tr>
-        </table>
+<div class="note"><strong>Day 1 전략:</strong> 공항 도착 후 렌터카 픽업 → 나고야 시내는 차가 막히므로 교와역 근처(공항 30분 거리)에 주차 후 지하철로 이동. 나고야성 → 히츠마부시 점심 → 오스상점가(15~17시) → 오아시스21 야경 → 교와역 복귀 → 카리야 슈퍼마켓 야식.</div>
 
-        <div class="deep-dive">
-            <strong>💡 명소 꿀팁 & 역사 돋보기</strong>
-            <ul>
-                <li><strong>나카센도 도보교:</strong> 에도와 교토를 잇던 옛길로, 주민들이 전통 가옥을 보존하기 위해 세 가지 원칙(매도 안 함, 임대 안 함, 파괴 안 함)을 지켜낸 역사가 깊은 곳입니다.</li>
-                <li><strong>하이킹 팁:</strong> 여름철이므로 수분 보충용 음료 필수! 산길 곳곳에 있는 <strong>'곰 쫓는 종'</strong>을 치며 걷는 색다른 재미가 있습니다. 복귀 시에는 버스나 택시를 이용해 마고메주쿠의 차량으로 돌아오면 편리합니다.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- DAY 3 -->
-    <h2>📅 DAY 3 : 자연 전망과 온천 힐링 (7월 19일)</h2>
-    <div class="card">
-        <table class="timetable">
-            <tr>
-                <th>08:00 ~</th>
-                <td><strong>🚗 숙소 출발</strong><br>미에현 고자이쇼 산 방면으로 이동</td>
-            </tr>
-            <tr>
-                <th>09:30 ~ 12:00</th>
-                <td><strong>🚠 고자이쇼산 로프웨이 & 하이킹</strong><br>일본 최대 규모 로프웨이를 타고 정상 돌파, 파노라마 뷰 및 가벼운 산책</td>
-            </tr>
-            <tr>
-                <th>12:00 ~ 13:00</th>
-                <td><strong>🍜 유노야마 온천마을 식사</strong><br>산기슭 온천마을에서 즐기는 현지식 식사</td>
-            </tr>
-            <tr>
-                <th>13:00 ~ 14:30</th>
-                <td><strong>🛁 아쿠아 이그니스 (AQUAIGNIS)</strong><br><span class="badge">추천</span> 미인 온천수로 유명한 천연 온천욕 복합 리조트 및 디저트 카페 투어</td>
-            </tr>
-            <tr>
-                <th>14:30 ~ 16:00</th>
-                <td><strong>✈️ 센트레아 국제공항 이동</strong><br>여유 있게 공항으로 이동 및 렌터카 반납(주유 만땅 필수) 후 출국 수속</td>
-            </tr>
-        </table>
-
-        <div class="deep-dive">
-            <strong>💡 명소 꿀팁 & 역사 돋보기</strong>
-            <ul>
-                <li><strong>고자이쇼 로프웨이:</strong> 해발 1,212m 정상까지 약 15분 만에 오르는 케이블카입니다. 평지보다 기온이 5도 이상 낮아 시원하므로 얇은 겉옷을 지참하세요.</li>
-                <li><strong>아쿠아 이그니스:</strong> 힐링과 음식을 테마로 한 리조트입니다. 온천욕 후 일본 명품 파티시에 '츠지구치 히로노부'의 베이커리 숍에서 달콤한 케이크를 놓치지 마세요.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- TRAFFIC RULES -->
-    <h2>🚗 렌터카 이용자 필수 일본 교통 법규</h2>
-    <div class="card">
-        <ul style="padding-left: 20px; margin: 0;">
-            <li><strong>좌측통행 (운전석 우측):</strong> "우회전은 크게, 좌회전은 작게"를 기억하세요. 앞차를 따라가는 것이 가장 안전합니다.</li>
-            <li><strong>'일시정지(<span style="color:red; font-weight:bold;">止まれ</span>)' 표지판:</strong> 차가 없어도 무조건 바퀴를 <strong>3초간 완전히 멈춘 후</strong> 출발해야 합니다. (단속 매우 엄격)</li>
-            <li><strong>철길 건널목:</strong> 진입 전 무조건 정지 후 좌우 확인 후 출발합니다.</li>
-            <li><strong>비보호 우회전:</strong> 녹색 직진 신호 시 반대편 직진 차량이 없을 때 우회전합니다. 단, 우회전 화살표신호(<code>→</code>)가 있다면 신호에 따릅니다.</li>
-            <li><strong>ETC & 맵코드:</strong> 예약 시 ETC(하이패스) 카드를 꼭 추가하고, 네비게이션 목적지 지정 시 <strong>'맵코드(Mapcode)'</strong>를 활용하세요.</li>
-        </ul>
-    </div>
-
-    <!-- JAPANESE -->
-    <h2>🗣️ 현지 실용 일본어 한마디</h2>
-    <div class="card">
-        <table class="lang-table" style="width:100%;">
-            <tr>
-                <td class="lang-kr">렌터카 예약을 했습니다.</td>
-                <td><span class="lang-jp">렌타카-노 요야쿠오 시마시타.</span></td>
-            </tr>
-            <tr>
-                <td class="lang-kr">ETC 카드를 빌리고 싶습니다.</td>
-                <td><span class="lang-jp">이-티-시- 카-도모 카리타이데스.</span></td>
-            </tr>
-            <tr>
-                <td class="lang-kr">이것을 주세요 (메뉴판 가리키며)</td>
-                <td><span class="lang-jp">코레오 쿠다사이.</span></td>
-            </tr>
-            <tr>
-                <td class="lang-kr">추천 메뉴는 무엇인가요?</td>
-                <td><span class="lang-jp">오스스메와 나니데스카?</span></td>
-            </tr>
-            <tr>
-                <td class="lang-kr">레귤러(휘발유), 가득 채워주세요.</td>
-                <td><span class="lang-jp">레규라-, 만탄데 오네가이시마스.</span></td>
-            </tr>
-            <tr>
-                <td class="lang-kr">계산 부탁드립니다.</td>
-                <td><span class="lang-jp">오카이케이오 오네가이시마스.</span></td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- CHECKLIST -->
-    <h2>🧳 일본 여행 필수 준비물 리스트</h2>
-    <div class="card">
-        <ul class="checklist">
-            <li><input type="checkbox"> <strong>여권</strong> 및 여권 사본</li>
-            <li><input type="checkbox"> <span style="color:var(--accent-color);">★</span> <strong>국제운전면허증 + 한국 운전면허증 모두 지참</strong></li>
-            <li><input type="checkbox"> 비지트 재팬 웹 (Visit Japan Web) QR코드 캡처본</li>
-            <li><input type="checkbox"> 일본 현금 (엔화 환전 - 현금만 받는 주차장/노포 대비)</li>
-            <li><input type="checkbox"> 트래블월렛 / 트래블로그 카드</li>
-            <li><input type="checkbox"> 돼지코 플러그 (110V 변환잭) 2~3개</li>
-            <li><input type="checkbox"> eSIM 또는 포켓 와이파이 (구글맵 내비 구동용 필수)</li>
-            <li><input type="checkbox"> 차량용 스마트폰 거치대 & 시거잭 충전기</li>
-            <li><input type="checkbox"> 접이식 우산 / 양산 (7월 소나기 및 더위 대비)</li>
-            <li><input type="checkbox"> 선크림, 모자, 모기 기피제 (산간지역 하이킹 필수품)</li>
-            <li><input type="checkbox"> 트레킹용 편한 운동화 (DAY 2 옛길 도보용)</li>
-            <li><input type="checkbox"> 개인 가방용 손수건 (일본 화장실 핸드드라이어 미구비 대비)</li>
-        </ul>
-    </div>
+<div class="sh">시간별 일정</div>
+<div class="tl">
+  <div class="tl-row"><div class="tl-badge">09:25</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나고야 공항 도착 · 렌터카 픽업</div><div class="tl-sub">주부국제공항(센트레아) 도착. 렌터카 카운터에서 국제면허증 + 일본면허증 지참. ETC 카드 포함 여부, 내비게이션 언어 설정 확인</div><span class="tl-tip">내비게이션 → 한국어 설정 불가인 경우 영어로 변경 / 고속도로는 ETC 전용 게이트 주의</span></div></div>
+  <div class="tl-row"><div class="tl-badge">10:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">교와역 근처 주차장 주차 → 지하철로 시내 이동</div><div class="tl-sub">교와역(공항에서 약 30분) 근처 타임즈 파킹 or 에키파크 계열 주차장. 하루 약 500~1,000엔. 이후 나고야 시내는 지하철로 이동이 훨씬 효율적</div><span class="tl-tip">타임즈 앱으로 사전 예약 시 할인 / 지하철 나고야 시내 1일권 740엔</span></div></div>
+  <div class="tl-row"><div class="tl-badge">12:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나고야성 관람 (지하철 시야쿠쇼역)</div><div class="tl-sub">입장료 500엔 / 09:00~16:30(입장 마감 16:00). 2024년부터 2028년 10월까지 천수각 내진공사 휴관 중 — 대신 혼마루 어전(本丸御殿) 무료 견학이 하이라이트. 금샤치(킨샤치) 복제품 전시 구역에서 사진 가능</div><span class="tl-tip">혼마루 어전은 나고야성 안에서 가장 볼거리 多 / 입장하자마자 안내도 받기 필수 / 루트버스 메구루 210엔으로 접근 가능</span><button class="sp-btn" data-spot="nagoyacastle">&#128205; 나고야성 역사 · 꿀팁</button></div></div>
+  <div class="tl-row"><div class="tl-badge">식사</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">히츠마부시 나고야 빈쵸 — 나고야 명물 장어덮밥</div><div class="tl-sub">나고야를 대표하는 음식. 한 그릇을 4가지 방법으로 즐기는 나고야 고유 스타일: ①그냥 ②와사비·海苔 얹어서 ③다시(육수) 부어서 ④가장 마음에 드는 방법으로. 런치 세트 약 3,500엔~, 저녁 4,500엔~</div><span class="tl-tip">웨이팅 있을 때는 성 구경 전에 먼저 대기표 뽑기 / 런치가 저렴하고 줄이 짧음 / 전 단계를 반드시 순서대로 맛봐야 제대로 즐길 수 있음</span></div></div>
+  <div class="tl-row"><div class="tl-badge">15:00~17:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">오스 상점가 — 길거리 음식 · 빈티지 · 오스칸논사</div><div class="tl-sub">400년 역사의 아케이드 상점가. 오스칸논사 참배 + 다코야키·크레이프·메론빵 등 길거리 음식. 레트로 빈티지숍·전자상가·캐릭터숍 혼재. 1,200개 점포가 미로처럼 이어짐</div><span class="tl-tip">다코야키는 카이텐 도묘도·야마찬이 현지인 추천 / 배고프지 않더라도 오스의 길거리 음식을 조금씩 먹어보는 게 묘미 / 저녁엔 조명이 켜지며 더 활기참</span><button class="sp-btn" data-spot="osu">&#128205; 오스상점가 역사 · 꿀팁</button></div></div>
+  <div class="tl-row"><div class="tl-badge">19:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">오아시스 21 옥상 산책로 야경</div><div class="tl-sub">우주선 모양 유리 지붕 "은하의 광장" 무료 입장. 해 질 녘 ~ 21시까지 가장 아름다움. 바로 옆 나고야 TV 타워와 함께 황금 야경. 지하 1층 미치노에키에서 나고야 기념품 쇼핑 가능</div><span class="tl-tip">지하철 사카에역 바로 위 / 옥상 그늘이 없으니 낮보다 저녁이 훨씬 쾌적 / TV 타워와 함께 찍히는 각도 = 서쪽 방향</span><button class="sp-btn" data-spot="oasis21">&#128205; 오아시스21 정보</button></div></div>
+  <div class="tl-row"><div class="tl-badge">야식</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">The Big Extra Kariya 슈퍼마켓 — 야식 구매</div><div class="tl-sub">교와역 복귀 후 근처 대형 슈퍼마켓. 도시락·야키도리·샐러드·캔맥주로 일본식 야식 루틴 완성</div><span class="tl-tip">저녁 시간(18~20시) 도시락 30~50% 할인 시작 / 에다마메 + 맥주 = 일본 여름 야식의 정석</span></div></div>
 </div>
 
+<div class="sh">Day 1 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="nagoyacastle">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEwYTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzhCNjkxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+vPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+64KY6rOg7JW87ISxPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5OYWdveWEgQ2FzdGxlPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+MTYxMOuFhCDstpXshLEgwrcg6riI7IOk7LmYIMK3IOydvOuzuCAz64yAIOuqheyEsTwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=" alt="나고야성" loading="lazy"/>
+    <div class="pc-lbl">나고야성 — 일본 3대 명성</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="osu">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOTIyQjIxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I0MwMzkyQiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+uPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7Jik7Iqk7IOB7KCQ6rCAPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Pc3UgU2hvcHBpbmcgRGlzdHJpY3Q8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj40MDDrhYQg7Jet7IKsIMK3IDEsMjAw6rCcIOygkO2PrDwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=" alt="오스상점가" loading="lazy"/>
+    <div class="pc-lbl">오스상점가 — 400년 역사 아케이드</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="oasis21">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGQxYjJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJDNkZBQyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn5u4PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7Jik7JWE7Iuc7IqkMjE8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzODAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPk9hc2lzIDIxPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+64KY6rOg7JW87J2YIOyasOyjvOyEoCDCtyDrrLTro4wg7J6F7J6lPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==" alt="오아시스21" loading="lazy"/>
+    <div class="pc-lbl">오아시스21 — 나고야의 우주선 야경</div><div class="pc-src">Wikimedia Commons</div>
+  </div>
+</div>
+
+<div class="ig">
+  <div class="ib"><div class="ibh">교통 · 비용</div><div class="ibb">
+    <div class="ir"><span class="irl">나고야 지하철 1일권</span><span class="irv">740엔</span></div>
+    <div class="ir"><span class="irl">나고야성 입장료</span><span class="irv">500엔 (천수각 공사 중)</span></div>
+    <div class="ir"><span class="irl">히츠마부시 런치</span><span class="irv hl">3,500~4,500엔</span></div>
+    <div class="ir"><span class="irl">오아시스21</span><span class="irv ok">무료</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">나고야메시 맛집 체크리스트</div><div class="ibb">
+    <div class="ir"><span class="irl">히츠마부시</span><span class="irv">빈쵸 · 아쓰타호라이켄</span></div>
+    <div class="ir"><span class="irl">미소카츠</span><span class="irv">야바톤 (오스상점가 근처)</span></div>
+    <div class="ir"><span class="irl">테바사키</span><span class="irv">세카이노야마짱</span></div>
+    <div class="ir"><span class="irl">미소니코미우동</span><span class="irv">야마모토야</span></div>
+  </div></div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">02<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">7월 18일 (금)</div>
+    <div class="dtt">마고메주쿠 → 나카센도 or 드라이브 → 쓰마고주쿠 → 카키조레 계곡 → 카키츠바타 온천</div>
+    <div class="dtg"><span class="tag t-na">마고메주쿠</span><span class="tag t-na">나카센도 / 쓰마고주쿠</span><span class="tag t-na">카키조레 계곡</span><span class="tag t-on">카키츠바타 온천</span></div>
+  </div>
+</div>
+<div class="db open"><div class="di">
+
+<div class="note note-sage"><strong>Day 2는 날씨 · 체력에 따라 두 가지 옵션으로 분기됩니다.</strong> 옵션 A는 나카센도 하이킹(마고메→쓰마고, 약 8km), 옵션 B는 두 마을 모두 렌터카로 이동해 정취만 즐기는 여유 코스. 저녁 온천은 <strong>카리야시 천연온천 카키츠바타</strong>로 공통 확정.</div>
+
+<div class="sh">☀️ 옵션 A — 나카센도 하이킹 코스 (이른 출발 필수)</div>
+<div class="note note-sky">&#128204; <strong>하이킹 준비물 필수:</strong> 모자 · 선크림 · 이온음료 · 소형 방울(곰 출몰 주의 — 방울 울리며 이동) · 물 1.5L 이상 · 비상 우비. 7월 한낮 폭염 주의, 가능하면 오전 중 완주 목표.</div>
+<div class="tl">
+  <div class="tl-row"><div class="tl-badge">07:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나고야 숙소 출발 (이른 조식 후)</div><div class="tl-sub">서둘러 출발할수록 하이킹을 더 선선한 시간대에 시작할 수 있습니다. 나카쓰가와IC까지 도메이 고속도로 이용</div></div></div>
+  <div class="tl-row"><div class="tl-badge">08:30~09:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">마고메주쿠 도착 — 아침 산책 (선선할 때 마을 구경)</div><div class="tl-sub">공영주차장 주차. 600m 돌길 따라 에도 시대 목조 가옥 탐방. 전망대에서 에나산 조망. 고헤이모치(찹쌀 꼬치) 간식 구매</div><span class="tl-tip">짐 포워딩 서비스는 오전 중 마고메 안내소에서 신청 (약 1,000엔/가방) — 쓰마고 숙소 or 지정 장소로 배송</span><button class="sp-btn" data-spot="magome">&#128205; 마고메주쿠 역사 · 꿀팁</button></div></div>
+  <div class="tl-row"><div class="tl-badge">09:00~12:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나카센도 하이킹 — 마고메 → 쓰마고 (약 8km · 2~3시간)</div><div class="tl-sub">에도 시대 그대로 보존된 삼나무 가로수 산길. 오다키·메다키 폭포, 자원봉사자 운영 찻집 경유. 곳곳에 목제 스탬프 포인트 있음</div><span class="tl-tip">곰 방울 울리며 이동 필수 / 중간 찻집에서 녹차+와라비모치 휴식 / 맵스미(Maps.me) 오프라인 지도 추천</span><button class="sp-btn" data-spot="nakasendo">&#128205; 나카센도 역사 · 하이킹 정보</button></div></div>
+  <div class="tl-row"><div class="tl-badge">12:00~13:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">쓰마고주쿠 도착 — 점심 식사 · 보존 마을 휴식</div><div class="tl-sub">기소 소바 점심 추천. 흑벽 보존 구역 300m 산책. 혼진 유료 견학(300엔). 마고메보다 한적해 사진 찍기 좋음</div><button class="sp-btn" data-spot="tsumago">&#128205; 쓰마고주쿠 역사 · 꿀팁</button></div></div>
+  <div class="tl-row"><div class="tl-badge">13:40~14:10</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">버스 or 택시로 마고메주쿠 복귀 — 렌터카 회수</div><div class="tl-sub">쓰마고→마고메 로컬 버스 약 30분 (1일 2~3편, 시간표 미리 확인 필수). 버스 시간이 맞지 않으면 택시 이용</div><span class="tl-tip">버스 막차 시간을 출발 전에 캡처해두기 / 쓰마고 관광안내소에서 버스 시간 확인 가능</span></div></div>
+  <div class="tl-row"><div class="tl-badge">14:30~16:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나고야 방향 드라이브 · 이동 (차량 에어컨 휴식)</div><div class="tl-sub">하이킹 후 차 안에서 휴식하며 이동. 나카쓰가와IC → 도메이 고속도로 경유</div></div></div>
+  <div class="tl-row"><div class="tl-badge">16:30~18:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">&#9832; 천연온천 카키츠바타 (아이치현 카리야시)</div><div class="tl-sub">나고야 근교 카리야시 천연온천. 숙소 복귀 루트 상 위치. 나카센도 하이킹 피로 해소에 최적. 입욕료 약 700~900엔. 시설 세련되고 수질 좋다는 후기 多</div><span class="tl-tip">온천 바로 옆 카리야 하이웨이 오아시스 내 식당가에서 저녁 식사 후 숙소 복귀 가능</span></div></div>
+  <div class="tl-row"><div class="tl-badge">18:30~</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">숙소 복귀 · 저녁 식사</div><div class="tl-sub">온천 옆 카리야 하이웨이 오아시스 식당가 또는 숙소 근처에서 여유로운 저녁</div></div></div>
+</div>
+
+<div class="sh">&#127775; 옵션 B — 차량 이동 코스 (폭염·우천 시 추천)</div>
+<div class="note"><strong>핵심 전략:</strong> 무리한 하이킹 대신 두 마을의 정취를 여유롭게 즐기고, 남는 시간에 카키조레 계곡 드라이브나 에나쿄 계곡을 방문합니다.</div>
+<div class="tl">
+  <div class="tl-row"><div class="tl-badge">08:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">나고야 숙소 출발</div><div class="tl-sub">나카쓰가와IC 방향. 마고메주쿠 공영주차장 목적지 설정</div></div></div>
+  <div class="tl-row"><div class="tl-badge">10:00~11:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">마고메주쿠 도착 — 유료 주차장 · 마을 구경 · 카페 휴식</div><div class="tl-sub">하이킹 없이 마을 600m 돌길 산책. 카페에서 여유롭게 휴식. 고헤이모치·에스프레소 등 즐기기</div><button class="sp-btn" data-spot="magome">&#128205; 마고메주쿠 정보</button></div></div>
+  <div class="tl-row"><div class="tl-badge">11:30~12:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">렌터카로 쓰마고주쿠 이동 (약 20분)</div><div class="tl-sub">마고메에서 쓰마고까지 렌터카로 편하게 이동. 주차장은 쓰마고 관광주차장 이용</div></div></div>
+  <div class="tl-row"><div class="tl-badge">12:00~14:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">쓰마고주쿠 — 점심(소바 추천) · 보존지구 산책</div><div class="tl-sub">여유롭게 흑벽 보존지구 산책. 혼진 견학(300엔). 마을 끝 카페에서 말차 라떼 한 잔</div><button class="sp-btn" data-spot="tsumago">&#128205; 쓰마고주쿠 정보</button></div></div>
+  <div class="tl-row"><div class="tl-badge">14:00~15:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">카키조레 계곡 (柿其渓谷) 드라이브 · 방문 [추천]</div><div class="tl-sub">여름에도 차량 진입 규제 없어 렌터카로 주차장까지 편하게 이동 가능. 에메랄드빛 계곡수와 너도밤나무 원시림. 대표 명소는 넨도쿠치 폭포(네코ハ지리폭포 등). 아테라 계곡보다 접근이 쉽고 덜 붐빔</div><span class="tl-tip">여름 피서지로 인기 — 계곡 물에 발 담그기 가능 / 주차장에서 주요 폭포까지 도보 왕복 약 1~2시간</span></div></div>
+  <div class="tl-row"><div class="tl-badge">16:30~18:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-bot" style="display:none"></div><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-main">&#9832; 천연온천 카키츠바타 (아이치현 카리야시)</div><div class="tl-sub">두 마을 + 계곡 탐방 후 온천. 카리야시 위치로 숙소 복귀 동선에 딱 맞음. 입욕료 약 700~900엔</div><span class="tl-tip">온천 옆 카리야 하이웨이 오아시스에서 저녁 식사 해결 가능</span></div></div>
+</div>
+
+<div class="sh">관광지 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="magome">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMkU1QzMzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzVEN0E2MSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7im6nvuI88L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMzAiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNlcmlmIj7rp4jqs6DrqZTso7zsv6A8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzODAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPk1hZ29tZS1qdWt1PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+64KY7Lm07IS864+EIDQz67KI7Ke4IOyXreywuCDCtyDtlbTrsJwgNjAwbTwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=" alt="마고메주쿠" loading="lazy"/>
+    <div class="pc-lbl">마고메주쿠 — 에도 역참 돌길</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="nakasendo">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEzZDIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJFNUMzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4yyPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+64KY7Lm07IS864+EPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5OYWthc2VuZG8gVHJhaWw8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7sl5Drj4R+6rWQ7YagIOyCsOq4uCDCtyDrp4jqs6DrqZTihpLsk7Drp4jqs6AgOGttPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==" alt="나카센도" loading="lazy"/>
+    <div class="pc-lbl">나카센도 — 삼나무 숲 산길</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="tsumago">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2QyYjBlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzZCNEMxRSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+Y77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7JOw66eI6rOg7KO87L+gPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Uc3VtYWdvLWp1a3U8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7rgpjsubTshLzrj4QgNDLrsojsp7gg7Jet7LC4IMK3IO2dkeuyvSDrs7TsobQg66eI7J2EPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==" alt="쓰마고주쿠" loading="lazy"/>
+    <div class="pc-lbl">쓰마고주쿠 — 흑벽 보존 마을</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+</div>
+
+<div class="ig">
+  <div class="ib"><div class="ibh">이동 정보 (옵션 A — 하이킹)</div><div class="ibb">
+    <div class="ir"><span class="irl">나카쓰가와IC → 마고메</span><span class="irv">차 약 15분</span></div>
+    <div class="ir"><span class="irl">마고메→쓰마고 하이킹</span><span class="irv">8km / 2~3시간</span></div>
+    <div class="ir"><span class="irl">쓰마고→마고메 버스</span><span class="irv">약 30분 (1일 2~3편)</span></div>
+    <div class="ir"><span class="irl">카키츠바타 온천 입욕료</span><span class="irv ok">약 700~900엔</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">이동 정보 (옵션 B — 차량)</div><div class="ibb">
+    <div class="ir"><span class="irl">마고메→쓰마고 (렌터카)</span><span class="irv">약 20분</span></div>
+    <div class="ir"><span class="irl">카키조레 계곡</span><span class="irv">차량 진입 가능 (여름도 규제 없음)</span></div>
+    <div class="ir"><span class="irl">주요 폭포까지 도보</span><span class="irv">왕복 약 1~2시간</span></div>
+    <div class="ir"><span class="irl">카키츠바타 온천</span><span class="irv ok">약 700~900엔</span></div>
+  </div></div>
+</div>
+
+</div></div></div>
+
+<div class="dc">
+<div class="dh" data-tog>
+  <div class="dn">03<div class="dn-l">Day</div></div>
+  <div class="dt">
+    <div class="dd">7월 19일 (토) · 귀국일</div>
+    <div class="dtt">고자이쇼산 로프웨이 → 유노야마 온천 식사 → 아쿠아 이그니스 온천 → 센트레아 공항 귀국</div>
+    <div class="dtg"><span class="tag t-na">고자이쇼산 1,212m</span><span class="tag t-on">아쿠아 이그니스 온천</span><span class="tag t-tr">렌터카 반납 · 귀국</span></div>
+  </div>
+</div>
+<div class="db open"><div class="di">
+
+<div class="note"><strong>Day 3 전략:</strong> 귀국일이므로 시간 관리가 핵심. 07:30 출발 → 고자이쇼 로프웨이 오픈 시간(09:00)에 맞춰 첫 탑승 → 유노야마 식사 → 아쿠아 이그니스 온천(12:30~14:00) → 14:00 공항 이동 출발. 일요일 오후 도로 혼잡 감안해 14시 이전 출발 권장.</div>
+
+<div class="sh">시간별 일정</div>
+<div class="tl">
+  <div class="tl-row"><div class="tl-badge">07:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">숙소(카리야) 출발 → 고자이쇼 로프웨이 이동</div><div class="tl-sub">나고야 → 고모노IC(도메이메이신 고속도로) → 유노야마 온천 로프웨이 승차장까지 약 1시간 15분. 이른 출발로 9시 오픈과 동시에 첫 탑승</div><span class="tl-tip">오전 첫 탑승 시 주차도 수월하고 혼잡하지 않아 전망도 맑음</span></div></div>
+  <div class="tl-row"><div class="tl-badge">08:45~09:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">고자이쇼 로프웨이 승차장 도착</div><div class="tl-sub">로프웨이 09:00 운행 시작. 오픈 시간에 맞춰 도착하면 줄 없이 바로 탑승 가능. 주차장 무료(로프웨이 이용자)</div><span class="tl-tip">로프웨이 왕복 2,600엔 / 킨테츠 레일패스 소지 시 할인</span><button class="sp-btn" data-spot="gozaisho">&#128205; 고자이쇼산 역사 · 꿀팁</button></div></div>
+  <div class="tl-row"><div class="tl-badge">09:00~11:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">로프웨이 탑승 · 정상 산책 (약 2시간 30분)</div><div class="tl-sub">탑승 15분으로 정상(1,212m) 도착. 이세만·나고야 도심·스즈카 산맥 파노라마. 코코루 테라스 그네(500엔/3분) 탑승. 정상 산책로 완만해 운동화 OK. <strong>본격 하이킹은 무더위·시간 관계상 자제 권장</strong> — 산책로와 전망대 위주로 시원한 바람 즐기기</div><span class="tl-tip">정상 기온 약 18~22°C / 레스토랑 네이처의 고자이쇼 카레우동 + 백철탑 소프트아이스크림 필수</span></div></div>
+  <div class="tl-row"><div class="tl-badge">11:30~12:30</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">&#127829; 유노야마 온천마을 또는 아쿠아 이그니스 — 식사</div><div class="tl-sub">로프웨이 하산 후 바로 인접한 유노야마 온천 마을에서 식사. 아쿠아 이그니스 내 유명 셰프 레스토랑(이탈리안·베이커리 등)에서 온천+식사를 한 번에 해결하는 것이 동선상 가장 효율적</div><span class="tl-tip">아쿠아 이그니스 하트브레드 안티크(빵집)에서 공항 간식 미리 구매 추천</span><button class="sp-btn" data-spot="yunoyama">&#128205; 유노야마 온천 정보</button></div></div>
+  <div class="tl-row"><div class="tl-badge">12:30~14:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">&#9832; 아쿠아 이그니스(카타오카 온천) — 온천욕</div><div class="tl-sub">1,300년 역사 유노야마 온천의 대표 리조트. 알칼리성 단순온천 "미인탕". 노천탕 개방감이 인상적. 입욕료 1,200~1,500엔. 수건 대여 약 200엔. 귀국 전 마지막 온천으로 여행 피로 완전 해소</div><span class="tl-tip">온천 후 샤워·드라이 시간 충분히 확보 필수 / 귀국일이므로 14시엔 반드시 출발</span></div></div>
+  <div class="tl-row"><div class="tl-badge">14:00</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">&#128680; 중부국제공항(센트레아) 방향 출발</div><div class="tl-sub">일요일 오후 도로 혼잡 감안해 14시에 출발하는 것이 안전. 유노야마 → 센트레아 약 1시간~1시간 30분</div><span class="tl-tip">일요일 오후는 나고야 도심 경유 시 정체 심함 — 고속도로 우선 이용 / ETC 게이트 확인</span></div></div>
+  <div class="tl-row"><div class="tl-badge">15:30~16:15</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">공항 근처 주유소 만땅 주유 → 렌터카 반납</div><div class="tl-sub">센트레아 공항 진입 전 주유소에서 미리 주유(렌터카 반납 조건 확인). 렌터카 반납 카운터에서 정산 후 공항 터미널 이동</div><span class="tl-tip">주유 없이 반납 시 추가 요금 발생 / 렌터카 회사마다 기름 조건 다르니 계약서 재확인</span></div></div>
+  <div class="tl-row"><div class="tl-badge">16:15~</div><div class="tl-spine"><div class="tl-top"></div><div class="tl-dot"></div><div class="tl-bot"></div></div><div class="tl-body"><div class="tl-main">공항 터미널 이동 · 체크인 · 귀국 수속</div><div class="tl-sub">센트레아 공항 4층 네오 타일랜드 상점가 및 기념품 쇼핑. 나고야 기념품 총집합. 일찍 도착해도 공항 내 볼거리·식당이 많아 지루하지 않음</div><span class="tl-tip">피요린·아카후쿠·에비센 등 공항에서 한 번에 구매 가능 / 출발 2시간 전 보안 검색대 통과 권장</span></div></div>
+</div>
+
+<div class="sh">관광지 사진</div>
+<div class="pg">
+  <div class="pc" data-spot="gozaisho">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGQyMTM3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzFFNEE2RSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn5qgPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+6rOg7J6Q7J207Ie87IKwPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Hb3phaXNobyBSb3Bld2F5PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+7ZW067CcIDEsMjEybSDCtyDsnbTshLjrp4wg7YyM64W4652866eIPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==" alt="고자이쇼 로프웨이" loading="lazy"/>
+    <div class="pc-lbl">고자이쇼산 로프웨이 — 1,212m 파노라마</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="yunoyama">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEwYTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRhMmExMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7imajvuI88L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMzAiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNlcmlmIj7snKDrhbjslbzrp4gg7Jio7LKcPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5ZdW5veWFtYSBPbnNlbjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjQzMCIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjY1KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPjEsMzAw64WEIOyXreyCrCDCtyDrr7jsnbjtg5Ugwrcg7JWE7L+g7JWEIOydtOq3uOuLiOyKpDwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=" alt="유노야마 온천" loading="lazy"/>
+    <div class="pc-lbl">유노야마 온천 — 미인탕</div><div class="pc-src">일러스트 · 현지 사진 없이 표시됨</div>
+  </div>
+  <div class="pc" data-spot="gozaisho">
+    <img onerror="this.classList.add('error');this.parentElement.classList.add('img-error')" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGQyMTM3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzFFNEE2RSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn5qgPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+6rOg7J6Q7J207Ie87IKwPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Hb3phaXNobyBSb3Bld2F5PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+7ZW067CcIDEsMjEybSDCtyDsnbTshLjrp4wg7YyM64W4652866eIPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==" alt="산정 전망" loading="lazy"/>
+    <div class="pc-lbl">정상 전망 — 이세만 파노라마</div><div class="pc-src">Unsplash</div>
+  </div>
+</div>
+
+<div class="ig">
+  <div class="ib"><div class="ibh">Day 3 시간표 요약</div><div class="ibb">
+    <div class="ir"><span class="irl">07:30 카리야 출발</span><span class="irv">→ 고자이쇼 로프웨이 1시간 15분</span></div>
+    <div class="ir"><span class="irl">09:00~11:30 로프웨이+정상산책</span><span class="irv">왕복 30분+산책 약 2시간</span></div>
+    <div class="ir"><span class="irl">11:30~12:30 식사</span><span class="irv">아쿠아 이그니스 내 레스토랑 추천</span></div>
+    <div class="ir"><span class="irl">12:30~14:00 아쿠아 이그니스 온천</span><span class="irv hl">14:00 반드시 출발</span></div>
+    <div class="ir"><span class="irl">15:30~16:15 주유+렌터카 반납</span><span class="irv">공항 진입 전 주유 필수</span></div>
+    <div class="ir"><span class="irl">16:15~ 공항 수속</span><span class="irv ok">센트레아 4층 기념품 쇼핑</span></div>
+  </div></div>
+  <div class="ib"><div class="ibh">비용 정리</div><div class="ibb">
+    <div class="ir"><span class="irl">고자이쇼 로프웨이 왕복</span><span class="irv hl">2,600엔</span></div>
+    <div class="ir"><span class="irl">코코루 테라스 그네</span><span class="irv">500엔 / 3분</span></div>
+    <div class="ir"><span class="irl">아쿠아 이그니스 온천</span><span class="irv">1,200~1,500엔</span></div>
+    <div class="ir"><span class="irl">식사 (유노야마·공항)</span><span class="irv">2,000~4,000엔</span></div>
+    <div class="ir"><span class="irl">고속도로 요금 (ETC)</span><span class="irv">약 1,000~1,500엔</span></div>
+  </div></div>
+</div>
+
+</div></div></div>
+</div><!-- /days -->
+<div style="margin-top:44px">
+<h2 style="font-family:Noto Serif KR,serif;font-size:20px;color:var(--ink);margin-bottom:4px">나고야 특산품 &amp; 기념품 가이드</h2>
+<p style="font-size:12px;color:#999;margin-bottom:15px">나고야·기소·미에에서 사야 할 것들</p>
+<div class="sv-grid">
+  <div class="sv-card"><div class="sv-icon">&#127828;</div><div class="sv-name">히츠마부시 레토르트 세트</div><div class="sv-desc">나고야 대표 장어덮밥을 집에서 재현. 빈쵸·마루야 등 유명 음식점 브랜드 제품이 특히 인기. 냉장 보관 필요하므로 귀국 당일 공항에서 구매 권장</div><div class="sv-where">&#128722; 나고야 역 백화점 식품관 · 공항 센트레아</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127852;</div><div class="sv-name">피요린 (ぴよりん)</div><div class="sv-desc">병아리 모양 푸딩. 나고야 역 "스테이션 카페 나고야" 한정. 워낙 인기라 오전 중 매진. SNS 폭발 인기 나고야 대표 스위츠 — 여행 인증샷 필수템</div><div class="sv-where">&#128722; 나고야 역 (조기 매진 주의)</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127759;</div><div class="sv-name">우이로 (外郎)</div><div class="sv-desc">쌀가루·찹쌀·설탕으로 만든 나고야 전통 화과자. 연양갱 식감. 말차·팥·딸기·유자 등 다양한 맛. 오스상점가 우이로 전문점이 원조</div><div class="sv-where">&#128722; 오스상점가 · 나고야 역</div></div>
+  <div class="sv-card"><div class="sv-icon">&#129386;</div><div class="sv-name">핫초미소 (八丁味噌)</div><div class="sv-desc">오카자키 핫초 지역 400년 전통 콩 된장. 일반 미소보다 색 짙고 맛 진함. 미소카츠·미소니코미우동·도테메시의 핵심 재료. 진공 소용량 패키지가 기념품으로 편리</div><div class="sv-where">&#128722; 나고야 역 지하 · 공항</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127861;</div><div class="sv-name">에비센 (えびせんべい)</div><div class="sv-desc">아이치 지타 반도 특산 새우전병. 큼직하고 바삭. 선물 세트 구성으로 포장도 예쁨. 종류가 다양해 여러 맛 모아 선물하기 좋음</div><div class="sv-where">&#128722; 나고야 역 · 오스상점가</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127924;</div><div class="sv-name">테바사키 맛 과자류</div><div class="sv-desc">나고야 명물 닭날개 맛 프링글스·스낵 한정판. 나고야에서만 구할 수 있어 여행 기념품으로 인기. 달콤 짭짤 고소한 맛</div><div class="sv-where">&#128722; 편의점 · 기념품숍 · 공항</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127758;</div><div class="sv-name">노리타케 도자기</div><div class="sv-desc">나고야 세계적 명품 도자기 브랜드. "노리타케의 숲" 직영 매장 최대 품목. 찻잔·접시·기념 소품. 나고야 역 도보 10분 거리로 귀국 전 방문도 가능</div><div class="sv-where">&#128722; 노리타케의 숲 (나고야 역 도보 10분)</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127863;</div><div class="sv-name">아카후쿠 (赤福) — 미에현</div><div class="sv-desc">이세 명물 팥 떡. 겉에 팥앙금을 바른 쫄깃한 떡으로 1707년 창업 역사. 이세진구 참배 기념품으로 300년 이상 사랑받음. 공항에서도 구매 가능</div><div class="sv-where">&#128722; 공항 센트레아 · 이세 직영점</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127833;</div><div class="sv-name">기소 소바 (木曽そば) — 나카센도</div><div class="sv-desc">나카센도 기소 지역 메밀국수. 마고메·쓰마고에서 먹은 맛을 집에서 재현. 건면 기념품 패키지로 가볍게 캐리어에 담기 편함</div><div class="sv-where">&#128722; 마고메주쿠 · 쓰마고주쿠 기념품점</div></div>
+  <div class="sv-card"><div class="sv-icon">&#127867;</div><div class="sv-name">지역 사케 &amp; 크래프트 맥주</div><div class="sv-desc">나고야 크래프트 맥주(기시멘 에일 등) / 기소 지역 청주. 메이테츠 상점 한정 오리지널 맥주가 가장 독특한 선물. 유노야마 온천 지역 지역 사케도 추천</div><div class="sv-where">&#128722; 메이테츠 상점 (나고야 역) · 주류 전문점</div></div>
+</div>
+</div>
+<div style="margin-top:44px">
+<h2 style="font-family:Noto Serif KR,serif;font-size:20px;color:var(--ink);margin-bottom:4px">일본어 여행 회화 50선</h2>
+<p class="jp-note">카드를 클릭하면 발음을 들을 수 있습니다 (브라우저 Web Speech API). 음식 주문·이동·인사·계산 위주 구성.</p>
+
+<div class="jp-sec">
+<div class="jp-cat-h">&#128075; 인사 · 기본</div>
+<div class="jp-grid">
+<div class="jp-card" data-jp="こんにちは"><div class="jp-left"><div class="jp-ko">안녕하세요 (낮)</div><div class="jp-jp">こんにちは</div><div class="jp-pron">콘니치와</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="おはようございます"><div class="jp-left"><div class="jp-ko">안녕하세요 (아침)</div><div class="jp-jp">おはようございます</div><div class="jp-pron">오하요우 고자이마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="ありがとうございます"><div class="jp-left"><div class="jp-ko">감사합니다</div><div class="jp-jp">ありがとうございます</div><div class="jp-pron">아리가토우 고자이마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="すみません"><div class="jp-left"><div class="jp-ko">실례합니다 / 저기요</div><div class="jp-jp">すみません</div><div class="jp-pron">스미마센</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="はい、わかりました"><div class="jp-left"><div class="jp-ko">네, 알겠습니다</div><div class="jp-jp">はい、わかりました</div><div class="jp-pron">하이, 와카리마시타</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="よろしくお願いします"><div class="jp-left"><div class="jp-ko">잘 부탁드립니다</div><div class="jp-jp">よろしくお願いします</div><div class="jp-pron">요로시쿠 오네가이시마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="少し日本語がわかります"><div class="jp-left"><div class="jp-ko">일본어 조금 압니다</div><div class="jp-jp">少し日本語がわかります</div><div class="jp-pron">스코시 니혼고가 와카리마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="ゆっくり話してください"><div class="jp-left"><div class="jp-ko">천천히 말해주세요</div><div class="jp-jp">ゆっくり話してください</div><div class="jp-pron">유쿠리 하나시테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="もう一度お願いします"><div class="jp-left"><div class="jp-ko">한 번 더 부탁드려요</div><div class="jp-jp">もう一度お願いします</div><div class="jp-pron">모우 이치도 오네가이시마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="書いてもらえますか"><div class="jp-left"><div class="jp-ko">써줄 수 있나요?</div><div class="jp-jp">書いてもらえますか</div><div class="jp-pron">카이테 모라에마스카</div></div><button class="jp-play">&#9654;</button></div>
+</div></div>
+
+<div class="jp-sec">
+<div class="jp-cat-h">&#127869; 음식 주문 · 식당</div>
+<div class="jp-grid">
+<div class="jp-card" data-jp="二人です"><div class="jp-left"><div class="jp-ko">두 명이에요</div><div class="jp-jp">二人です</div><div class="jp-pron">후타리데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="メニューをください"><div class="jp-left"><div class="jp-ko">메뉴 주세요</div><div class="jp-jp">メニューをください</div><div class="jp-pron">메뉴우오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="おすすめは何ですか"><div class="jp-left"><div class="jp-ko">추천 메뉴는 뭐예요?</div><div class="jp-jp">おすすめは何ですか</div><div class="jp-pron">오스스메와 난데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="これをください"><div class="jp-left"><div class="jp-ko">이것 주세요</div><div class="jp-jp">これをください</div><div class="jp-pron">코레오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="辛いものは苦手です"><div class="jp-left"><div class="jp-ko">매운 건 못 먹어요</div><div class="jp-jp">辛いものは苦手です</div><div class="jp-pron">카라이모노와 니가테데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="お水をください"><div class="jp-left"><div class="jp-ko">물 주세요</div><div class="jp-jp">お水をください</div><div class="jp-pron">오미즈오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="おいしいです"><div class="jp-left"><div class="jp-ko">맛있어요</div><div class="jp-jp">おいしいです</div><div class="jp-pron">오이시이데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="お会計をお願いします"><div class="jp-left"><div class="jp-ko">계산 부탁드려요</div><div class="jp-jp">お会計をお願いします</div><div class="jp-pron">오카이케이오 오네가이시마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="別々に払います"><div class="jp-left"><div class="jp-ko">각자 계산할게요</div><div class="jp-jp">別々に払います</div><div class="jp-pron">베쓰베쓰니 하라이마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="テイクアウトできますか"><div class="jp-left"><div class="jp-ko">포장 되나요?</div><div class="jp-jp">テイクアウトできますか</div><div class="jp-pron">테이쿠아우토 데키마스카</div></div><button class="jp-play">&#9654;</button></div>
+</div></div>
+
+<div class="jp-sec">
+<div class="jp-cat-h">&#128663; 이동 · 길찾기</div>
+<div class="jp-grid">
+<div class="jp-card" data-jp="〇〇はどこですか"><div class="jp-left"><div class="jp-ko">○○은 어디예요?</div><div class="jp-jp">〇〇はどこですか</div><div class="jp-pron">○○와 도코데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="駅はどこですか"><div class="jp-left"><div class="jp-ko">역은 어디예요?</div><div class="jp-jp">駅はどこですか</div><div class="jp-pron">에키와 도코데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="〇〇まで行きたいです"><div class="jp-left"><div class="jp-ko">○○까지 가고 싶어요</div><div class="jp-jp">〇〇まで行きたいです</div><div class="jp-pron">○○마데 이키타이데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="何番線ですか"><div class="jp-left"><div class="jp-ko">몇 번 홈이에요?</div><div class="jp-jp">何番線ですか</div><div class="jp-pron">난반센데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="どのくらいかかりますか"><div class="jp-left"><div class="jp-ko">얼마나 걸려요?</div><div class="jp-jp">どのくらいかかりますか</div><div class="jp-pron">도노쿠라이 카카리마스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="ここで止めてください"><div class="jp-left"><div class="jp-ko">여기서 세워주세요</div><div class="jp-jp">ここで止めてください</div><div class="jp-pron">코코데 도메테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="右に曲がってください"><div class="jp-left"><div class="jp-ko">오른쪽으로 가주세요</div><div class="jp-jp">右に曲がってください</div><div class="jp-pron">미기니 마갓테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="左に曲がってください"><div class="jp-left"><div class="jp-ko">왼쪽으로 가주세요</div><div class="jp-jp">左に曲がってください</div><div class="jp-pron">히다리니 마갓테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="まっすぐ行ってください"><div class="jp-left"><div class="jp-ko">직진해 주세요</div><div class="jp-jp">まっすぐ行ってください</div><div class="jp-pron">맛스구 잇테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="駐車場はありますか"><div class="jp-left"><div class="jp-ko">주차장 있나요?</div><div class="jp-jp">駐車場はありますか</div><div class="jp-pron">추샤죠와 아리마스카</div></div><button class="jp-play">&#9654;</button></div>
+</div></div>
+
+<div class="jp-sec">
+<div class="jp-cat-h">&#128180; 계산 · 쇼핑</div>
+<div class="jp-grid">
+<div class="jp-card" data-jp="いくらですか"><div class="jp-left"><div class="jp-ko">얼마예요?</div><div class="jp-jp">いくらですか</div><div class="jp-pron">이쿠라데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="カードで払えますか"><div class="jp-left"><div class="jp-ko">카드로 낼 수 있어요?</div><div class="jp-jp">カードで払えますか</div><div class="jp-pron">카도데 하라에마스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="現金で払います"><div class="jp-left"><div class="jp-ko">현금으로 낼게요</div><div class="jp-jp">現金で払います</div><div class="jp-pron">겐킨데 하라이마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="これをひとつください"><div class="jp-left"><div class="jp-ko">이거 하나 주세요</div><div class="jp-jp">これをひとつください</div><div class="jp-pron">코레오 히토츠 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="見ているだけです"><div class="jp-left"><div class="jp-ko">그냥 보는 거예요</div><div class="jp-jp">見ているだけです</div><div class="jp-pron">미테이루다케데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="免税できますか"><div class="jp-left"><div class="jp-ko">면세 되나요?</div><div class="jp-jp">免税できますか</div><div class="jp-pron">멘제이 데키마스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="袋をください"><div class="jp-left"><div class="jp-ko">봉투 주세요</div><div class="jp-jp">袋をください</div><div class="jp-pron">후쿠로오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="領収書をください"><div class="jp-left"><div class="jp-ko">영수증 주세요</div><div class="jp-jp">領収書をください</div><div class="jp-pron">료우슈우쇼오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="これはプレゼント用です"><div class="jp-left"><div class="jp-ko">선물용이에요</div><div class="jp-jp">これはプレゼント用です</div><div class="jp-pron">코레와 프레젠토요우데스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="おつりはいりません"><div class="jp-left"><div class="jp-ko">거스름돈은 됐어요</div><div class="jp-jp">おつりはいりません</div><div class="jp-pron">오츠리와 이리마센</div></div><button class="jp-play">&#9654;</button></div>
+</div></div>
+
+<div class="jp-sec">
+<div class="jp-cat-h">&#9832; 온천 · 숙소 · 관광</div>
+<div class="jp-grid">
+<div class="jp-card" data-jp="チェックインをお願いします"><div class="jp-left"><div class="jp-ko">체크인 부탁드려요</div><div class="jp-jp">チェックインをお願いします</div><div class="jp-pron">체크인오 오네가이시마스</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="日帰り入浴できますか"><div class="jp-left"><div class="jp-ko">당일치기 입욕 되나요?</div><div class="jp-jp">日帰り入浴できますか</div><div class="jp-pron">히가에리 뉴요쿠 데키마스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="入浴料はいくらですか"><div class="jp-left"><div class="jp-ko">입욕료 얼마예요?</div><div class="jp-jp">入浴料はいくらですか</div><div class="jp-pron">뉴요쿠료와 이쿠라데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="タオルをください"><div class="jp-left"><div class="jp-ko">수건 주세요</div><div class="jp-jp">タオルをください</div><div class="jp-pron">타오루오 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="入場料はいくらですか"><div class="jp-left"><div class="jp-ko">입장료 얼마예요?</div><div class="jp-jp">入場料はいくらですか</div><div class="jp-pron">뉴죠우료와 이쿠라데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="写真を撮ってもいいですか"><div class="jp-left"><div class="jp-ko">사진 찍어도 되나요?</div><div class="jp-jp">写真を撮ってもいいですか</div><div class="jp-pron">샤신오 톳테모 이이데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="一緒に写真を撮ってください"><div class="jp-left"><div class="jp-ko">같이 사진 찍어주세요</div><div class="jp-jp">一緒に写真を撮ってください</div><div class="jp-pron">잇쇼니 샤신오 톳테 쿠다사이</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="トイレはどこですか"><div class="jp-left"><div class="jp-ko">화장실은 어디예요?</div><div class="jp-jp">トイレはどこですか</div><div class="jp-pron">토이레와 도코데스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="この辺にコンビニはありますか"><div class="jp-left"><div class="jp-ko">이 근처 편의점 있나요?</div><div class="jp-jp">この辺にコンビニはありますか</div><div class="jp-pron">코노헨니 콘비니와 아리마스카</div></div><button class="jp-play">&#9654;</button></div>
+<div class="jp-card" data-jp="楽しかったです、ありがとう"><div class="jp-left"><div class="jp-ko">즐거웠어요, 감사해요</div><div class="jp-jp">楽しかったです、ありがとう</div><div class="jp-pron">타노시캇타데스, 아리가토우</div></div><button class="jp-play">&#9654;</button></div>
+</div></div>
+</div>
+<div style="margin-top:44px">
+<h2 style="font-family:Noto Serif KR,serif;font-size:20px;color:var(--ink);margin-bottom:4px">준비물 체크리스트</h2>
+<p style="font-size:12px;color:#999;margin-bottom:14px">클릭하면 완료 처리</p>
+<div class="clg">
+  <div class="clc"><div class="clh">의류 · 신발</div><div class="clb">
+    <label class="cl-i"><input type="checkbox"> 트레킹화 or 운동화 (나카센도 필수)</label>
+    <label class="cl-i"><input type="checkbox"> 편한 샌들 (숙소·온천용)</label>
+    <label class="cl-i"><input type="checkbox"> 가벼운 겉옷 (고자이쇼 정상 서늘)</label>
+    <label class="cl-i"><input type="checkbox"> 챙 넓은 모자 (7월 자외선 강함)</label>
+    <label class="cl-i"><input type="checkbox"> 수영복 or 온천용 수건</label>
+    <label class="cl-i"><input type="checkbox"> 속건 기능성 상의</label>
+  </div></div>
+  <div class="clc"><div class="clh">나카센도 하이킹용</div><div class="clb">
+    <label class="cl-i"><input type="checkbox"> 물 1.5L (중간 보충 불가)</label>
+    <label class="cl-i"><input type="checkbox"> 에너지바 · 간식</label>
+    <label class="cl-i"><input type="checkbox"> 선크림 SPF50+</label>
+    <label class="cl-i"><input type="checkbox"> 비상용 우비 (소나기 대비)</label>
+    <label class="cl-i"><input type="checkbox"> 짐 포워딩 서비스 신청</label>
+    <label class="cl-i"><input type="checkbox"> 스탬프 노트 (스탬프 랠리)</label>
+  </div></div>
+  <div class="clc"><div class="clh">전자기기 · 서류</div><div class="clb">
+    <label class="cl-i"><input type="checkbox"> 여권 (유효기간 확인)</label>
+    <label class="cl-i"><input type="checkbox"> 국제운전면허증 (렌터카 필수)</label>
+    <label class="cl-i"><input type="checkbox"> 현금 엔화 (소규모 점포 현금 선호)</label>
+    <label class="cl-i"><input type="checkbox"> 보조배터리 10,000mAh</label>
+    <label class="cl-i"><input type="checkbox"> 구글맵 오프라인 저장</label>
+    <label class="cl-i"><input type="checkbox"> ETC 카드 (고속도로)</label>
+  </div></div>
+  <div class="clc"><div class="clh">온천 · 세면</div><div class="clb">
+    <label class="cl-i"><input type="checkbox"> 온천용 소형 세면도구</label>
+    <label class="cl-i"><input type="checkbox"> 갈아입을 여분 속옷</label>
+    <label class="cl-i"><input type="checkbox"> 수건 (온천 대여 가능하지만)</label>
+    <label class="cl-i"><input type="checkbox"> 샤워 후 스킨케어 미니 세트</label>
+    <label class="cl-i"><input type="checkbox"> 드라이백 (온천 젖은 옷 보관용)</label>
+  </div></div>
+</div>
+</div>
+
+</div><!-- /wrap -->
+<footer>Nagoya 2025 · 2박3일 · 나고야성 · 오스상점가 · 오아시스21 · 마고메주쿠 · 나카센도 · 쓰마고주쿠 · 고자이쇼산 · 유노야마 온천</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+var S = {
+  nagoyacastle:{
+    t:"나고야성 (名古屋城)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEwYTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzhCNjkxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+vPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+64KY6rOg7JW87ISxPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5OYWdveWEgQ2FzdGxlPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+MTYxMOuFhCDstpXshLEgwrcg6riI7IOk7LmYIMK3IOydvOuzuCAz64yAIOuqheyEsTwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=",
+    m:["아이치현 나고야시 니시구","입장료 500엔","09:00~16:30"],
+    d:"1610년 도쿠가와 이에야스가 오사카의 도요토미 히데요리에 대항하기 위해 축성. 아들 요시나오의 거성. 1612년 완성. 오사카성·구마모토성과 함께 일본 3대 명성. 지붕 위 금샤치 한 쌍(각 88kg, 18K 금도금)이 상징. 1945년 공습으로 소실 → 1959년 재건. 2024~2028년 천수각 내진공사 중.",
+    h:"나고야성은 사실상 도쿠가와 이에야스의 정치적 선언문이었습니다. 세키가하라 전투(1600)로 천하를 제패한 뒤, 여전히 오사카 성에 버티고 있는 도요토미 가문을 견제하기 위해 나고야에 거대한 성을 세웠습니다. '금샤치(金鯱)'는 불을 다스리는 신수(神獸)로, 화재로부터 성을 지켜달라는 의미를 담아 지붕에 올렸습니다. 에도 막부의 종말(1867년)까지 오와리 도쿠가와 가문의 본거지로 사용되었으며, 2차대전 당시 미군 공습으로 천수각이 소실되었지만 혼마루 어전은 2018년 목조 복원 공사를 마치고 공개 중입니다.",
+    tip:"블로그 후기에서 가장 많이 언급되는 꿀팁: ①천수각 내부 공사 중이지만 혼마루 어전이 더 볼거리가 풍부하다는 평 多 ②루트버스 메구루 1일권(500엔)이 나고야 관광 핵심 명소 연결 ③금샤치 복제품 전시관에서 실물 크기 금샤치 앞 사진 촬영 가능 ④무장대 공연은 토·일·공휴일에만 진행 ⑤나고야성 → 히츠마부시 → 오스 순서가 정석 동선",
+    u:"https://maps.google.com/?q=35.1856,136.8990"
+  },
+  osu:{
+    t:"오스상점가 (大須商店街)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOTIyQjIxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I0MwMzkyQiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+uPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7Jik7Iqk7IOB7KCQ6rCAPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Pc3UgU2hvcHBpbmcgRGlzdHJpY3Q8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj40MDDrhYQg7Jet7IKsIMK3IDEsMjAw6rCcIOygkO2PrDwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=",
+    m:["나고야시 나카구 오스","지하철 오스칸논역·가미마에즈역","약 1,200개 점포"],
+    d:"나고야의 대표 아케이드 상점가. 약 400년 역사. 도쿠가와 이에야스가 기후현 오스 지역의 오스칸논사를 이전시키며 주변 상점가가 형성됨. 레트로 빈티지숍·전자상가·캐릭터숍·다코야키·크레이프 등 혼재.",
+    h:"오스상점가는 원래 에도 시대부터 오스칸논(大須観音) 절 참배객을 위한 상점들이 자연스럽게 모인 '몬젠마치(門前町)'로 성장했습니다. 오스칸논은 988년 창건, 나고야 3대 칸논 중 하나. 현재 상점가는 5개 아케이드로 구성되며 약 1,200개 점포가 미로처럼 이어집니다. 1990년대까지만 해도 낡고 허름한 상점가였지만, 전자상가와 서브컬처 숍이 들어서며 젊은 층의 핫플레이스로 탈바꿈했습니다.",
+    tip:"여행자 후기 꿀팁: ①다코야키는 '카이텐 도묘도'가 현지인 추천 No.1 ②오스칸논사 무료 참배 — 경내 비둘기 밥 주기 체험 가능 ③빈티지 의류 '마니아크'가 오스 핫플 ④저녁이 되면 현지인들이 몰려 더 활기찬 분위기 ⑤인근 야바톤 본점에서 미소카츠 먹기",
+    u:"https://maps.google.com/?q=35.1594,136.9064"
+  },
+  oasis21:{
+    t:"오아시스21 (オアシス21)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGQxYjJhIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJDNkZBQyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn5u4PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7Jik7JWE7Iuc7IqkMjE8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzODAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPk9hc2lzIDIxPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+64KY6rOg7JW87J2YIOyasOyjvOyEoCDCtyDrrLTro4wg7J6F7J6lPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==",
+    m:["나고야시 히가시구 히가시사쿠라","지하철 사카에역 직결","무료 입장 (옥상)"],
+    d:"2002년 개업. 나고야 사카에의 랜드마크. 타원형 유리 지붕 '은하의 광장'이 우주선처럼 생겼다 하여 SNS 인기. 무료 입장. 21시까지 운영. 바로 옆 나고야 TV 타워와 함께 황금 야경.",
+    h:"오아시스21은 나고야시 지하철 히가시야마선·메이조선 사카에역과 직결된 복합 상업시설로, 설계 당시 '도시의 오아시스'를 컨셉으로 기획되었습니다. 1층은 버스 터미널, 지하는 쇼핑몰, 옥상이 유리 산책로 '은하의 광장'입니다. 옥상 유리 아래로 아래층 광장이 들여다보이는 구조가 독특해, 특히 야간 조명이 켜진 후가 가장 아름답습니다.",
+    tip:"후기 꿀팁: ①해 질 녘(18~19시)에 맞춰 방문하면 낮과 야경 두 가지 분위기를 동시에 즐길 수 있음 ②TV 타워와 오아시스21이 함께 찍히는 각도는 서쪽 방향 ③지하 1층 미치노에키에서 나고야 기념품 한 번에 구매 가능 ④무료라서 부담 없이 올라갔다가 금방 내려오는 여행자 多 — 일몰 시간에 맞추는 것이 핵심",
+    u:"https://maps.google.com/?q=35.1702,136.9097"
+  },
+  magome:{
+    t:"마고메주쿠 (馬籠宿)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMkU1QzMzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzVEN0E2MSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7im6nvuI88L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMzAiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNlcmlmIj7rp4jqs6DrqZTso7zsv6A8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzODAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPk1hZ29tZS1qdWt1PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+64KY7Lm07IS864+EIDQz67KI7Ke4IOyXreywuCDCtyDtlbTrsJwgNjAwbTwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=",
+    m:["기후현 나카쓰가와시","나카센도 43번째 역참","해발 600m"],
+    d:"나카센도 43번째 역참. 해발 600m 언덕 마을. 돌길 600m 양쪽으로 에도 시대 목조 가옥이 늘어섬. 소설가 시마자키 도손(島崎藤村) 생가터. 미슐랭 그린가이드 1스타.",
+    h:"마고메주쿠는 에도 시대(1603~1868) 나카센도를 오가는 여행자들이 쉬어가던 곳으로, 에도(도쿄)에서 교토까지 약 534km, 총 69개 역참 중 43번째였습니다. '주쿠(宿)'는 숙박 마을이라는 뜻. 주로 서민과 상인들이 이용한 도로로, 귀족 여성들도 안전하게 이동할 수 있어 '히메카이도(姫街道, 공주 가도)'로 불렸습니다. 소설 '여명(夜明け前)'으로 유명한 작가 시마자키 도손의 고향이기도 합니다.",
+    tip:"후기 꿀팁: ①마을 맨 위 전망대에서 에나산 조망이 포인트 ②마고메에서 쓰마고 방향(내리막)이 정석 — 반대 방향은 많이 힘듦 ③하이킹 전 짐은 안내소 포워딩 서비스 이용(약 1,000엔/가방) ④고헤이모치(300엔) 먹으면서 걷기 ⑤주차는 버스터미널 옆 공영주차장 이용",
+    u:"https://maps.google.com/?q=35.5282,137.5697"
+  },
+  nakasendo:{
+    t:"나카센도 (中山道) — 마고메~쓰마고 구간",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEzZDIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzJFNUMzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4yyPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+64KY7Lm07IS864+EPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5OYWthc2VuZG8gVHJhaWw8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7sl5Drj4R+6rWQ7YagIOyCsOq4uCDCtyDrp4jqs6DrqZTihpLsk7Drp4jqs6AgOGttPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==",
+    m:["기후현~나가노현 경계 구간","약 8km / 2~3시간","BBC 선정 사무라이의 길"],
+    d:"에도~교토 약 534km, 69개 역참을 잇는 에도 시대 도로 중 마고메~쓰마고 구간(약 8km)이 가장 잘 보존된 하이킹 코스. 삼나무 가로수·오다키·메다키 폭포·찻집 등 에도 시대 분위기 그대로.",
+    h:"나카센도는 '산 가운데 길'이라는 뜻으로, 해안을 따라가는 도카이도(東海道)와 함께 에도~교토를 잇는 양대 도로였습니다. 다이묘(영주)들의 공식 행렬, 상인, 참배객 등이 이 길을 이용했습니다. 특히 마고메~쓰마고 구간은 산 속 깊이 있어 근대화의 손길이 닿지 않았고, 덕분에 포장도로가 들어서지 않아 에도 시대 모습 그대로 보존되었습니다. 1968년 일본 정부가 국가 사적으로 지정해 보호 중.",
+    tip:"하이킹 후기 꿀팁: ①중간 자원봉사자 운영 찻집에서 녹차+와라비모치 휴식이 하이라이트 ②스탬프 포인트 여러 곳 — 스탬프 수첩 마고메 안내소에서 구매 가능 ③소나기 잦은 여름엔 우비 필수 ④7월 한낮은 매우 더우니 오전 이른 출발 추천 ⑤쓰마고→마고메 복귀 버스 시간(1일 2~3편)을 미리 캡처해두기",
+    u:"https://maps.google.com/?q=35.5400,137.5900"
+  },
+  tsumago:{
+    t:"쓰마고주쿠 (妻籠宿)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2QyYjBlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzZCNEMxRSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn4+Y77iPPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+7JOw66eI6rOg7KO87L+gPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Uc3VtYWdvLWp1a3U8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSI0MzAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC42NSkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj7rgpjsubTshLzrj4QgNDLrsojsp7gg7Jet7LC4IMK3IO2dkeuyvSDrs7TsobQg66eI7J2EPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==",
+    m:["나가노현 기소군 나기소마치","나카센도 42번째 역참","해발 420m"],
+    d:"나카센도 42번째 역참. 마고메보다 더 조용하고 보존 상태 우수. 흑벽 목조 가옥 300m. 혼진(영주 숙소 건물) 유료 견학 가능(300엔). 근처 오다키·메다키 폭포 산책 코스.",
+    h:"쓰마고는 마고메와 달리 기소강 지류 옆 평지에 위치해, 에도 시대 물류 요충지로 번성했습니다. 메이지 유신(1868) 이후 근대 도로와 철도가 쓰마고를 비켜 지나가면서 오히려 에도 시대 모습이 그대로 보존되는 역설적인 행운을 얻었습니다. 1973년 일본 최초의 역참 보존 운동이 쓰마고에서 시작되었고, 이것이 전국 역참마을 보존 운동의 모범 사례가 되었습니다.",
+    tip:"후기 꿀팁: ①마고메보다 방문객이 적어 한적한 사진 촬영이 가능 ②혼진(본진, 本陣) 견학 300엔으로 영주 숙소 내부 체험 ③오야키는 쓰마고에서 꼭 먹어봐야 할 먹거리 ④마을 구경 후 마고메 복귀 버스는 정류장에서 시간표 반드시 확인",
+    u:"https://maps.google.com/?q=35.5471,137.5812"
+  },
+  gozaisho:{
+    t:"고자이쇼산 로프웨이 (御在所岳ロープウェイ)",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMGQyMTM3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzFFNEE2RSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7wn5qgPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzMwIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJzZXJpZiI+6rOg7J6Q7J207Ie87IKwPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Hb3phaXNobyBSb3Bld2F5PC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iNDMwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNjUpIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+7ZW067CcIDEsMjEybSDCtyDsnbTshLjrp4wg7YyM64W4652866eIPC90ZXh0PgogIDwhLS0gYm90dG9tIGJvcmRlciAtLT4KICA8cmVjdCB4PSIzMjAiIHk9IjQ2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzIiByeD0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjQpIi8+Cjwvc3ZnPg==",
+    m:["미에현 미나미무로군 고모노마치","로프웨이 왕복 2,600엔","정상 해발 1,212m"],
+    d:"1959년 개통. 전장 약 2km, 15분. 이세만·나고야·알프스 파노라마. 산정 공원 완만 트레킹. 2025년 신설 코코루 테라스 그네(500엔)와 정상 레스토랑 네이처의 고자이쇼 카레우동이 인기.",
+    h:"고자이쇼산(御在所岳, 1,212m)은 미에현과 시가현 경계에 위치한 스즈카 산맥의 최고봉입니다. 이름의 '고자이쇼(御在所)'는 '귀인이 계시는 곳'이라는 뜻으로, 고대 일왕이 사냥을 위해 행차했다는 전설에서 유래했습니다. 1959년 개통된 고자이쇼 로프웨이는 당시 일본 최대 규모로 건설되었으며, 이후 나고야권 대표 레저 명소로 자리 잡았습니다.",
+    tip:"여행자 후기 꿀팁: ①날씨 맑은 날 오전에 가야 이세만 파노라마 조망 가능 ②7월 여름에도 정상은 시원(약 18~22°C) — 얇은 겉옷 필수 ③코코루 테라스 그네(3분 500엔)는 줄이 길어질 수 있으니 도착 직후 탑승 추천 ④정상 레스토랑 네이처의 고자이쇼 카레우동은 이세우동 베이스로 나고야서는 못 먹는 한정 메뉴 ⑤백철탑 소프트아이스크림은 꼭 먹을 것",
+    u:"https://maps.google.com/?q=35.0047,136.4369"
+  },
+  yunoyama:{
+    t:"유노야마 온천 · 아쿠아 이그니스",
+    i:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWEwYTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRhMmExMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjgiIGZsb29kLW9wYWNpdHk9IjAuMyIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InJnYmEoMCwwLDAsMC4xNSkiLz4KICA8IS0tIGRlY29yYXRpdmUgY2lyY2xlcyAtLT4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIxMDAiIHI9IjE4MCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjUwMCIgcj0iMTIwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+CiAgPCEtLSBjb250ZW50IC0tPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjIwIiBmb250LXNpemU9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj7imajvuI88L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMzAiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9InNlcmlmIj7snKDrhbjslbzrp4gg7Jio7LKcPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzgwIiBmb250LXNpemU9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOCkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5ZdW5veWFtYSBPbnNlbjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjQzMCIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjY1KSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiPjEsMzAw64WEIOyXreyCrCDCtyDrr7jsnbjtg5Ugwrcg7JWE7L+g7JWEIOydtOq3uOuLiOyKpDwvdGV4dD4KICA8IS0tIGJvdHRvbSBib3JkZXIgLS0+CiAgPHJlY3QgeD0iMzIwIiB5PSI0NjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMyIgcng9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC40KSIvPgo8L3N2Zz4=",
+    m:["미에현 미나미무로군 고모노마치","알칼리성 단순온천 '미인탕'","1,300년 역사"],
+    d:"나라 시대(710~794)부터 알려진 1,300년 역사 온천. 사슴이 상처를 치유한 곳이라는 전설. 알칼리성 단순온천으로 피부에 미끌미끌한 '미인탕'. 아쿠아 이그니스는 노천탕+레스토랑+제빵 복합 리조트.",
+    h:"유노야마 온천은 나라 시대부터 귀족들이 치유를 위해 찾던 온천으로, '야마토(대화) 국 제일의 명탕'으로 불렸습니다. 메이지 시대에는 킨테츠 전철이 개통되며 나고야권 시민들의 당일치기 온천지로 폭발적으로 성장했습니다. 아쿠아 이그니스(Aqua Ignis)는 2015년 개업한 복합 온천 리조트로, 유명 파티시에·빵집과 협업한 레스토랑·제과점이 입점해 '먹을 수 있는 온천'으로 알려져 있습니다.",
+    tip:"후기 꿀팁: ①귀국 당일 들르는 경우 온천 후 드라이·정리 시간 충분히 확보 ②아쿠아 이그니스 하트브레드 안티크 빵집에서 공항용 빵 구매 추천 ③수건 대여 가능(약 200엔) / 입욕료 약 1,200~1,500엔 ④노천탕이 메인 — 낮 시간대가 전망 좋음 ⑤온천 후 수분 보충 필수(탈수 주의)",
+    u:"https://maps.google.com/?q=35.0152,136.4473"
+  }
+};
+
+function openSpot(k) {
+  var s = S[k]; if (!s) return;
+  document.getElementById("moImg").src = s.i;
+  document.getElementById("moTtl").textContent = s.t;
+  document.getElementById("moMeta").innerHTML = s.m.map(function(x){return "<span>"+x+"</span>";}).join("");
+  document.getElementById("moDesc").textContent = s.d;
+  if (s.h) {
+    document.getElementById("moHistB").textContent = s.h;
+    document.getElementById("moHist").style.display = "block";
+  } else { document.getElementById("moHist").style.display = "none"; }
+  if (s.tip) {
+    document.getElementById("moTipB").textContent = s.tip;
+    document.getElementById("moTip").style.display = "block";
+  } else { document.getElementById("moTip").style.display = "none"; }
+  document.getElementById("moLinks").innerHTML = "<a class=\"mo-link\" href=\""+s.u+"\" target=\"_blank\" rel=\"noopener\">구글맵에서 보기 &#8599;</a>";
+  document.getElementById("mo").classList.add("active");
+}
+
+document.getElementById("moX").addEventListener("click", function(){ document.getElementById("mo").classList.remove("active"); });
+document.getElementById("mo").addEventListener("click", function(e){ if(e.target===this) this.classList.remove("active"); });
+
+document.getElementById("days").addEventListener("click", function(e){
+  var h = e.target.closest("[data-tog]");
+  if (h) { var b = h.nextElementSibling; if(b) b.classList.toggle("open"); }
+});
+
+document.addEventListener("click", function(e){
+  var sb = e.target.closest(".sp-btn");
+  if (sb) { openSpot(sb.dataset.spot); return; }
+  var pc = e.target.closest(".pc");
+  if (pc) { openSpot(pc.dataset.spot); }
+});
+
+document.querySelectorAll(".cl-i").forEach(function(item){
+  item.addEventListener("change", function(){ item.classList.toggle("done", item.querySelector("input").checked); });
+});
+
+var synth = window.speechSynthesis;
+var jpVoice = null;
+function pickJpVoice() {
+  if (!synth) return;
+  var v = synth.getVoices();
+  jpVoice = v.find(function(x){ return x.lang === "ja-JP"; }) || v.find(function(x){ return x.lang && x.lang.indexOf("ja") === 0; }) || null;
+}
+if (synth) { pickJpVoice(); if (synth.onvoiceschanged !== undefined) synth.addEventListener("voiceschanged", pickJpVoice); }
+
+function speakJp(text, card) {
+  if (!synth) { alert("이 브라우저는 음성 재생을 지원하지 않습니다."); return; }
+  synth.cancel();
+  document.querySelectorAll(".jp-card.playing").forEach(function(c){ c.classList.remove("playing"); });
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = "ja-JP"; if (jpVoice) u.voice = jpVoice; u.rate = 0.85;
+  card.classList.add("playing");
+  u.onend = function(){ card.classList.remove("playing"); };
+  u.onerror = function(){ card.classList.remove("playing"); };
+  synth.speak(u);
+}
+
+document.querySelectorAll(".jp-card").forEach(function(card){
+  card.addEventListener("click", function(){ speakJp(card.dataset.jp, card); });
+});
+
+});
+</script>
 </body>
-</html>
+                                                                                                                                                                                          </html>
